@@ -1,4 +1,6 @@
-export default function manifest() {
+import { MetadataRoute } from 'next'
+
+export default function manifest():MetadataRoute.Manifest {
   return {
     name: "Keedriver - Rent car",
     short_name: "keedriver",
@@ -10,12 +12,12 @@ export default function manifest() {
     theme_color: "#fff",
     icons: [
       {
-        src: "/assets/favicons/android-chrome-192x192.png",
+        src: "/favicons/android-chrome-192x192.png",
         sizes: "192x192",
         type: "image/png",
       },
       {
-        src: "/assets/favicons/android-chrome-512x512.png",
+        src: "/favicons/android-chrome-512x512.png",
         sizes: "512x512",
         type: "image/png",
       },

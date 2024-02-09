@@ -1,7 +1,9 @@
-import Script from "next/script";
 import Image from "next/image";
 import { Button, buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
+import OurServices from "@/components/home/our-services";
+import Section2 from "@/components/home/section2";
+import Section3 from "@/components/home/section3";
 
 export default function Home() {
   return (
@@ -23,16 +25,10 @@ export default function Home() {
           />
         </div>
       </div>
-      <Script src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID" />
-      <Script id="google-analytics">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
- 
-          gtag('config', 'GA_MEASUREMENT_ID');
-        `}
-      </Script>
+
+      <OurServices/>
+        <Section2/>
+        <Section3/>
     </main>
   );
 }

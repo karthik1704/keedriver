@@ -1,8 +1,10 @@
-import type { Metadata } from "next";
 import "./globals.css";
+import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
+import { GoogleTagManager } from '@next/third-parties/google'
 import { cn } from "@/lib/utils";
 import MainNavBar from "@/components/main-nav";
+import Footer from "@/components/footer";
 
 export const fontSans = FontSans({
   subsets: ["latin"],
@@ -43,8 +45,10 @@ export default function RootLayout({
         <main className="max-w-[1440px] relative overflow-hidden">
           <MainNavBar />
           {children}
+          <Footer/>
         </main>
       </body>
+      <GoogleTagManager gtmId=""/>
     </html>
   );
 }
