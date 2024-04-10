@@ -42,7 +42,7 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <main className="max-w-[1440px] relative overflow-hidden">
+        <main className=" relative overflow-hidden">
           <MainNavBar />
           {children}
           <Footer/>
