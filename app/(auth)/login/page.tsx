@@ -11,7 +11,7 @@ function LoginPage() {
   return (
     <>
       <div className="h-96 flex items-center justify-center bg-gray-100">
-        <form className="max-w-md w-full p-8 bg-white shadow-md rounded-lg">
+        <form className="max-w-md w-full p-14 bg-white shadow-md rounded-lg">
           <h1 className="text-3xl font-semibold text-center mb-6">
             Welcome to KeeDrive
           </h1>
@@ -23,7 +23,7 @@ function LoginPage() {
               type="tel"
               id="mobile"
               name="mobile"
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-red-500"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none  focus:border-red-500"
               placeholder="Enter Mobile Number"
               required
             />

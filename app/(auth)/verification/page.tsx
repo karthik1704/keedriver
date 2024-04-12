@@ -1,4 +1,7 @@
 import type { Metadata } from 'next'
+import { Button, buttonVariants } from "@/components/ui/button";
+import Link from "next/link";
+
 
 import {
     InputOTP,
@@ -16,12 +19,14 @@ function Verification(){
     return(
      <>
      <div className='h-96 flex items-center justify-center bg-gray-100'>
-        <form className='max-w-md w-full p-8 bg-white shadow-md rounded-lg'>
+        <form className='max-w-md w-full p-4 bg-white shadow-md rounded-lg'>
 <h1 className="text-3xl font-semibold text-center mb-6">Verification</h1>
 <p className='text-center'>We will send you a one Time password </p>
 <p className='text-center'>to your phone number</p>
-<div className='border-border m-4'>
+<div className='m-4 flex justify-center'>
+<div className='w-full md:w-auto flex items-center'>
       <InputOTP maxLength={6}>
+      <div className="flex items-center">
   <InputOTPGroup>
     <InputOTPSlot index={0} />
     <InputOTPSlot index={1} />
@@ -33,13 +38,21 @@ function Verification(){
     <InputOTPSlot index={4} />
     <InputOTPSlot index={5} />
   </InputOTPGroup>
+  </div>
 </InputOTP>
 </div>
-{/* <div className="mb-4">
-<input type="tel" id="mobile" name="mobile" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-red-500" placeholder="Enter OTP" required />
-          </div> */}
-          <button type="submit" className=" mb-4 w-full bg-primary text-white py-2 rounded-lg hover:bg-red-600 focus:outline-none focus:bg-red-600">Verify</button>
-          <p className='text-center mb-8'>Did't receive the Verification opt? Resend again</p>
+</div>
+          <div className="flex justify-center mb-4">
+            <Link
+              href="/verification"
+              className={buttonVariants({
+              })}
+            >
+              Get opt
+            </Link>
+          
+          </div>
+          <p className='text-center mb-8'>Did't receive the Verification opt? <a className='text-pink-700' href="">Click here</a> to Resend again</p>
         </form>
 
         </div>
