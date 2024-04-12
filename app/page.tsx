@@ -10,7 +10,7 @@ const Home = () => {
     <>
       <div className="mx-10 md:mx-10">
         <div>
-          <div className="grid grid-row-3 md:flex-col md:space-x-7 my-10 mx-24 ">
+          <div className="grid grid-row-3 md:flex-col md:space-x-7 my-10 mx-36 ">
             <div className="row-span3 md:basis-1/3">
               <h1 className="col-span-2 my-12 text-primary font-bold text-4xl">
                 We Drive You Thrive
@@ -23,7 +23,7 @@ const Home = () => {
               </button>
             </div>
             <div className="col-start-2 col-end-4">
-              <Image src={img} alt="" width={700} height={200} />
+              <Image src={img} alt="" width={800} height={200} />
             </div>
           </div>
         </div>
