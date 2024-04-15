@@ -36,7 +36,7 @@ function LoginPage() {
                 // className: 'text-center'
               })}
             >
-              Get opt
+              Get OTP
             </Link>
           </div>
         </form>
