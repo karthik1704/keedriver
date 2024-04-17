@@ -48,7 +48,7 @@ function Verification(){
               className={buttonVariants({
               })}
             >
-              Verified
+              Verify OTP
             </Link>
           
           </div>
