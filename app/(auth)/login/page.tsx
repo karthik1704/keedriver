@@ -30,19 +30,14 @@ function LoginPage() {
           </div>
           {/* <button type="submit" className="w-full bg-primary text-white py-2 rounded-lg hover:bg-red-600 focus:outline-none focus:bg-red-600">Get Otp</button> */}
           <div className="flex justify-center">
-            {/* <Link
+             <Link
               href="/verification"
               className={buttonVariants({
                 // className: 'text-center'
               })}
             >
-<<<<<<< HEAD
-              Get opt
-            </Link> */}
-=======
               Get OTP
-            </Link>
->>>>>>> acd084a1d91c21de9bce7afd5471fe05fef3e5bb
+            </Link> 
           </div>
         </form>
       </div>
