@@ -36,8 +36,13 @@ function LoginPage() {
                 // className: 'text-center'
               })}
             >
+<<<<<<< HEAD
               Get opt
             </Link> */}
+=======
+              Get OTP
+            </Link>
+>>>>>>> acd084a1d91c21de9bce7afd5471fe05fef3e5bb
           </div>
         </form>
       </div>
