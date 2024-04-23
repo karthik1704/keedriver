@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Menu } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+
 
 import AppDrawer from "./drawer";
 import MainMenu from "./menu";
 import { Button, buttonVariants } from "./ui/button";
 
 
-export default function MainNavBar() {
+
+export default function MainNavBar({user}) {
 
   return (
     <>
@@ -24,9 +27,18 @@ export default function MainNavBar() {
         <MainMenu />
 
         <div className="hidden md:inline-block">
-        <Link href="/login" className={`${buttonVariants()} px-8 `}>
-    Login
-  </Link>
+          {
+            user ?  <Avatar>
+            <AvatarImage src="https://github.com/shadcn.png" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+           :
+           <Link href="/login" className={`${buttonVariants()} px-8 `}>
+           Login
+         </Link>
+
+          }
+       
         </div>
       </nav>
       
