@@ -21,6 +21,7 @@ export default function MobileMenu({
   subMenu,
   values,
   routedriectry,
+  icon
 }: MenuType) {
   const [isOpen, setIsOpen] = React.useState(false);
 
@@ -35,7 +36,7 @@ export default function MobileMenu({
       <CollapsibleTrigger asChild>
         <div className="w-full flex items-center justify-between gap-4 px-2">
           <h4 className="text-sm font-semibold cursor-pointer">
-            {routedriectry ? <Link href={routedriectry}> {title}</Link> : title}
+            {routedriectry ? <Link href={routedriectry}>{icon} {title}</Link> : title}
           </h4>
           {children ? (
             <Button variant="ghost" size="sm" className="w-9 p-0">
@@ -61,6 +62,7 @@ export default function MobileMenu({
               className="rounded-md block border-b px-4 py-3 font-mono text-sm"
             >
               {sub.routeName}
+
             </Link>
           );
         })}

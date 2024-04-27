@@ -12,13 +12,36 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "./ui/button";
 import { Menu } from "lucide-react";
-import { routes } from "@/constants";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { LogOut } from "lucide-react";
 import Link from "next/link";
 import { Logout } from "@/app/action";
+import { Home } from "lucide-react";
 
-const AppDrawer = ({ user }) => {
+ const routes = [
+  { routeName: "Home", href: "/",icon:<Home/> },
+  {
+    routeName: "Services",
+    children: [
+      { routeName: "Book Trip", href: "/", image: "" },
+      { routeName: "Book Car", href: "/", image: "" },
+    ],
+  },
+  {
+    routeName: "For Business",
+    children: [{ routeName: "Hire us", href: "/hireus", image: "" }],
+  },
+  {
+    routeName: "About Us",
+    children: [
+      { routeName: "Who are we", href: "/about" },
+      { routeName: "Blog", href: "/blog" },
+      { routeName: "Contact", href: "/contact" },
+    ],
+  },
+];
+
+const AppDrawer = ({ user }:{user:any}) => {
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -52,6 +75,7 @@ const AppDrawer = ({ user }) => {
             <MobileMenu
               key={route.routeName}
               values={route}
+              icon={route?.icon}
               routedriectry={route.href}
               title={route.routeName}
               subMenu={route.children ? route.children : []}
