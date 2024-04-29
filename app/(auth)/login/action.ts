@@ -2,7 +2,9 @@
 
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-export async function SingIn(formData : any){
+
+
+export async function signIn(formData : any){
 
    
     const mobileNumber = formData.get('mobile');
