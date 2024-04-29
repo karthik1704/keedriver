@@ -10,6 +10,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import Link from "next/link";
+import { SheetClose } from "./ui/sheet";
 
 type MenuType = {
   title: string;
@@ -33,10 +34,10 @@ export default function MobileMenu({
       onOpenChange={setIsOpen}
       className="w-full space-y-2"
     >
-      <CollapsibleTrigger asChild>
-        <div className="w-full flex items-center justify-between gap-4 px-2">
-          <h4 className="text-sm font-semibold cursor-pointer">
-            {routedriectry ? (
+      <div className="w-full flex items-center justify-between gap-4 px-2">
+        <h4 className="text-sm font-semibold cursor-pointer">
+          {routedriectry ? (
+            <SheetClose asChild>
               <Link
                 className="flex items-center justify-center gap-2"
                 href={routedriectry}
@@ -44,14 +45,18 @@ export default function MobileMenu({
                 <span>{icon}</span>
                 {title}
               </Link>
-            ) : (
+            </SheetClose>
+          ) : (
+            <CollapsibleTrigger asChild>
               <Link className="flex items-center justify-center gap-2" href="">
                 <span>{icon}</span>
                 {title}
               </Link>
-            )}
-          </h4>
-          {children ? (
+            </CollapsibleTrigger>
+          )}
+        </h4>
+        {children ? (
+          <CollapsibleTrigger asChild>
             <Button variant="ghost" size="sm" className="w-9 p-0">
               {isOpen ? (
                 <ChevronUp className="h-4 w-4" />
@@ -60,25 +65,26 @@ export default function MobileMenu({
               )}
               <span className="sr-only">Toggle</span>
             </Button>
-          ) : (
-            ""
-          )}
-        </div>
-      </CollapsibleTrigger>
+          </CollapsibleTrigger>
+        ) : (
+          ""
+        )}
+      </div>
 
       <CollapsibleContent className="space-y-2">
         {subMenu?.map((sub, i) => {
           return (
-            <Link
-              href={sub.href}
-              key={i}
-              className="rounded-md block border-b px-4 py-3 font-mono text-sm"
-            >
-              <ul className="flex items-center gap-3 list-none">
-                <li>{sub?.icon}</li>
-                <li>{sub.routeName}</li>
-              </ul>
-            </Link>
+            <SheetClose asChild key={i}>
+              <Link
+                href={sub.href}
+                className="rounded-md block border-b px-4 py-3 font-mono text-sm"
+              >
+                <ul className="flex items-center gap-3 list-none">
+                  <li>{sub?.icon}</li>
+                  <li>{sub.routeName}</li>
+                </ul>
+              </Link>
+            </SheetClose>
           );
         })}
       </CollapsibleContent>
