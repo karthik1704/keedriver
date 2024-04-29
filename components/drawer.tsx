@@ -94,7 +94,7 @@ const AppDrawer = ({ user }: { user: any }) => {
               key={route.routeName}
               values={route}
               icon={route?.icon}
-              routedriectry={route.href}
+              routeDirectory={route.href}
               title={route.routeName}
               subMenu={route.children ? route.children : []}
             />

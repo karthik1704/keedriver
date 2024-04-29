@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react";
+import React from "react";
 import { ChevronUp, ChevronDown, Plus, X, Sun } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -14,14 +14,26 @@ import { SheetClose } from "./ui/sheet";
 
 type MenuType = {
   title: string;
-  subMenu?: { routeName: string; href: string }[];
+  subMenu?: { routeName: string; href: string; icon: React.ReactNode }[];
+  routeDirectory?: string;
+  icon?: React.ReactNode;
+  values: {
+    routeName: string;
+    href?: string;
+    icon: JSX.Element;
+    children?: {
+      routeName: string;
+      icon: React.ReactNode;
+      href: string;
+    }[];
+  };
 };
 
 export default function MobileMenu({
   title,
   subMenu,
   values,
-  routedriectry,
+  routeDirectory,
   icon,
 }: MenuType) {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -36,11 +48,11 @@ export default function MobileMenu({
     >
       <div className="w-full flex items-center justify-between gap-4 px-2">
         <h4 className="text-sm font-semibold cursor-pointer">
-          {routedriectry ? (
+          {routeDirectory ? (
             <SheetClose asChild>
               <Link
                 className="flex items-center justify-center gap-2"
-                href={routedriectry}
+                href={routeDirectory}
               >
                 <span>{icon}</span>
                 {title}
