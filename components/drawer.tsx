@@ -11,17 +11,16 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Button } from "./ui/button";
-import { Menu } from "lucide-react";
+import { Menu,LogOut, Home ,HandPlatter,Handshake ,User } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { LogOut } from "lucide-react";
 import Link from "next/link";
 import { Logout } from "@/app/action";
-import { Home } from "lucide-react";
 
  const routes = [
   { routeName: "Home", href: "/",icon:<Home/> },
   {
     routeName: "Services",
+    icon:<HandPlatter/>,
     children: [
       { routeName: "Book Trip", href: "/", image: "" },
       { routeName: "Book Car", href: "/", image: "" },
@@ -29,10 +28,12 @@ import { Home } from "lucide-react";
   },
   {
     routeName: "For Business",
+    icon:<Handshake/>,
     children: [{ routeName: "Hire us", href: "/hireus", image: "" }],
   },
   {
     routeName: "About Us",
+    icon:<User />,
     children: [
       { routeName: "Who are we", href: "/about" },
       { routeName: "Blog", href: "/blog" },
@@ -62,7 +63,7 @@ const AppDrawer = ({ user }:{user:any}) => {
               user?.first_name || user?.last_name
             ) : (
               <div>
-                <span className="inline-block mr-2">already singin?</span>
+                <span className="inline-block mr-2">Already an account?</span>
                 <Link href="/login" className="text-red-500">
                   Login
                 </Link>

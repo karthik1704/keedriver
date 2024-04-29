@@ -36,7 +36,7 @@ export default function MobileMenu({
       <CollapsibleTrigger asChild>
         <div className="w-full flex items-center justify-between gap-4 px-2">
           <h4 className="text-sm font-semibold cursor-pointer">
-            {routedriectry ? <Link href={routedriectry}>{icon} {title}</Link> : title}
+            {routedriectry ? <Link className="flex items-center justify-center gap-2" href={routedriectry}><span>{icon}</span>{title}</Link> : <Link className="flex items-center justify-center gap-2" href=''><span>{icon}</span>{title}</Link>}
           </h4>
           {children ? (
             <Button variant="ghost" size="sm" className="w-9 p-0">
