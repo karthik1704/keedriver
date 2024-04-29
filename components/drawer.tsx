@@ -11,38 +11,53 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Button } from "./ui/button";
-import { Menu,LogOut, Home ,HandPlatter,Handshake ,User } from "lucide-react";
+import {
+  Menu,
+  LogOut,
+  Home,
+  Car,
+  Handshake,
+  User,
+  BookPlus,
+  CarFront,
+  UserPlus,
+  UsersRound,
+  MessageSquareQuote,
+  PhoneCall,
+} from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
 import { Logout } from "@/app/action";
 
- const routes = [
-  { routeName: "Home", href: "/",icon:<Home/> },
+const routes = [
+  { routeName: "Home", href: "/", icon: <Home /> },
   {
     routeName: "Services",
-    icon:<HandPlatter/>,
+    icon: <Car />,
     children: [
-      { routeName: "Book Trip", href: "/", image: "" },
-      { routeName: "Book Car", href: "/", image: "" },
+      { routeName: "Book Trip", href: "/", image: "", icon: <BookPlus /> },
+      { routeName: "Book Car", href: "/", image: "", icon: <CarFront /> },
     ],
   },
   {
     routeName: "For Business",
-    icon:<Handshake/>,
-    children: [{ routeName: "Hire us", href: "/hireus", image: "" }],
+    icon: <Handshake />,
+    children: [
+      { routeName: "Hire us", href: "/hireus", image: "", icon: <UserPlus /> },
+    ],
   },
   {
     routeName: "About Us",
-    icon:<User />,
+    icon: <User />,
     children: [
-      { routeName: "Who are we", href: "/about" },
-      { routeName: "Blog", href: "/blog" },
-      { routeName: "Contact", href: "/contact" },
+      { routeName: "Who are we", href: "/about", icon: <UsersRound /> },
+      { routeName: "Blog", href: "/blog", icon: <MessageSquareQuote /> },
+      { routeName: "Contact", href: "/contact", icon: <PhoneCall /> },
     ],
   },
 ];
 
-const AppDrawer = ({ user }:{user:any}) => {
+const AppDrawer = ({ user }: { user: any }) => {
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -63,7 +78,9 @@ const AppDrawer = ({ user }:{user:any}) => {
               user?.first_name || user?.last_name
             ) : (
               <div>
-                <span className="inline-block mr-2">Already an account?</span>
+                <span className="inline-block mr-2">
+                  Already have an account?
+                </span>
                 <Link href="/login" className="text-red-500">
                   Login
                 </Link>

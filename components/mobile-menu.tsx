@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { ChevronUp, ChevronDown, Plus, X } from "lucide-react";
+import { ChevronUp, ChevronDown, Plus, X, Sun } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -21,7 +21,7 @@ export default function MobileMenu({
   subMenu,
   values,
   routedriectry,
-  icon
+  icon,
 }: MenuType) {
   const [isOpen, setIsOpen] = React.useState(false);
 
@@ -36,7 +36,20 @@ export default function MobileMenu({
       <CollapsibleTrigger asChild>
         <div className="w-full flex items-center justify-between gap-4 px-2">
           <h4 className="text-sm font-semibold cursor-pointer">
-            {routedriectry ? <Link className="flex items-center justify-center gap-2" href={routedriectry}><span>{icon}</span>{title}</Link> : <Link className="flex items-center justify-center gap-2" href=''><span>{icon}</span>{title}</Link>}
+            {routedriectry ? (
+              <Link
+                className="flex items-center justify-center gap-2"
+                href={routedriectry}
+              >
+                <span>{icon}</span>
+                {title}
+              </Link>
+            ) : (
+              <Link className="flex items-center justify-center gap-2" href="">
+                <span>{icon}</span>
+                {title}
+              </Link>
+            )}
           </h4>
           {children ? (
             <Button variant="ghost" size="sm" className="w-9 p-0">
@@ -61,8 +74,10 @@ export default function MobileMenu({
               key={i}
               className="rounded-md block border-b px-4 py-3 font-mono text-sm"
             >
-              {sub.routeName}
-
+              <ul className="flex items-center gap-3 list-none">
+                <li>{sub?.icon}</li>
+                <li>{sub.routeName}</li>
+              </ul>
             </Link>
           );
         })}
