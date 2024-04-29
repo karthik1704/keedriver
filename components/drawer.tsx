@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import MobileMenu from "./mobile-menu";
 import {
   Sheet,
@@ -27,7 +26,7 @@ import {
 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
-import { Logout } from "@/app/action";
+import { logout } from "@/app/action";
 
 const routes = [
   { routeName: "Home", href: "/", icon: <Home /> },
@@ -101,9 +100,9 @@ const AppDrawer = ({ user }: { user: any }) => {
           ))}
         </div>
         {user ? (
-          <Button className="w-full" onClick={() => Logout()}>
+          <Button className="w-full" onClick={() => logout()}>
             <LogOut />
-            <span className="mr-2">LogOut</span>
+            <span className="mr-2">Logout</span>
           </Button>
         ) : (
           ""

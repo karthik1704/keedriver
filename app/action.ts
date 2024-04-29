@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 
-export async function Logout(){
+export async function logout(){
     cookies().delete('access');
     redirect('/login')
 }

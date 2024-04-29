@@ -13,9 +13,9 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Logout } from "@/app/action";
+import { logout } from "@/app/action";
 
-export default function MainNavBar({ user }) {
+export default function MainNavBar({ user }:{user:any}) {
   return (
     <>
       <nav className="relative max-w[1440px] py-6 px-3 md:px-6 flex justify-between items-center z-30 border-b">
@@ -62,7 +62,7 @@ export default function MainNavBar({ user }) {
                     className="w-full flex items-center gap-3 hover:bg-gray-100 p-2"
                   >
                     <LogOut className="text-red-500" />
-                    <span onClick={() => Logout()} className="inline-block">
+                    <span onClick={() => logout()} className="inline-block">
                       Logout
                     </span>
                   </Link>
