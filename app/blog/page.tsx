@@ -71,15 +71,15 @@ export async function getData(){
   
       
   
-      const blog = await res.json();
+      const blogs = await res.json();
     //   console.log(blog);
 
   
-      return blog;
+      return blogs;
   }
 
  export default async function Blog (){
-    const blogs = await getData();
+    const {results:blogs} = await getData();
     console.log(blogs);
   return (
     <div className='flex items-start justify-evenly p-5'>
