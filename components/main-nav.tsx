@@ -44,7 +44,7 @@ export default function MainNavBar({ user }:{user:any}) {
               <PopoverContent className="w-52">
                 <div className="flex flex-col gap-4 items-center justify-start">
                   <Link
-                    href="/profile"
+                    href="/create-account"
                     className="w-full flex items-center gap-3 hover:bg-gray-100 p-2 "
                   >
                     <CircleUserRound className=" text-red-500" />
