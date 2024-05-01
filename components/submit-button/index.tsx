@@ -4,7 +4,7 @@ import { useFormStatus } from "react-dom";
 const SubmitButton = ({
   name = "Submit",
   loading = "Loading...",
-  width="w-full"
+  width = "w-full",
 }: {
   name?: string;
   loading?: React.ReactNode | string;
@@ -15,7 +15,7 @@ const SubmitButton = ({
   return (
     <button
       type="submit"
-      className={`${width} cursor-pointer rounded-lg border border-primary bg-primary p-4 text-white transition hover:bg-opacity-90 disabled:bg-slate-500`}
+      className={`${width} cursor-pointer rounded-lg border border-primary bg-primary p-2 text-white capitalize text-center  font-bold transition hover:bg-opacity-90 disabled:bg-slate-500`}
       aria-disabled={pending}
       disabled={pending}
     >

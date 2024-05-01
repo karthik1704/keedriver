@@ -1,3 +1,4 @@
+import SubmitButton from "@/components/submit-button";
 import { signIn } from "./action";
 
 const SigninForm = () => {
@@ -10,16 +11,18 @@ const SigninForm = () => {
         id="mobile"
         name="mobile"
         autoComplete="mobile tel"
+        autoFocus={true}
         className="w-full px-4 py-2 border rounded-lg focus:outline-none  focus:border-red-500"
         placeholder="Enter Phone Number"
         required
       />
-      <button
+      {/* <button
         className="w-full bg-red-500 text-white text-center capitalize font-bold py-2 px-4 rounded-lg"
         type="submit"
       >
         submit
-      </button>
+      </button> */}
+      <SubmitButton/>
     </form>
   );
 };
