@@ -35,7 +35,8 @@ const BlogPage = async({
     // const data:Data = await getData(slug);
 
     return <>
-    <Blog/>
+   <h1>hi</h1>
 
     </>
 }
+export default BlogPage;

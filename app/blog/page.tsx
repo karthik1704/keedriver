@@ -56,8 +56,31 @@ const blogData = [
 }
 ];
 
+export async function getData(){
+    
+    const res = await fetch('http://devapi.keedriver.com/api/v1/blogs/',{
+      headers:{
+        'Content-Type':'application/json',
+      },
+    })
+  
+  
+    if(!res.ok){
+      console.log('error')
+    }
+  
+      
+  
+      const blog = await res.json();
+    //   console.log(blog);
 
- export default function Blog (){
+  
+      return blog;
+  }
+
+ export default async function Blog (){
+    const blogs = await getData();
+    console.log(blogs);
   return (
     <div className='flex items-start justify-evenly p-5'>
         <div className='w-1/2 flex flex-col gap-3'>
@@ -65,8 +88,8 @@ const blogData = [
         <Blogcard/></Link>
         <div className='w-ful grid grid-cols-2 gap-6 items-center justify-between'>
         {
-            blogData.map((bd)=>{
-                return <BlogCardSmall key={bd.id} blogDate={bd.date} title={bd.title} pic={bd.image} blogDescription={bd.description}   />
+            blogs.map((bd)=>{
+                return <BlogCardSmall key={bd.id} blogDate={''} title={bd.title} pic={bd.image} blogDescription={bd.description}   />
             })
         }
         </div>
