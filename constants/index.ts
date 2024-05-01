@@ -1,4 +1,8 @@
 
+export const API_URL = "http://devapi.keedriver.com/api/v1";
+
+
+
 export const social_links = [
   {
     name: "facebook",
