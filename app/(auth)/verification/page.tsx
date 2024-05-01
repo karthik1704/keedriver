@@ -48,11 +48,11 @@ function Verification(){
               className={buttonVariants({
               })}
             >
-              Get opt
+              Verify OTP
             </Link>
           
           </div>
-          <p className='text-center mb-8'>Did't receive the Verification opt? <a className='text-pink-700' href="">Click here</a> to Resend again</p>
+          <p className='text-center mb-8'>Did't receive the Verification OTP? <a className='text-pink-700' href="">Click here</a> to Resend again</p>
         </form>
 
         </div>

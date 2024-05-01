@@ -5,6 +5,8 @@ import { GoogleTagManager } from '@next/third-parties/google'
 import { cn } from "@/lib/utils";
 import MainNavBar from "@/components/main-nav";
 import Footer from "@/components/footer";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 export const fontSans = FontSans({
   subsets: ["latin"],
@@ -29,11 +31,47 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://keedriver.com"),
 };
 
-export default function RootLayout({
+export async function getData(){
+  const cookiesStore = cookies();
+  const access = cookiesStore.get('access')
+
+  console.log(access);
+if(!access){
+  return null;
+}
+  const res = await fetch('http://devapi.keedriver.com/api/v1/user/',{
+    headers:{
+      'Content-Type':'application/json',
+      Authorization :`Bearer ${access?.value}`,
+    },
+  })
+
+
+  if(!res.ok){
+    console.log('error')
+  }
+
+  if(res.status === 401){
+   
+    return null;
+
+
+  }
+    
+
+    const user = await res.json();
+    console.log(user);
+
+    return user;
+}
+
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+
+  const user = await getData();
   return (
     <html lang="en">
       <body
@@ -43,7 +81,7 @@ export default function RootLayout({
         )}
       >
         <main className=" relative overflow-hidden">
-          <MainNavBar />
+          <MainNavBar user={user}/>
           {children}
           <Footer/>
         </main>

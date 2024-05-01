@@ -8,10 +8,10 @@ import img3 from "@/app/services/image/home/start.png";
 const Home = () => {
   return (
     <>
-      <div className="mx-10 md:mx-10">
-        <div>
-          <div className="grid grid-row-3 md:flex-col md:space-x-7 my-10 mx-36 ">
-            <div className="row-span3 md:basis-1/3">
+      <div className="container mx-auto px-4">
+       
+          <div className="grid md:grid-cols-1 lg:grid-cols-2 md:space-x-7 my-10 mx-5 md:mx-36 ">
+            <div className="row-span-3 md:basis-1/3">
               <h1 className="col-span-2 my-12 text-primary font-bold text-4xl">
                 We Drive You Thrive
               </h1>
@@ -22,14 +22,14 @@ const Home = () => {
                 Call us Now - 072005 88582
               </button>
             </div>
-            <div className="col-start-2 col-end-4">
+            <div className="row-span-5">
               <Image src={img} alt="" width={800} height={200} />
             </div>
           </div>
-        </div>
+      
 
-        <div className="flex flex-col md:flex-row md:space-x-14 md:justify-center my-20 mx-auto ">
-          <div className="basis-1/4 shadow-xl text-center">
+        <div className="flex flex-col md:flex-row md:flex-wrap md:gap-4 md:justify-center my-20 mx-auto ">
+          <div className=" m-3 basis-1/4 shadow-xl text-center">
             <div className="mx-36">
               <Image
                 src={img1}
@@ -47,7 +47,7 @@ const Home = () => {
           </div>
 
           <div></div>
-          <div className="basis-1/4 shadow-xl text-center">
+          <div className=" m-3 basis-1/4 shadow-xl text-center">
             <div className="mx-36">
               <Image
                 src={img2}
@@ -64,7 +64,7 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="basis-1/4 shadow-xl text-center">
+          <div className=" m-3 basis-1/4 shadow-xl text-center">
             <div className="mx-36 ">
               <Image
                 src={img3}
@@ -85,7 +85,7 @@ const Home = () => {
 
         <h1 className="text-center py-5 font-bold">OUR TARIFF</h1>
 
-        <div className="grid grid-cols-4 gap-4 text text-center mx-11 my-24">
+        <div className="md:grid-cols-2 lg:grid-cols-4 grid gap-4 text text-center mx-11 my-24">
           {/* <div className="p-4">Our Tariff</div> */}
           <div>
             <h1 className="p-3 font-semibold">Normal Tarif</h1>
