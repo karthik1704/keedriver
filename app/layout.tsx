@@ -7,6 +7,7 @@ import MainNavBar from "@/components/main-nav";
 import Footer from "@/components/footer";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { API_URL } from "@/constants";
 
 export const fontSans = FontSans({
   subsets: ["latin"],
@@ -39,7 +40,7 @@ export async function getData(){
 if(!access){
   return null;
 }
-  const res = await fetch('http://devapi.keedriver.com/api/v1/user/',{
+  const res = await fetch(`${API_URL}/user/`,{
     headers:{
       'Content-Type':'application/json',
       Authorization :`Bearer ${access?.value}`,
