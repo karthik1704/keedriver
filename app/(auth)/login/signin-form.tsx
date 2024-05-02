@@ -3,8 +3,23 @@ import { useFormState } from "react-dom";
 import { signIn } from "./action";
 import SubmitButton from "@/components/submit-button";
 
+type InitialState =  {
+  message: null | string;
+  fieldErrors: {
+    phone: null| string |string[],
+  },
+}
+
+const initialState =  {
+  message: null,
+  fieldErrors: {
+    phone: null,
+  },
+}
+
+
 const SigninForm = () => {
-  const [state, formAction] = useFormState(signIn, {});
+  const [state, formAction] = useFormState(signIn, initialState);
   return (
     <form action={formAction} className="mb-4 flex flex-col gap-4">
       {/* <label htmlFor="mobile" className="block mb-2 text-sm font-medium text-gray-700">Enter Mobile Number</label> */}

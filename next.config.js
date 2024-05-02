@@ -1,4 +1,15 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  images: {
+    remotePatterns: [
+        {
+          protocol: 'http',
+          hostname: 'devapi.keedriver.com',
+          port: '',
+          pathname: '/media/**',
+        },
+      ],
+    }
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

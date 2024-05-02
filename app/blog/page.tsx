@@ -1,87 +1,19 @@
 import React from "react";
 
-import Blogcard from "@/components/ui/blogcard";
-import BlogAccordian from "@/components/ui/blog-accordian";
-import { BlogCardSmall } from "@/components/ui/blogcard";
+import Blogcard from "./blogcard";
+import BlogAccordian from "./blog-accordian";
 import Link from "next/link";
 import { API_URL } from "@/constants";
 
-
-const blogData = [
-  {
-    id: 1,
-    date: "01-01-2024",
-    image:
-      "https://png.pngtree.com/thumb_back/fh260/background/20230612/pngtree-man-wearing-glasses-is-wearing-colorful-background-image_2905240.jpg",
-    title: "blog title",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. A, hic. Nobis consequatur ipsa obcaecati doloremque aliquam nihil neque porro alias? Quibusdam est asperiores similique velit reiciendis non dicta, et optio!",
-  },
-  {
-    id: 2,
-    date: "01-01-2024",
-    image:
-      "https://png.pngtree.com/thumb_back/fh260/background/20230612/pngtree-man-wearing-glasses-is-wearing-colorful-background-image_2905240.jpg",
-    title: "blog title",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. A, hic. Nobis consequatur ipsa obcaecati doloremque aliquam nihil neque porro alias? Quibusdam est asperiores similique velit reiciendis non dicta, et optio!",
-  },
-  {
-    id: 3,
-    date: "01-01-2024",
-    image:
-      "https://png.pngtree.com/thumb_back/fh260/background/20230612/pngtree-man-wearing-glasses-is-wearing-colorful-background-image_2905240.jpg",
-    title: "blog title",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. A, hic. Nobis consequatur ipsa obcaecati doloremque aliquam nihil neque porro alias? Quibusdam est asperiores similique velit reiciendis non dicta, et optio!",
-  },
-  {
-    id: 4,
-    date: "01-01-2024",
-    image:
-      "https://png.pngtree.com/thumb_back/fh260/background/20230612/pngtree-man-wearing-glasses-is-wearing-colorful-background-image_2905240.jpg",
-    title: "blog title",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. A, hic. Nobis consequatur ipsa obcaecati doloremque aliquam nihil neque porro alias? Quibusdam est asperiores similique velit reiciendis non dicta, et optio!",
-  },
-  {
-    id: 5,
-    date: "01-01-2024",
-    image:
-      "https://png.pngtree.com/thumb_back/fh260/background/20230612/pngtree-man-wearing-glasses-is-wearing-colorful-background-image_2905240.jpg",
-    title: "blog title",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. A, hic. Nobis consequatur ipsa obcaecati doloremque aliquam nihil neque porro alias? Quibusdam est asperiores similique velit reiciendis non dicta, et optio!",
-  },
-  {
-    id: 6,
-    date: "01-01-2024",
-    image:
-      "https://png.pngtree.com/thumb_back/fh260/background/20230612/pngtree-man-wearing-glasses-is-wearing-colorful-background-image_2905240.jpg",
-    title: "blog title",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. A, hic. Nobis consequatur ipsa obcaecati doloremque aliquam nihil neque porro alias? Quibusdam est asperiores similique velit reiciendis non dicta, et optio!",
-  },
-  {
-    id: 7,
-    date: "01-01-2024",
-    image:
-      "https://png.pngtree.com/thumb_back/fh260/background/20230612/pngtree-man-wearing-glasses-is-wearing-colorful-background-image_2905240.jpg",
-    title: "blog title",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. A, hic. Nobis consequatur ipsa obcaecati doloremque aliquam nihil neque porro alias? Quibusdam est asperiores similique velit reiciendis non dicta, et optio!",
-  },
-];
-
 export async function getData() {
 
-  const res = await fetch("http://devapi.keedriver.com/api/v1/blogs/", {
+  const res = await fetch(`${API_URL}/blogs/`, {
     headers: {
       "Content-Type": "application/json",
     },
   });
 
-  const res1 = await fetch("http://devapi.keedriver.com/api/v1/blogs/pins/", {
+  const res1 = await fetch(`${API_URL}/blogs/pins/`, {
     headers: {
       "Content-Type": "application/json",
     },
@@ -113,7 +45,7 @@ export default async function Blog() {
       <div className="flex flex-col w-full  md:w-1/2 md:gap-0 lg:grid lg:grid-cols-2 lg:gap-6">
         {results.map((bd, index) => {
           return (
-            <Link
+            <Link key={bd.id}
               className={`${
                 index === 0 ? "lg:grid col-span-2 row-span-2" : ""
               } mb-5`}
