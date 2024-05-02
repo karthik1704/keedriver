@@ -12,7 +12,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
-import { routes } from "@/constants";
+import {routes} from '@/constants/routes';
 
 export default function MainMenu(){
 

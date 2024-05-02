@@ -1,7 +1,11 @@
 import React from "react";
-import Blogcard from "./blogcard";
-import BlogAccordian from "./blog-accordian";;
+
+import Blogcard from "@/components/ui/blogcard";
+import BlogAccordian from "@/components/ui/blog-accordian";
+import { BlogCardSmall } from "@/components/ui/blogcard";
 import Link from "next/link";
+import { API_URL } from "@/constants";
+
 
 const blogData = [
   {
@@ -70,6 +74,7 @@ const blogData = [
 ];
 
 export async function getData() {
+
   const res = await fetch("http://devapi.keedriver.com/api/v1/blogs/", {
     headers: {
       "Content-Type": "application/json",
@@ -85,6 +90,7 @@ export async function getData() {
   if (!res.ok) {
     console.log("error");
   }
+
 
   if (!res1.ok) {
     console.log("error");
