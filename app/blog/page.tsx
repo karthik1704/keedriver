@@ -1,9 +1,11 @@
 import React from "react";
+
 import Blogcard from "@/components/ui/blogcard";
 import BlogAccordian from "@/components/ui/blog-accordian";
 import { BlogCardSmall } from "@/components/ui/blogcard";
 import Link from "next/link";
 import { API_URL } from "@/constants";
+
 
 const blogData = [
   {
@@ -72,7 +74,14 @@ const blogData = [
 ];
 
 export async function getData() {
-  const res = await fetch(`${API_URL}/blogs/`, {
+
+  const res = await fetch("http://devapi.keedriver.com/api/v1/blogs/", {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const res1 = await fetch("http://devapi.keedriver.com/api/v1/blogs/pins/", {
     headers: {
       "Content-Type": "application/json",
     },
@@ -82,36 +91,41 @@ export async function getData() {
     console.log("error");
   }
 
+
+  if (!res1.ok) {
+    console.log("error");
+  }
+
   const blogs = await res.json();
+  const pins = await res1.json();
+
   //   console.log(blog);
 
-  return blogs;
+  return { blogs, pins };
 }
 
 export default async function Blog() {
-  const { results: blogs } = await getData();
-  console.log(blogs);
+  const { blogs, pins } = await getData();
+  const { results } = blogs;
+  const { results: resPins } = pins;
   return (
-    <div className="flex items-start justify-evenly p-5">
-      <div className="w-1/2 flex flex-col gap-3">
-        <Link href="/blog/one">
-          <Blogcard />
-        </Link>
-        <div className="w-ful grid grid-cols-2 gap-6 items-center justify-between">
-          {blogs.map((bd) => {
-            return (
-              <BlogCardSmall
-                key={bd.id}
-                blogDate={""}
-                title={bd.title}
-                pic={bd.image}
-                blogDescription={bd.description}
-              />
-            );
-          })}
-        </div>
+    <div className="flex flex-col items-start justify-center md:flex-row md:justify-evenly p-5 ">
+      <div className="flex flex-col w-full  md:w-1/2 md:gap-0 lg:grid lg:grid-cols-2 lg:gap-6">
+        {results.map((bd, index) => {
+          return (
+            <Link
+              className={`${
+                index === 0 ? "lg:grid col-span-2 row-span-2" : ""
+              } mb-5`}
+              href={`/blog/${bd.slug}`}
+            >
+              <Blogcard key={bd.id} blogValues={bd} />
+            </Link>
+          );
+        })}
       </div>
-      <div className="w-1/4">
+
+      <div className="w-full md:w-1/4">
         <BlogAccordian />
       </div>
     </div>
