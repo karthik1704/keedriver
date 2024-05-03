@@ -40,6 +40,7 @@ export default async function Blog() {
   const { blogs, pins } = await getData();
   const { results } = blogs;
   const { results: resPins } = pins;
+  console.log(resPins)
   return (
     <div className="flex flex-col items-start justify-center md:flex-row md:justify-evenly p-5 ">
       <div className="flex flex-col w-full  md:w-1/2 md:gap-0 lg:grid lg:grid-cols-2 lg:gap-6">
@@ -58,7 +59,7 @@ export default async function Blog() {
       </div>
 
       <div className="w-full md:w-1/4">
-        <BlogAccordian />
+        <BlogAccordian pinsData={resPins} />
       </div>
     </div>
   );
