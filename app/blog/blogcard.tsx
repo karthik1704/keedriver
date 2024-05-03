@@ -30,7 +30,7 @@
     <div className='flex flex-col gap-3 justify-center items-start capitalize'>
         <span className='text-lg p-1'>{date}</span>
         <h2 className='text-2xl font-bold leading-3 p-1'>{title}</h2>
-        <p className='text-lg p-1'>{description}</p>
+        <p className='text-lg p-1 line-clamp-3'>{description}</p>
 
     </div>
 
