@@ -34,6 +34,7 @@ const SigninForm = () => {
         placeholder="Enter Phone Number"
         required
       />
+  
       {/* <button
         className="w-full bg-red-500 text-white text-center capitalize font-bold py-2 px-4 rounded-lg"
         type="submit"
