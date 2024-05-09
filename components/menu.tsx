@@ -12,7 +12,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
-import { routes } from "@/constants";
+import {routes} from '@/constants/routes';
 
 export default function MainMenu(){
 
@@ -22,7 +22,7 @@ export default function MainMenu(){
             <NavigationMenuItem key={route.routeName}>
               {!!route.children && (
                 <>
-                  <NavigationMenuTrigger>
+                  <NavigationMenuTrigger className="bg-inherit">
                     {route.routeName}
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>

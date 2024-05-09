@@ -1,26 +1,7 @@
 
-export const routes = [
-  { routeName: "Home", href: "/" },
-  {
-    routeName: "Services",
-    children: [
-      { routeName: "Book Trip", href: "/", image: "" },
-      { routeName: "Book Car", href: "/", image: "" },
-    ],
-  },
-  {
-    routeName: "For Business",
-    children: [{ routeName: "Hire us", href: "/hireus", image: "" }],
-  },
-  {
-    routeName: "About Us",
-    children: [
-      { routeName: "Who are we", href: "/about" },
-      { routeName: "Blog", href: "/blog" },
-      { routeName: "Contact", href: "/contact" },
-    ],
-  },
-];
+export const API_URL = "http://devapi.keedriver.com/api/v1";
+
+
 
 export const social_links = [
   {

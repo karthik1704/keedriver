@@ -1,4 +1,4 @@
-import { routes } from "@/constants";
+import {routes} from '@/constants/routes';
 import Image from "next/image";
 import Link from "next/link";
 

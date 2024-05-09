@@ -1,16 +1,19 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google";
+import { Roboto  } from "next/font/google";
 import { GoogleTagManager } from '@next/third-parties/google'
 import { cn } from "@/lib/utils";
 import MainNavBar from "@/components/main-nav";
 import Footer from "@/components/footer";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { API_URL } from "@/constants";
 
-export const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
+export const roboto = Roboto({
+  weight: ['400', '700'],
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -39,7 +42,7 @@ export async function getData(){
 if(!access){
   return null;
 }
-  const res = await fetch('http://devapi.keedriver.com/api/v1/user/',{
+  const res = await fetch(`${API_URL}/user/`,{
     headers:{
       'Content-Type':'application/json',
       Authorization :`Bearer ${access?.value}`,
@@ -77,7 +80,7 @@ export default async function RootLayout({
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
+          roboto.className
         )}
       >
         <main className=" relative overflow-hidden">

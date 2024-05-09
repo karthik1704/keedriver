@@ -18,7 +18,7 @@ import { logout } from "@/app/action";
 export default function MainNavBar({ user }:{user:any}) {
   return (
     <>
-      <nav className="relative max-w[1440px] py-6 px-3 md:px-6 flex justify-between items-center z-30 border-b">
+      <nav className="relative bg-red-200 max-w[1440px] py-6 px-3 md:px-6 flex justify-between items-center z-30 border-b">
         <div className="flex gap-4">
           <div className="md:hidden">
             <AppDrawer user={user} />
