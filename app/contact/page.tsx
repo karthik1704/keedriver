@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { FaPhone } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
+import ContactForm from "./contact-form";
 
 export const metadata: Metadata = {
   title: "Contact us | Keedriver",
@@ -18,51 +19,7 @@ export default function Contact() {
           </h2>
           <div className="flex flex-col  md:flex-row gap-20">
             <div className="flex flex-1">
-              <form action="#" method="POST" className="space-y-6 flex-col ">
-                <div>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="Your Name"
-                    className="mt-1 w-80 md:w-96 p-3 block  shadow-sm sm:text-sm border-gray-300 rounded-md"
-                  />
-                </div>
-                <div>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Your Email"
-                    className="mt-1 p-3 focus:ring-indigo-500 focus:border-indigo-500 block w-80 md:w-96 shadow-sm sm:text-sm border-gray-300 rounded-md"
-                  />
-                </div>
-                <div>
-                  <input
-                    type="phone"
-                    id="phone"
-                    name="phone"
-                    placeholder="Phone Number"
-                    className="mt-1 p-3 focus:ring-indigo-500 focus:border-indigo-500 block w-80 md:w-96 shadow-sm sm:text-sm border-gray-300 rounded-md"
-                  />
-                </div>
-                <div>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    placeholder="Your Message"
-                    className="mt-1 p-3 focus:ring-indigo-500 focus:border-indigo-500 block w-80 md:w-96 shadow-sm sm:text-sm border-gray-300 rounded-md"
-                  ></textarea>
-                </div>
-
-                <button
-                  type="submit"
-                  className="py-2 w-80 md:w-96 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-slate-900 hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:bg-red-500"
-                >
-                  SEND NOW
-                </button>
-              </form>
+              <ContactForm />
             </div>
             <div className="mx-auto md:w-96">
               <h2 className="text-2xl p-2 text-red-500 font-semibold">
