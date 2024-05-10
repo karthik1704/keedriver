@@ -64,8 +64,7 @@ if(!access){
 
     const user = await res.json();
     console.log(user);
-
-    return user;
+return user;
 }
 
 export default async function RootLayout({
