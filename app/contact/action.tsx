@@ -10,10 +10,10 @@ const phoneRegex = new RegExp(/^(0|91)?[6-9][0-9]{9}$/);
 const schema = z.object({
   phone: z
     .string()
-    .regex(phoneRegex, "Please enter valid 10 digit phone number"),
-  name: z.string().min(1, "Name is required"),
-  email: z.string().email("Invalid email"),
-  message: z.string().min(1, "Message is required"),
+    .regex(phoneRegex, "Please enter valid 10 digit phone number !"),
+  name: z.string().min(1, "Name is required !"),
+  email: z.string().email("Invalid email !"),
+  message: z.string().min(1, "Message is required !"),
 });
 
 export async function createContact(prevState: any, formData: FormData) {
