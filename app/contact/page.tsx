@@ -27,21 +27,21 @@ export default function Contact() {
               </h2>
               <div className="bg-white shadow overflow-hidden sm:rounded-lg">
                 <div className="px-4 py-5 sm:px-6">
-                  <h2 className=" leading-6  text-gray-900 font-semibold">
+                  <h2 className=" leading-6  text-gray-900 text-base">
                     No.62, Station Rd, Radha Nagar, Chromepet,Chennai,
                     <br />
-                    Tamil Nadu - 600044
+                    Tamil Nadu - 600044.
                   </h2>
                 </div>
                 <div className="p-4 px-6 border-gray-200 justify-between">
                   <div className="flex items-center gap-2 p-1">
                     <FaPhone className=" text-red-500 size-4" />
-                    <p className="font-semibold">+91-7845885888</p>
+                    <p className="text-base">+91-7845885888</p>
                   </div>
 
                   <div className="flex items-center gap-2 p-1">
                     <MdEmail className=" text-red-500 size-6" />
-                    <p className="font-semibold">info@keedriver.com</p>
+                    <p className="text-base">info@keedriver.com</p>
                   </div>
                 </div>
               </div>

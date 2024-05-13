@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/popover";
 import { logout } from "@/app/action";
 
-export default function MainNavBar({ user }:{user:any}) {
+export default function MainNavBar({ user }: { user: any }) {
   return (
     <>
       <nav className="relative bg-red-200 max-w[1440px] py-6 px-3 md:px-6 flex justify-between items-center z-30 border-b">
@@ -24,7 +24,7 @@ export default function MainNavBar({ user }:{user:any}) {
             <AppDrawer user={user} />
           </div>
           <Link href="/">
-            <Image src="/images/logo.png" alt="logo" width={90} height={100} />
+            <Image src="/images/logo.png" alt="logo" width={150} height={100} />
           </Link>{" "}
         </div>
 
