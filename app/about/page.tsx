@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 export default function About() {
   return (
     <>
-      <main className="w-full h-auto p-5 ">
+      <main className="w-full h-auto p-5 flex flex-col items-center">
         <div className="w-full  flex flex-col-reverse lg:flex-row-reverse justify-evenly items-center">
         <div className="flex flex-col sm:w-4/5 md:w-3/5 lg:w-1/2">
           <h1 className="text-4xl text-center lg:text-left">
@@ -68,7 +68,7 @@ export default function About() {
           <Image src={img} alt="" className="w-full" />
         </div>
         </div>
-        <div className="w-full flex flex-col justify-center gap-7 p-2 items-center lg:items-start lg:flex-row text-center lg:text-start mt-5">
+        <div className="w-full flex flex-col justify-center gap-7 p-2 items-center lg:items-start lg:flex-row text-center lg:text-start  mt-5 lg:w-4/5">
           <div className="w-full sm:w-4/5 md:w-3/5 lg:w-1/2 flex flex-col  gap-5">
             <h3 className="text-primary text-2xl">KEE DRIVER - ACTING DRIVERS</h3>
             <p className="text-lg row-span-2">
