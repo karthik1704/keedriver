@@ -1,7 +1,7 @@
-'use client';
+"use client";
 import React from "react";
 
-import Link from "next/link"; 
+import Link from "next/link";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -12,50 +12,49 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
-import {routes} from '@/constants/routes';
+import { routes } from "@/constants/routes";
 
-export default function MainMenu(){
+export default function MainMenu() {
+  return (
+    <NavigationMenu className="hidden md:flex">
+      <NavigationMenuList>
+        {routes.map((route) => (
+          <NavigationMenuItem key={route.routeName}>
+            {!!route.children && (
+              <>
+                <NavigationMenuTrigger className="font-semibold bg-inherit">
+                  {route.routeName}
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  {/* <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]"> */}
+                  <ul className="p-2 gap-3 md:w-[200px] lg:w-[300px]">
+                    {route?.children?.map((child) => (
+                      <ListItem
+                        href={child.href}
+                        title={child.routeName}
+                        key={child.routeName}
+                      ></ListItem>
+                    ))}
+                  </ul>
+                </NavigationMenuContent>
+              </>
+            )}
 
-    return (<NavigationMenu className="hidden md:flex">
-        <NavigationMenuList>
-          {routes.map((route) => (
-            <NavigationMenuItem key={route.routeName}>
-              {!!route.children && (
-                <>
-                  <NavigationMenuTrigger className="bg-inherit">
+            {!!!route.children && (
+              <>
+                <Link href={route.href} legacyBehavior passHref>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     {route.routeName}
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                      {route?.children?.map((child) => (
-                        <ListItem
-                          href={child.href}
-                          title={child.routeName}
-                          key={child.routeName}
-                        ></ListItem>
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
-                </>
-              )}
-
-              {!!!route.children && (
-                <>
-                  <Link href={route.href} legacyBehavior passHref>
-                    <NavigationMenuLink
-                      className={navigationMenuTriggerStyle()}
-                    >
-                      {route.routeName}
-                    </NavigationMenuLink>
-                  </Link>
-                </>
-              )}
-            </NavigationMenuItem>
-          ))}
-        </NavigationMenuList>
-      </NavigationMenu>)
+                  </NavigationMenuLink>
+                </Link>
+              </>
+            )}
+          </NavigationMenuItem>
+        ))}
+      </NavigationMenuList>
+    </NavigationMenu>
+  );
 }
-
 
 const ListItem = React.forwardRef<
   React.ElementRef<typeof Link>,
@@ -72,7 +71,7 @@ const ListItem = React.forwardRef<
           )}
           {...props}
         >
-          <div className="text-sm font-medium leading-none">{title}</div>
+          <div className=" font-semibold leading-none">{title}</div>
           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
             {children}
           </p>

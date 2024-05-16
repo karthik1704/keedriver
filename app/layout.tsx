@@ -1,7 +1,8 @@
+import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 import type { Metadata } from "next";
-import { Roboto  } from "next/font/google";
-import { GoogleTagManager } from '@next/third-parties/google'
+import { Roboto } from "next/font/google";
+import { GoogleTagManager } from "@next/third-parties/google";
 import { cn } from "@/lib/utils";
 import MainNavBar from "@/components/main-nav";
 import Footer from "@/components/footer";
@@ -10,10 +11,10 @@ import { redirect } from "next/navigation";
 import { API_URL } from "@/constants";
 
 export const roboto = Roboto({
-  weight: ['400', '700'],
-  style: ['normal', 'italic'],
-  subsets: ['latin'],
-  display: 'swap',
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -34,38 +35,33 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://keedriver.com"),
 };
 
-export async function getData(){
+export async function getData() {
   const cookiesStore = cookies();
-  const access = cookiesStore.get('access')
+  const access = cookiesStore.get("access");
 
   console.log(access);
-if(!access){
-  return null;
-}
-  const res = await fetch(`${API_URL}/user/`,{
-    headers:{
-      'Content-Type':'application/json',
-      Authorization :`Bearer ${access?.value}`,
-    },
-  })
-
-
-  if(!res.ok){
-    console.log('error')
-  }
-
-  if(res.status === 401){
-   
+  if (!access) {
     return null;
-
-
   }
-    
+  const res = await fetch(`${API_URL}/user/`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${access?.value}`,
+    },
+  });
 
-    const user = await res.json();
-    console.log(user);
+  if (!res.ok) {
+    console.log("error");
+  }
 
-    return user;
+  if (res.status === 401) {
+    return null;
+  }
+
+  const user = await res.json();
+  console.log(user);
+
+  return user;
 }
 
 export default async function RootLayout({
@@ -73,7 +69,6 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-
   const user = await getData();
   return (
     <html lang="en">
@@ -84,12 +79,13 @@ export default async function RootLayout({
         )}
       >
         <main className=" relative overflow-hidden">
-          <MainNavBar user={user}/>
+          <MainNavBar user={user} />
           {children}
-          <Footer/>
+          <Footer />
         </main>
+        <Toaster />
       </body>
-      <GoogleTagManager gtmId=""/>
+      <GoogleTagManager gtmId="" />
     </html>
   );
 }
