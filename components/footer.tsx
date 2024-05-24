@@ -1,4 +1,4 @@
-import {routes} from '@/constants/routes';
+import { routes } from "@/constants/routes";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -19,7 +19,7 @@ const Footer = () => {
                   {route.routeName}
                 </h4>
                 {route.children && (
-                  <ul className="flex text-sm justify-center items-center flex-col md:justify-start md:items-start" >
+                  <ul className="flex text-sm justify-center items-center flex-col md:justify-start md:items-start">
                     {route?.children?.map((child) => (
                       <li key={child.routeName}>
                         <Link href={child.href}>{child.routeName}</Link>
