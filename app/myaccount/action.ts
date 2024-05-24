@@ -8,20 +8,17 @@ import z from "zod";
 import { revalidateTag } from "next/cache";
 import { json } from "stream/consumers";
 
-
 export async function updateUser(
-//   id: string,
-//   prevState: any,
-  formData: FormData,
+  //   id: string,
+  //   prevState: any,
+  formData: FormData
 ) {
   let jsonObject = formData;
 
-  console.log(jsonObject)
+  console.log(jsonObject);
   const access_token = cookies().get("access");
 
   const res = await fetch(`${API_URL}/user/`, {
-
-  
     method: "PUT", // *GET, POST, PUT, DELETE, etc.
     // mode: "cors", // no-cors, *cors, same-origin
     headers: {
@@ -35,7 +32,7 @@ export async function updateUser(
 
   if (res.status !== 204) {
     const error = await res.json();
-    console.log(error)
+    console.log(error);
     // return {
     //   fieldErrors: null,
     //   type: "Error",
@@ -45,24 +42,23 @@ export async function updateUser(
 
   revalidateTag("Branch");
 
-//   if (res.status === 204) {
-//     return {
-//       fieldErrors: null,
-//       type: "Success",
-//       message: "Branch Updated Successfully",
-//     };
-//   }
+  //   if (res.status === 204) {
+  //     return {
+  //       fieldErrors: null,
+  //       type: "Success",
+  //       message: "Branch Updated Successfully",
+  //     };
+  //   }
   if (res.status === 204) redirect("/myaccount");
 }
-
 
 // const phoneRegex = new RegExp(/^(0|91)?[6-9][0-9]{9}$/);
 
 const schema = z.object({
   // phone: z
   //   .string(),
-    // .regex(phoneRegex, "Please enter valid 10 digit phone number"),
-    // model: z.string().min(1, "Name is required"),
+  // .regex(phoneRegex, "Please enter valid 10 digit phone number"),
+  // model: z.string().min(1, "Name is required"),
   model: z.string(),
   companyname: z.string(),
   registrationnumber: z.string(),
@@ -82,8 +78,10 @@ export async function createContact(prevState: any, formData: FormData) {
       fieldErrors: {
         model: validatedFields.error.flatten().fieldErrors.model,
         company_name: validatedFields.error.flatten().fieldErrors.companyname,
-        registration_number: validatedFields.error.flatten().fieldErrors.registrationnumber,
-        transmission_type: validatedFields.error.flatten().fieldErrors.transmissiontype,
+        registration_number:
+          validatedFields.error.flatten().fieldErrors.registrationnumber,
+        transmission_type:
+          validatedFields.error.flatten().fieldErrors.transmissiontype,
         engine_type: validatedFields.error.flatten().fieldErrors.enginetype,
       },
     };
@@ -118,9 +116,9 @@ const car = z.object({
   engine_model: z.string(),
 });
 
-export async function createCar( data: any) {
+export async function createCar(data: any) {
   // const data = Object.fromEntries(formData);
-  console.log(data,'getdata')
+  console.log(data, "getdata");
   // data.customer = 1;
   const validatedFields = car.safeParse(data);
 
@@ -132,29 +130,34 @@ export async function createCar( data: any) {
       fieldErrors: {
         model: validatedFields.error.flatten().fieldErrors.model,
         company_name: validatedFields.error.flatten().fieldErrors.company_name,
-        registration_number: validatedFields.error.flatten().fieldErrors.registration_number,
-        transmission_type: validatedFields.error.flatten().fieldErrors.transmission_type,
+        registration_number:
+          validatedFields.error.flatten().fieldErrors.registration_number,
+        transmission_type:
+          validatedFields.error.flatten().fieldErrors.transmission_type,
         type: validatedFields.error.flatten().fieldErrors.type,
         engine_model: validatedFields.error.flatten().fieldErrors.engine_model,
       },
     };
   }
-  const res1 = await fetch(`${API_URL}/car/create`, {
+  const access_token = cookies().get("access");
+
+  const res1 = await fetch(`${API_URL}/car/create/`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${access_token?.value}`,
+    },
     body: JSON.stringify(data),
   });
-
-  console.log(res1);
 
   if (!res1.ok) {
     console.log("hi");
     console.log(res1);
     const resJson = await res1.json();
-    return {};
+    return;
   }
 
   const resJson = await res1.json();
-console.log(resJson)
+  console.log(resJson);
   redirect("/");
 }
