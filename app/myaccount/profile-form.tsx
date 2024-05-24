@@ -54,17 +54,17 @@ const ProfileForm = ({user}:{user:any}) => {
     </label>
   </div>
 
-  <Link
-              href="/verification"
+  {/* <Link
+              href=""
               className={buttonVariants({
               })}
             >
               Update
-            </Link>
+            </Link> */}
 
-  {/* <button type="submit" className="bg-red-300 text-white font-semibold py-2 px-4 rounded-md hover:bg-red-400">
+  <button type="submit" className="bg-red-300 text-white font-semibold py-2 px-4 rounded-md hover:bg-red-400">
     Update
-  </button> */}
+  </button>
 </form>
 
   );

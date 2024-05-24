@@ -14,6 +14,8 @@ import img1 from "@/app/services/image/myacc/profilepic.jpg";
 import ProfileForm from "./profile-form";
 import TripList from "./trip-list";
 import CarModel from "./car-list";
+import CarNewForm from "./car-new-form";
+import { createCar } from "./action";
 
 export const metadata: Metadata = {
 
@@ -50,6 +52,20 @@ export async function getData(){
     },
   })
 
+  const res1 = await fetch('http://www.devapi.keedriver.com/api/v1/cartype/',{
+    headers:{
+      'Content-Type':'application/json',
+      Authorization : `Bearer ${access?.value}`,
+    }
+  });
+
+  const res2 = await fetch('http://www.devapi.keedriver.com/api/v1/carenginetype/',{
+    headers:{
+      'Content-Type':'application/json',
+      Authorization : `Bearer ${access?.value}`,
+    }
+  });
+
   if(!res.ok){
     console.log('error')
   }
@@ -61,13 +77,28 @@ export async function getData(){
   const user = await res.json();
   console.log(user);
 
-  return user;
+  // return user;
+
+  if(res1.status ===401) 
+    redirect('/login')
+
+    const cartype = await res1.json();
+
+    if(res2.status ===401) 
+      redirect('/login')
+  
+      const carenginetype = await res2.json();
+ 
+
+    return {cartype,
+      carenginetype,
+      user,};
 }
 
 
 
 const MyAccount= async ()=> {
-  const data: any = await getData();
+  const {cartype,user,carenginetype}: any = await getData();
   return (
     <div className="max-w-screen-lg mx-auto p-6">
 
@@ -86,14 +117,14 @@ const MyAccount= async ()=> {
           <div className="mt-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div style={{ margin: '10px' }}>
-        <h1>First name : {data.first_name}</h1>
-        <h1>Last name : {data.last_name}</h1>
-        <h1>Contact number :{data.phone}</h1>
+        <h1>First name : {user.first_name}</h1>
+        <h1>Last name : {user.last_name}</h1>
+        <h1>Contact number :{user.phone}</h1>
       </div>
       <div style={{ margin: '10px' }}>
-        <h1>Email :{data.email}</h1>
-        <h1>Last Login :{new Date(data.last_login).toLocaleString()}</h1>
-        <h1>Date Joined :{new Date(data.date_joined).toLocaleDateString()}</h1>
+        <h1>Email :{user.email}</h1>
+        <h1>Last Login :{new Date(user.last_login).toLocaleString()}</h1>
+        <h1>Date Joined :{new Date(user.date_joined).toLocaleDateString()}</h1>
       </div>
     </div>
           </div>
@@ -121,9 +152,9 @@ const MyAccount= async ()=> {
 </div>
   </TabsList>
   <div className="w-full lg:w-72">
-  <TabsContent value="profile"><ProfileForm user={data}/></TabsContent>
-  <TabsContent value="trips"><TripList user={data}/></TabsContent>
-  <TabsContent value="cars"><CarModel/></TabsContent>
+  <TabsContent value="profile"><ProfileForm user={user}/></TabsContent>
+  <TabsContent value="trips"><TripList user={user}/></TabsContent>
+  <TabsContent value="cars"><CarNewForm createCar={createCar} cartype={cartype} carenginetype={ carenginetype}/></TabsContent>
   </div>
 </Tabs>
 </div>
