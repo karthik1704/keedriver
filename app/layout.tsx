@@ -58,10 +58,12 @@ export async function getData() {
     return null;
   }
 
+
   const user = await res.json();
   console.log(user);
 
   return user;
+
 }
 
 export default async function RootLayout({
