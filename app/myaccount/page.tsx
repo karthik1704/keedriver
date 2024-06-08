@@ -5,11 +5,17 @@ import { redirect } from "next/navigation";
 import { buttonVariants } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Link from "next/link";
-
+import { CarFront } from 'lucide-react';
+import { FaRegAddressCard } from "react-icons/fa6";
+import { MdCardTravel } from "react-icons/md";
+import { ChevronRight } from 'lucide-react';
+import { IoCarSportSharp } from "react-icons/io5";
 import img1 from "@/app/services/image/myacc/profilepic.jpg";
 import ProfileForm from "./profile-form";
 import TripList from "./trip-list";
 import CarModel from "./car-list";
+import CarNewForm from "./car-new-form";
+import { createCar } from "./action";
 
 export const metadata: Metadata = {
 
@@ -46,6 +52,20 @@ export async function getData(){
     },
   })
 
+  const res1 = await fetch('http://www.devapi.keedriver.com/api/v1/cartype/',{
+    headers:{
+      'Content-Type':'application/json',
+      Authorization : `Bearer ${access?.value}`,
+    }
+  });
+
+  const res2 = await fetch('http://www.devapi.keedriver.com/api/v1/carenginetype/',{
+    headers:{
+      'Content-Type':'application/json',
+      Authorization : `Bearer ${access?.value}`,
+    }
+  });
+
   if(!res.ok){
     console.log('error')
   }
@@ -57,13 +77,28 @@ export async function getData(){
   const user = await res.json();
   console.log(user);
 
-  return user;
+  // return user;
+
+  if(res1.status ===401) 
+    redirect('/login')
+
+    const cartype = await res1.json();
+
+    if(res2.status ===401) 
+      redirect('/login')
+  
+      const carenginetype = await res2.json();
+ 
+
+    return {cartype,
+      carenginetype,
+      user,};
 }
 
 
 
 const MyAccount= async ()=> {
-  const data: any = await getData();
+  const {cartype,user,carenginetype}: any = await getData();
   return (
     <div className="max-w-screen-lg mx-auto p-6">
 
@@ -71,25 +106,25 @@ const MyAccount= async ()=> {
       <h1 className="text-center text-3xl m-4 font-bold">My Account</h1>
 </div>
 
-      <div className="flex flex-col md:flex-row justify-start md:justify-start border border-solid mb-14">
+      <div className="flex flex-col md:flex-row justify-start md:justify-start shadow-md rounded-lg mb-14">
         <div className=" flex justify-center basis-1/4 md:w-1/2" style={{ margin: '0 10px' }}>
           <Image src={img1} height={100} width={100} alt="" className="w-auto h-auto md:h-30 md:w-30" />
           </div>
 
           
 
-          <div className="md:w-1/2 basis-3/4 text-center md:text-left">
-          <div className="mt-6 ">
+          <div className="md:w-1/2 basis-3/4 text-center md:text-left ">
+          <div className="mt-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div style={{ margin: '10px' }}>
-        <h1>First name : {data.first_name}</h1>
-        <h1>Last name : {data.last_name}</h1>
-        <h1>Contact number :{data.phone}</h1>
+        <h1>First name : {user.first_name}</h1>
+        <h1>Last name : {user.last_name}</h1>
+        <h1>Contact number :{user.phone}</h1>
       </div>
       <div style={{ margin: '10px' }}>
-        <h1>Email :{data.email}</h1>
-        <h1>Last Login :{new Date(data.last_login).toLocaleString()}</h1>
-        <h1>Date Joined :{new Date(data.date_joined).toLocaleDateString()}</h1>
+        <h1>Email :{user.email}</h1>
+        <h1>Last Login :{new Date(user.last_login).toLocaleString()}</h1>
+        <h1>Date Joined :{new Date(user.date_joined).toLocaleDateString()}</h1>
       </div>
     </div>
           </div>
@@ -97,16 +132,30 @@ const MyAccount= async ()=> {
 
     </div>
 
-    <div className="mb-14 lg:flex lg:justify-between">
-      <Tabs defaultValue="profile" className="w-[400px]">
-  <TabsList className="flex">
-    <TabsTrigger value="profile">Profile</TabsTrigger>
-    <TabsTrigger value="trips">Trips</TabsTrigger>
-    <TabsTrigger value="cars">Cars</TabsTrigger>
+    <div className="mb-14 lg:flex lg:justify-between w-full lg:max-w-full">
+      <Tabs defaultValue="profile" className="flex gap-x-4 flex-col lg:flex-row gap-y-4 lg:gap-y-0 lg:gap-x-44">
+  <TabsList className="flex-col bg-white h-80 w-80 space-y-4">
+
+  <div className="shadow-md w-full flex items-center ">
+  <h1 className="shadow-md "><FaRegAddressCard size={24}/></h1>
+  <TabsTrigger className="w-full lg:w-full h-14 justify-between hover:bg-red-300 mt-1 lg:mt-0 text-xl ml-2" value={"profile"}>Profile<ChevronRight /></TabsTrigger>
+</div>
+
+<div className="shadow-md w-full flex items-center ">
+<h1 className="shadow-md"><FaRegAddressCard size={24}/></h1>
+    <TabsTrigger className="w-full lg:w-full h-14 justify-between hover:bg-red-300 mt-1 lg:mt-0 text-xl" value="trips">Trips<ChevronRight /></TabsTrigger>
+    </div>
+
+<div className="shadow-md w-full flex items-center ">
+<h1 className="shadow-md"><FaRegAddressCard size={24}/></h1>
+<TabsTrigger className="w-full lg:w-full h-14 justify-between hover:bg-red-300 mt-1 lg:mt-0 text-xl" value="cars">Cars<ChevronRight /></TabsTrigger>
+</div>
   </TabsList>
-  <TabsContent value="profile"><ProfileForm user={data}/></TabsContent>
-  <TabsContent value="trips"><TripList user={data}/></TabsContent>
-  <TabsContent value="cars"><CarModel/></TabsContent>
+  <div className="w-full lg:w-72">
+  <TabsContent value="profile"><ProfileForm user={user}/></TabsContent>
+  <TabsContent value="trips"><TripList user={user}/></TabsContent>
+  <TabsContent value="cars"><CarNewForm createCar={createCar} cartype={cartype} carenginetype={ carenginetype}/></TabsContent>
+  </div>
 </Tabs>
 </div>
 
