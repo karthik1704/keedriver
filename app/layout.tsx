@@ -58,12 +58,10 @@ export async function getData() {
     return null;
   }
 
-
   const user = await res.json();
   console.log(user);
 
   return user;
-
 }
 
 export default async function RootLayout({
@@ -86,7 +84,12 @@ export default async function RootLayout({
           <Footer />
         </main>
         <Toaster />
+        {/* <script
+          defer
+          src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=YOUR_CALLBACK_NAME"
+        ></script> */}
       </body>
+
       <GoogleTagManager gtmId="" />
     </html>
   );

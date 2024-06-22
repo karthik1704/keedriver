@@ -4,6 +4,7 @@ import { createContact } from "./action";
 import SubmitButton from "@/components/submit-button";
 import { MessageSquareWarning } from "lucide-react";
 
+
 type InitialState = {
   message: null | string;
   fieldErrors: {
