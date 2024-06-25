@@ -36,6 +36,7 @@ export const TripDetailForm = () => {
     register,
     handleSubmit,
     control,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm<FormFields>();
 
@@ -74,9 +75,12 @@ export const TripDetailForm = () => {
                   placeholder="Enter your location"
                   name = "from" 
                   errorMsg = "Please enter a starting location in the From field"
-                  // register = {register}
-                  Controller = {Controller}
+                  register = {register}
                   control ={control}
+                  setValue={setValue}
+                   lat="from_lat"
+                  lng="from_lng"
+
                   />
                 {errors.from && (
                   <div className="text-red-500 text-start">
@@ -99,9 +103,12 @@ export const TripDetailForm = () => {
                   placeholder="Enter your drop location"
                   name = "to" 
                   errorMsg = "Please enter a destination location in the To field"
-                  // register = {register}
+                  register = {register}
+                  setValue={setValue}
                   Controller = {Controller}
                   control ={control}
+                  lat="to_lat"
+                  lng="to_lng"
                   />
                 {errors.to && (
                   <div className="text-red-500 text-start">
