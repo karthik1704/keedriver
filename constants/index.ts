@@ -1,5 +1,7 @@
 
-export const API_URL = "http://devapi.keedriver.com/api/v1";
+// export const API_URL = "http://devapi.keedriver.com/api/v1";
+
+export const API_URL = "http://3.110.169.239:8000/api/v1";
 
 
 export const social_links = [

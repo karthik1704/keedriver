@@ -52,12 +52,12 @@ export async function getData(){
     },
   })
 
-  const res1 = await fetch('http://www.devapi.keedriver.com/api/v1/cartype/',{
-    headers:{
-      'Content-Type':'application/json',
-      Authorization : `Bearer ${access?.value}`,
-    }
-  });
+  // const res1 = await fetch('http://www.devapi.keedriver.com/api/v1/cartype/',{
+  //   headers:{
+  //     'Content-Type':'application/json',
+  //     Authorization : `Bearer ${access?.value}`,
+  //   }
+  // });
 
   const res2 = await fetch('http://www.devapi.keedriver.com/api/v1/carenginetype/',{
     headers:{
@@ -70,6 +70,14 @@ export async function getData(){
     console.log('error')
   }
 
+  // if(!res1.ok){
+  //   console.log('error')
+  // }
+
+  if(!res2.ok){
+    console.log('error')
+  }
+
   if(res.status ===401){
     redirect('/login')
   }
@@ -79,10 +87,10 @@ export async function getData(){
 
   // return user;
 
-  if(res1.status ===401) 
-    redirect('/login')
+  // if(res1.status ===401) 
+  //   redirect('/login')
 
-    const cartype = await res1.json();
+  //   const cartype = await res1.json();
 
     if(res2.status ===401) 
       redirect('/login')
@@ -90,7 +98,7 @@ export async function getData(){
       const carenginetype = await res2.json();
  
 
-    return {cartype,
+    return {cartype:[],
       carenginetype,
       user,};
 }
