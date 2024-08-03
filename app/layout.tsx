@@ -78,11 +78,13 @@ export default async function RootLayout({
           roboto.className
         )}
       >
-        <main className=" relative overflow-hidden">
-          <MainNavBar user={user} />
+         <MainNavBar user={user} />
+        <main className="min-h-[70vh]  md:min-h-[80vh] grid items-center relative overflow-hidden">
+         
           {children}
-          <Footer />
+          
         </main>
+        <Footer />
         <Toaster />
         {/* <script
           defer

@@ -3,6 +3,7 @@ import { cookies } from 'next/headers';
 import TripForm from './trip-form'
 import { TripDetailForm,PickupLocation } from './pickup-location'
 import { Input } from '@/components/ui/input'
+import { API_URL } from '@/constants';
 
 
 export const metadata:Metadata =  {
@@ -17,7 +18,7 @@ async function getData() {
 if(!access_token){
   return null;
 }
-const res = await fetch('http://3.110.169.239:8000/api/v1/car/',{
+const res = await fetch(`${API_URL}/car/`,{
   method:'GET',
   headers:{
     "Content-Type":"applicaton/json",
@@ -28,7 +29,7 @@ const res = await fetch('http://3.110.169.239:8000/api/v1/car/',{
 });
 const data = await res.json();
 
-console.log(data);
+// console.log(data);
 return data;
 }
 
@@ -38,11 +39,14 @@ return data;
 
 const TripPage = async() => {
 
-  const data = await getData();
+  
+  const carlists = await getData();
+
+
  
   return (
-    <div className='h-[80vh] flex flex-col items-center'>
-        <TripDetailForm/>
+    <div className={`flex flex-col items-center`}>
+        <TripDetailForm carlists={carlists}/>
         {/* <PickupLocation/> */}
 
         

@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { updateUser } from "./action";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import { buttonVariants } from "@/components/ui/button";
 
 const ProfileForm = ({user}:{user:any}) => {
@@ -19,13 +20,12 @@ const ProfileForm = ({user}:{user:any}) => {
     }
   ); 
 
-  console.log(user)
   const onSubmit = async (data: any) => {
    await updateUser (data)
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col space-y-4 w-[600px] h-[300px]">
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col space-y-4 w-full lg:w-full mx-5">
   <div className="flex flex-col md:flex-row md:space-x-4 ">
     <label className="w-full md:w-full">
       <span className="block mb-1 ">First Name:</span>
@@ -62,9 +62,9 @@ const ProfileForm = ({user}:{user:any}) => {
               Update
             </Link> */}
 
-  <button type="submit" className="bg-red-300 text-white font-semibold py-2 px-4 rounded-md hover:bg-red-400">
+  <Button type="submit">
     Update
-  </button>
+  </Button>
 </form>
 
   );

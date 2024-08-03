@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
@@ -46,15 +46,16 @@ type FormFields = {
   carType: string;
 };
 
-export const TripDetailForm = () => {
+export const TripDetailForm = ({carlists}:any) => {
   const [show, setShow] = useState(true);
   const [display, setDisplay] = useState(true);
   const [login, setLogin] = useState(true);
   const [personData, setPersonData] = useState([]);
-  const[pickupDate,setPickupDate]=useState('');
- 
-  const router = useRouter();
+  const [isTall, setIsTall] = useState(true);
 
+ const dateTimeInputRef = useRef(null);
+  const router = useRouter();
+// console.log(carlists);
   // const {
   //   register,
   //   handleSubmit,
@@ -98,6 +99,7 @@ export const TripDetailForm = () => {
   // console.log(personData)
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
+    console.log('hello')
     console.log(data);
     // const login = 0 ;
     // const personDetail = JSON.stringify(data);
@@ -108,12 +110,10 @@ export const TripDetailForm = () => {
     // console.log(data,"hello");
     // console.log(data.date)
   };
-  function handleDate(){
-    console.log('hello')
-    const now = new Date();
-    const formattedDateTime = now.toISOString().slice(0, 16);
-    setPickupDate(formattedDateTime);
-
+  function dateTimePicker(){
+    if(dateTimeInputRef.current){
+      dateTimeInputRef.current.showPicker();
+    }
   }
   function handleNext() {
     if (!show) {
@@ -125,14 +125,14 @@ export const TripDetailForm = () => {
   return (
     <>
       <Form {...form}>
-        <div className="h-screen w-full flex flex-col items-center justify-center capitalize gap-2 p-5 sm:p-0">
-          <h1 className="text-4xl font-bold capitalize text-center text-primary">
+        <div className={`w-full flex flex-col items-center justify-center capitalize gap-2 p-5 my-4 sm:p-0`}>
+          <h1 className="text-3xl md:text-4xl font-bold capitalize text-center text-primary">
             book my trip
           </h1>
-          <div className="w-full sm:w-4/5 md:w-3/5  xl:w-2/5 h-auto  border-2 rounded-lg  p-7 lg:p-8 flex items-center flex-col relative">
+          <div className="w-full sm:w-4/5 md:w-3/5  xl:w-2/5 h-auto  border-2 rounded-lg  p-3 md:p-7 lg:p-8 flex items-center flex-col relative">
           <Button
                   type="button"
-                  className={`justify-evenly items-center capitalize text-md font-semibold absolute top-2 right-2 ${display ? "hidden" : "flex"}`}
+                  className={`justify-evenly items-center capitalize text-sm md:text-md font-semibold absolute top-2 right-2 ${display ? "hidden" : "flex"}`}
                 >
                  <Plus/> add car
                 </Button>
@@ -216,8 +216,8 @@ export const TripDetailForm = () => {
                       // required: "Please enter a date.",
                     })}  type="datetime-local"
                       className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                      onClick={()=>{handleDate()}}
-                      value={pickupDate} 
+                      ref={dateTimeInputRef}
+                      onFocus={dateTimePicker}
                       />
                    
                     {form.formState.errors.date && (
@@ -338,7 +338,7 @@ export const TripDetailForm = () => {
                   display ? "hidden" : "flex flex-col  gap-5"
                 }`}
               >
-                <h4 className="text-center capitilize text-3xl text-primary font-semibold">
+                <h4 className="text-center capitilize text-2xl md:text-3xl text-primary font-semibold">
                   {" "}
                   car list
                 </h4>
@@ -354,56 +354,63 @@ export const TripDetailForm = () => {
                             defaultValue={field.value}
                             className="w-full flex flex-col items-center justify-center space-y-1"
                           >
-                            <FormItem
-                              className={`w-full lg:w-3/4 flex items-center justify-between gap-5 space-x-3 space-y-0 bg-white p-4 rounded-lg shadow-lg relative capitalize ${
-                                field.value === "all"
-                                  ? " shadow-red-500/50"
-                                  : " shadow-gray-200"
-                              }`}
-                            >
-                              <div>
-                                <FormLabel className="font-bold text-xl text-primary flex gap-2">
-                                  toyota innova<br />  
-                                </FormLabel>
-                                <span className="font-medium text-md  inline-block text-slate-600">
-                                  Tn 22 c 0198
-                                </span><br />
-                                <br />
-                                <span className="font-medium text-md   inline-block text-slate-600">
-                                 <span className="text-primary font-semibold">model :</span> MPv
-                                </span>
-                                <br />
-                                <span className="font-medium text-md   inline-block text-slate-600">
-                                <span className="text-primary font-semibold">gas :</span> petrol
-                                </span>
-                                <br />
-                                <span className="font-medium text-md   inline-block text-slate-600">
-                                <span className="text-primary font-semibold">geartype :</span> manual gear
-                                </span>
-                                {/* <div className="flex items-center gap-5">
-                    
-                    </div> */}
-                              </div>
-                              <div className="w-2/5">
-                                <div className="h-auto w-full">
-                                  <img
-                                    className="h-full w-full object-cover"
-                                    src="https://5.imimg.com/data5/SELLER/Default/2020/12/YP/IV/KC/118359422/innova-car.jpg"
-                                    alt="car-image"
-                                  />
+                            {
+                              carlists?.results?.map((carList,index)=>{
+                                return <FormItem
+                                className={`w-full lg:w-3/4 flex items-center justify-between gap-5 space-x-3 space-y-0 bg-white p-4 rounded-lg shadow-lg relative capitalize ${
+                                  field.value === `${carList.company_name}`
+                                    ? " shadow-red-500/50"
+                                    : " shadow-gray-200"
+                                }`}
+                                key={index}
+                              >
+                                <div>
+                                  <FormLabel className="font-bold text-lg md:text-xl text-primary flex gap-2">
+                                    {carList.company_name} innova<br />  
+                                  </FormLabel>
+                                  <span className="font-medium text-sm md:text-md  inline-block text-slate-600">
+                                    {carList.registration_number}
+                                  </span><br />
+                                  <br />
+                                  <span className="font-medium text-sm md:text-md   inline-block text-slate-600">
+                                   <span className="text-primary font-semibold">model :</span>{carList.model}
+                                  </span>
+                                  <br />
+                                  <span className="font-medium text-sm md:text-md  inline-block text-slate-600">
+                                  <span className="text-primary font-semibold">gas :</span> petrol
+                                  </span>
+                                  <br />
+                                  <span className="font-medium text-sm md:text-md   inline-block text-slate-600">
+                                  <span className="text-primary font-semibold">gear type :</span>{carList.transmission_type}
+                                  </span>
+                                  {/* <div className="flex items-center gap-5">
+                      
+                      </div> */}
                                 </div>
-                              </div>
+                                <div className="w-1/2 md:w-2/5">
+                                  <div className="h-auto w-full">
+                                    <img
+                                      className="h-full w-full object-cover"
+                                      src="https://5.imimg.com/data5/SELLER/Default/2020/12/YP/IV/KC/118359422/innova-car.jpg"
+                                      alt="car-image"
+                                    />
+                                  </div>
+                                </div>
+  
+                                <FormControl className="">
+                                    <RadioGroupItem value={`${carList.company_name}`} />
+                                  </FormControl>
+  
+                                {/* <FormLabel className="font-normal">
+                        All new messages
+                      </FormLabel> */}
+                              </FormItem>
 
-                              <FormControl className="">
-                                  <RadioGroupItem value="all" />
-                                </FormControl>
+                              })
+                            }
+                            
 
-                              {/* <FormLabel className="font-normal">
-                      All new messages
-                    </FormLabel> */}
-                            </FormItem>
-
-                            <FormItem
+                            {/* <FormItem
                               className={`w-full lg:w-3/4 flex items-center justify-between gap-5 space-x-3 space-y-0 bg-white p-4 rounded-lg shadow-lg relative capitalize ${
                                 field.value === "mention"
                                   ? " shadow-red-500/50"
@@ -429,9 +436,6 @@ export const TripDetailForm = () => {
                                 <span className="font-medium text-md   inline-block text-slate-600">
                                 <span className="text-primary font-semibold">geartype :</span> manual gear
                                 </span>
-                                {/* <div className="flex items-center gap-5">
-                    
-                    </div> */}
                               </div>
                               <div className="w-2/5">
                                 <div className="h-auto w-full">
@@ -446,11 +450,7 @@ export const TripDetailForm = () => {
                               <FormControl className="">
                                   <RadioGroupItem value="mention" />
                                 </FormControl>
-
-                              {/* <FormLabel className="font-normal">
-                      All new messages
-                    </FormLabel> */}
-                            </FormItem>
+                            </FormItem> */}
                           </RadioGroup>
                         </FormControl>
                       </FormItem>
