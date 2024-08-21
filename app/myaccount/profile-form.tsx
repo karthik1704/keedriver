@@ -47,12 +47,12 @@ const ProfileForm = ({user}:{user:any}) => {
     </label>
   </div>
 
-  <div className="flex flex-col md:flex-row md:space-x-4">
+  {/* <div className="flex flex-col md:flex-row md:space-x-4">
     <label className="w-full md:w-full">
       <span className="block mb-1">Country:</span>
       <Input {...register("country")} className="w-full border rounded-md px-4 py-2" />
     </label>
-  </div>
+  </div> */}
 
   {/* <Link
               href=""

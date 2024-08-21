@@ -67,12 +67,12 @@ export const TripDetailForm = ({carlists}:any) => {
 
   const form = useForm<FormFields>({
     defaultValues: {
-      tripType: "RoundedTrip",
+      tripType: personData?.tripType ? personData?.tripType : "RoundedTrip",
     },
   });
 
   useEffect(() => {
-    if (login) {
+    if (carlists) {
       const value: string | null = localStorage.getItem("PersonDetail");
 
       console.log(value);
@@ -94,21 +94,26 @@ export const TripDetailForm = ({carlists}:any) => {
 
       setPersonData(users);
     }
-  }, []);
+  },[]);
 
-  // console.log(personData)
+  useEffect(()=>{
+    const subcription = form.watch((value)=>{
+      // console.log(value);
+      let personDetail = JSON.stringify(value)
+      localStorage.setItem("PersonDetail",personDetail);
 
+    })
+
+    return ()=>subcription.unsubscribe();
+
+  }, [form.watch])
+
+   let personDetail;
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
-    console.log('hello')
     console.log(data);
-    // const login = 0 ;
-    // const personDetail = JSON.stringify(data);
-    // if(login){
-    //   localStorage.setItem('PersonDetail',personDetail);
-    //   router.push("/login");
-    // }
-    // console.log(data,"hello");
-    // console.log(data.date)
+   personDetail = JSON.stringify(data);
+   console.log(personDetail);
+   
   };
   function dateTimePicker(){
     if(dateTimeInputRef.current){
@@ -117,11 +122,16 @@ export const TripDetailForm = ({carlists}:any) => {
   }
   function handleNext() {
     if (!show) {
+      if(!carlists){
+        // localStorage.setItem('PersonDetail',personDetail);
+        router.push("/login");
+      }
       setDisplay(!display);
       return;
     }
     setShow(!show);
   }
+  console.log(personData.tripType,"hi")
   return (
     <>
       <Form {...form}>
@@ -339,7 +349,6 @@ export const TripDetailForm = ({carlists}:any) => {
                 }`}
               >
                 <h4 className="text-center capitilize text-2xl md:text-3xl text-primary font-semibold">
-                  {" "}
                   car list
                 </h4>
                 <div className="w-full flex  items-center justify-center">
