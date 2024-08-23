@@ -14,11 +14,15 @@ function LoginPage() {
     <>
       <div className="flex h-[75vh] items-center justify-center bg-gray-100 p-5">
         <div className="max-w-md w-full p-6 sm:p-10 md:p-14 bg-white shadow-md rounded-lg">
-          <h1 className="text-3xl font-semibold text-center mb-6">
+          <h1 className=" text-3xl font-semibold text-center mb-6">
             Welcome to KeeDriver
           </h1>
-          <p className="text-center mb-4">Hi.</p>
-          <p className="text-center mb-4">Let&apos;s get started</p>
+          <p className="text-center marker:mb-4">Hey there!</p>
+          <p>  
+
+
+
+          </p>
           <SigninForm />
           {/* <button type="submit" className="w-full bg-primary text-white py-2 rounded-lg hover:bg-red-600 focus:outline-none focus:bg-red-600">Get Otp</button> */}
           <div className="flex justify-center">
