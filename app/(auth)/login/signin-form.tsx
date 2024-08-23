@@ -30,7 +30,7 @@ const SigninForm = () => {
         name="phone"
         autoComplete="mobile tel"
         autoFocus={true}
-        className="w-full px-4 py-2 border rounded-lg focus:outline-none  focus:border-red-500"
+        className="w-full px-4 py-2 border rounded-lg focus:outline-none  focus:border-red-600"
         placeholder="Enter Phone Number"
         required
       />
@@ -41,7 +41,7 @@ const SigninForm = () => {
       >
         submit
       </button> */}
-      <SubmitButton />
+      <SubmitButton name="Get Started" />
     </form>
   );
 };

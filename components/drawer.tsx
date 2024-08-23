@@ -45,7 +45,7 @@ const AppDrawer = ({ user }: { user: any }) => {
                 <span className="inline-block mr-2">
                   Already have an account?
                 </span>
-                <Link href="/login" className="text-red-500">
+                <Link href="/login" className="text-red-600">
                   Login
                 </Link>
               </div>

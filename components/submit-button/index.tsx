@@ -15,11 +15,11 @@ const SubmitButton = ({
   return (
     <button
       type="submit"
-      className={`${width} cursor-pointer rounded-lg border border-primary bg-primary p-2 text-white capitalize text-center  font-bold transition hover:bg-opacity-90 disabled:bg-slate-500`}
+      className={`${width} cursor-pointer rounded-lg border border-primary bg-red-600 p-2 text-white capitalize text-center  font-bold transition hover:bg-opacity-90 disabled:bg-slate-500`}
       aria-disabled={pending}
       disabled={pending}
     >
-      {pending ? loading : name}
+      {pending ? loading : name} 
     </button>
   );
 };

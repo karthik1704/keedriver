@@ -22,7 +22,7 @@ export default function MainMenu() {
           <NavigationMenuItem key={route.routeName}>
             {!!route.children && (
               <>
-                <NavigationMenuTrigger className="font-semibold bg-inherit">
+                <NavigationMenuTrigger className="text-white font-semibold bg-inherit5">
                   {route.routeName}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
