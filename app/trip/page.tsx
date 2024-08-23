@@ -1,7 +1,9 @@
-import type { Metadata } from 'next'
+import type { Metadata } from 'next';
+import { cookies } from 'next/headers';
 import TripForm from './trip-form'
 import { TripDetailForm,PickupLocation } from './pickup-location'
 import { Input } from '@/components/ui/input'
+import { API_URL } from '@/constants';
 
 
 export const metadata:Metadata =  {
@@ -9,11 +11,42 @@ export const metadata:Metadata =  {
     description: 'Book Trip',
 }
 
+async function getData() {
+  
+  const cookiesStoreage = cookies();
+  const access_token = cookiesStoreage.get("access");
+if(!access_token){
+  return null;
+}
+const res = await fetch(`${API_URL}/car/`,{
+  method:'GET',
+  headers:{
+    "Content-Type":"applicaton/json",
+    Authorization :`Bearer ${access_token?.value}`,
 
-const TripPage = () => {
+  }
+ 
+});
+const data = await res.json();
+
+// console.log(data);
+return data;
+}
+
+
+
+
+
+const TripPage = async() => {
+
+  
+  const carlists = await getData();
+
+
+ 
   return (
-    <div className='h-[80vh] flex flex-col items-center'>
-        <TripDetailForm/>
+    <div className={`flex flex-col items-center`}>
+        <TripDetailForm carlists={carlists}/>
         {/* <PickupLocation/> */}
 
         
