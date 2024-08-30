@@ -30,7 +30,7 @@ const Cars = async()=>{
     return<div className="w-full lg:w-3/5 flex flex-col items-center justify-center gap-4 relative">
       <div className="w-full flex justify-end">
         <Link href={'/myaccount/cars/new'}>
-        <Button type="button" className="text-lg"><Plus />Addcar</Button>
+        <Button type="button" className="text-lg font-semibold bg-rose-700 hover:bg-rose-700"><Plus />Add Car</Button>
         </Link>
       
       </div>
@@ -38,12 +38,9 @@ const Cars = async()=>{
     {
         carsLists?.results?.map((carsList,i)=>{
             return <Link  key={i} href={`/myaccount/cars/${carsList.id}`}>
-             <div
-            className={`w-full sm:w-4/5 md:w-full lg:w-full flex items-center justify-between gap-5 space-x-3 space-y-0 bg-white p-4 rounded-lg shadow-lg relative capitalize hover:shadow-lg hover:shadow-red-500/50 cursor-pointer mx-3 `}
-           
-          >
+             <div className={`w-full sm:w-4/5 md:w-full lg:w-full flex items-center justify-between gap-5 space-x-3 space-y-0 bg-white p-4 rounded-lg shadow-lg shadow-stone-400 relative capitalize hover:shadow-lg hover:shadow-gray-500 cursor-pointer mx-3 `}>
             <div>
-              <h4 className="font-bold text-lg md:text-xl text-primary flex gap-2">
+              <h4 className="font-bold text-lg md:text-xl text-rose-600 flex gap-2">
                 {carsList.company_name} innova<br />  
               </h4>
               <span className="font-medium text-sm md:text-md  inline-block text-slate-600">
@@ -51,15 +48,15 @@ const Cars = async()=>{
               </span><br />
               <br />
               <span className="font-medium text-sm md:text-md   inline-block text-slate-600">
-               <span className="text-primary font-semibold">model :</span>{carsList.model}
+               <span className="text-rose-600 font-semibold">model :</span>{carsList.model}
               </span>
               <br />
               <span className="font-medium text-sm md:text-md  inline-block text-slate-600">
-              <span className="text-primary font-semibold">gas :</span> petrol
+              <span className="text-rose-600 font-semibold">gas :</span> petrol
               </span>
               <br />
               <span className="font-medium text-sm md:text-md   inline-block text-slate-600">
-              <span className="text-primary font-semibold">gear type :</span>{carsList.transmission_type}
+              <span className="text-rose-600 font-semibold">gear type :</span>{carsList.transmission_type}
               </span>
               
             </div>
