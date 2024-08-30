@@ -68,15 +68,15 @@ const CarNewForm = (
 
         <div className="flex flex-col md:flex-row md:space-x-4">
           <label className="w-full md:w-full">
-            <span className="block mb-1 text-md">Maker:</span>
-            <Input className="text-md w-full border rounded-md px-4 py-2" placeholder="Enter maker name"  {...form.register("company_name")} />
+            <span className="block mb-1 text-md  text-gray-700 text-sm font-semibold">Maker</span>
+            <Input className="text-sm w-full border rounded-md px-4 py-2 text-gray-700" placeholder="Enter maker name"  {...form.register("company_name")} />
           </label>
         </div>
 
         <div className="flex flex-col md:flex-row md:space-x-4">
           <label className="w-full md:w-full">
-            <span className="block mb-1 text-md">Model Name:</span>
-            <Input className="text-md w-full border rounded-md px-4 py-2" placeholder="Enter model name" {...form.register("model")} />
+            <span className="block mb-1 text-md  text-gray-700 text-sm font-semibold">Model Name</span>
+            <Input className="text-sm w-full border rounded-md px-4 py-2 text-gray-700" placeholder="Enter model name" {...form.register("model")} />
           </label>
         </div>
 
@@ -84,14 +84,14 @@ const CarNewForm = (
 
         <div className="flex flex-col md:flex-row md:space-x-4">
           <label className="w-full md:w-full">
-            <span className="block mb-1 text-md">Registration Number:</span>
-            <Input className="text-md w-full border rounded-md px-4 py-2" placeholder="Enter registration number" {...form.register("registration_number")} />{" "}
+            <span className="block mb-1 text-md  text-gray-700 text-sm font-semibold">Registration Number</span>
+            <Input className="text-sm w-full border rounded-md px-4 py-2  text-gray-700" placeholder="Enter registration number" {...form.register("registration_number")} />{" "}
           </label>
         </div>
 
         <div className="block ">
           <label className="w-full md:w-full">
-            <span className="block mb-1 text-md">Transmission Type:</span>
+            <span className="block mb-1 text-md text-gray-700 text-sm font-semibold">Transmission Type</span>
           </label>
 
           <FormField
@@ -106,12 +106,12 @@ const CarNewForm = (
                 >
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select a Transmission Type" />
+                      <SelectValue className="text-sm text-gray-700" placeholder="Select a Transmission Type" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="AUTO">AUTO</SelectItem>
-                    <SelectItem value="MANUAL">MANUAL</SelectItem>
+                    <SelectItem className="text-sm text-gray-700" value="AUTO">Auto</SelectItem>
+                    <SelectItem className="text-sm text-gray-700" value="MANUAL">Mannual</SelectItem>
                   </SelectContent>
                 </Select>
 
@@ -127,14 +127,14 @@ const CarNewForm = (
             name="engine_model"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-md">Engine Model</FormLabel>
+                <FormLabel className="text-md text-gray-700 text-sm font-semibold">Engine Model</FormLabel>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={field.value}
                 >
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select a Engine Type" />
+                      <SelectValue className="text-sm text-gray-700" placeholder="Select a Engine Type" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
@@ -159,7 +159,7 @@ const CarNewForm = (
 
         <div className="block ">
           <label className="w-full md:w-full">
-            <span className="block mb-1 text-md">Gas Type:</span>
+            <span className="block mb-1 text-md text-gray-700 text-sm font-semibold">Gas Type</span>
           </label>
 
           <FormField
@@ -174,13 +174,13 @@ const CarNewForm = (
                 >
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select a Gas Type" />
+                      <SelectValue className="text-sm text-gray-700" placeholder="Select a Gas Type" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="EV">Ev</SelectItem>
-                    <SelectItem value="PETROL">Petrol</SelectItem>
-                    <SelectItem value="DIESEL">Diesel</SelectItem>
+                    <SelectItem className="text-sm text-gray-700" value="EV">EV</SelectItem>
+                    <SelectItem className="text-sm text-gray-700" value="PETROL">Petrol</SelectItem>
+                    <SelectItem className="text-sm text-gray-700" value="DIESEL">Diesel</SelectItem>
                   </SelectContent>
                 </Select>
 
@@ -196,14 +196,14 @@ const CarNewForm = (
               name="type"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-md">Car Type</FormLabel>
+                  <FormLabel className="text-md text-gray-700 text-sm font-semibold">Car Type</FormLabel>
                   <Select
                     onValueChange={field.onChange}
                     defaultValue={field.value}
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select Car Type" />
+                        <SelectValue className="text-sm text-gray-700" placeholder="Select Car Type" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -265,7 +265,7 @@ const CarNewForm = (
         </div> */}
 
         <Button
-          type="submit"
+          type="submit" className="font-semibold bg-rose-700 text-white hover:bg-rose-800 mt-4"
         >
           Add car
         </Button>

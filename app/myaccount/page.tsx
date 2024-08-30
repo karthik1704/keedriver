@@ -13,7 +13,6 @@ import { IoCarSportSharp } from "react-icons/io5";
 import img1 from "@/app/services/image/myacc/profilepic.jpg";
 import ProfileForm from "./profile-form";
 import TripList from "./triplist/triplistcard";
-import CarModel from "./car-list";
 import CarNewForm from "./cars/new/car-new-form";
 import { createCar } from "./action";
 import { API_URL } from "@/constants";
@@ -165,7 +164,7 @@ export async function getData() {
 const MyAccount = async () => {
   const { cartype, user, carenginetype }: any = await getData();
   return (
-    <div className="w-full lg:w-3/5 flex items-center justify-center">
+    <div className="w-full lg:w-3/5 flex bg-white border border-spacing-10 items-center justify-center">
            
     <ProfileForm user={user} />
  
