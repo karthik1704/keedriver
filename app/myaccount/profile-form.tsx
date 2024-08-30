@@ -6,25 +6,39 @@ import { updateUser } from "./action";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { buttonVariants } from "@/components/ui/button";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-const ProfileForm = ({user}:{user:any}) => {
-  const { register, handleSubmit } = useForm(
-    {
-      defaultValues: {
-        first_name: user.first_name,
-        last_name: user.last_name,
-        email:user.email,
-        country:user.country,
-      },
- // will get updated once values returns
-    }
-  ); 
+const userSchema = z.object({
+  first_name: z.string().min(1, "please enter first name"),
+  last_name: z.string().min(1, "please enter last name"),
+  email: z.string().email("Enter valid email"),
+});
+
+type TuserSchema = z.infer<typeof userSchema>;
+
+const ProfileForm = ({ user }: { user: any }) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<TuserSchema>({
+    defaultValues: {
+      first_name: user.first_name,
+      last_name: user.last_name,
+      email:user.email,
+      // country:user.country,
+    },
+    resolver: zodResolver(userSchema),
+    //  will get updated once values returns
+  });
 
   const onSubmit = async (data: any) => {
-   await updateUser (data)
-  }
+    await updateUser(data);
+  };
 
   return (
+
     <div className="w-full h-full bg-white flex flex-col md:flex-row justify-center shadow-md rounded-md shadow-stone-400 p-7 overflow-hidden">
     <form onSubmit={handleSubmit(onSubmit)} className=" flex flex-col space-y-4 w-full lg:w-full mx-5">
     <div className="flex flex-col md:flex-row md:space-x-4">
@@ -69,7 +83,8 @@ const ProfileForm = ({user}:{user:any}) => {
   </form>
   
   </div>
+
   );
-}
+};
 
 export default ProfileForm;

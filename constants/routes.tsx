@@ -20,7 +20,7 @@ export const routes = [
       routeName: "Services",
       icon: <Car />,
       children: [
-        { routeName: "Book Trip", href: "/", image: "", icon: <BookPlus /> },
+        { routeName: "Book Trip", href: "/trip", image: "", icon: <BookPlus /> },
         { routeName: "Book Car", href: "/", image: "", icon: <CarFront /> },
       ],
     },
