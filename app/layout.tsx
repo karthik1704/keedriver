@@ -1,7 +1,7 @@
 import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
+import { Roboto,Inter } from "next/font/google";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { cn } from "@/lib/utils";
 import MainNavBar from "@/components/main-nav";
@@ -9,13 +9,20 @@ import Footer from "@/components/footer";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { API_URL } from "@/constants";
-
+/*
 export const roboto = Roboto({
   weight: ["400", "700"],
   style: ["normal", "italic"],
   subsets: ["latin"],
   display: "swap",
 });
+*/
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+})
+
 
 export const metadata: Metadata = {
   title:
@@ -74,8 +81,8 @@ export default async function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          roboto.className
+          `min-h-screen bg-background ${inter.variable} font-sans antialiased`,
+
         )}
       >
          <MainNavBar user={user} />

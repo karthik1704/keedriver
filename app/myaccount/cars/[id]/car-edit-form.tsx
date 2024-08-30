@@ -69,9 +69,9 @@ const CarEditForm = ({
 
           <div className="flex flex-col md:flex-row md:space-x-4">
             <label className="w-full md:w-full">
-              <span className="block mb-1 text-md">Maker:</span>
+              <span className=" text-sm text-gray-700 block mb-1 font-semibold text-md">Maker</span>
               <Input
-                className="text-md w-full border rounded-md px-4 py-2"
+                className="text-sm text-gray-700 text-md w-full border rounded-md px-4 py-2"
                 placeholder="Enter maker name"
                 {...form.register("company_name")}
               />
@@ -80,9 +80,9 @@ const CarEditForm = ({
 
           <div className="flex flex-col md:flex-row md:space-x-4">
             <label className="w-full md:w-full">
-              <span className="block mb-1 text-md">Model Name:</span>
+              <span className="text-sm text-gray-700 block mb-1 font-semibold text-md">Model Name</span>
               <Input
-                className="text-md w-full border rounded-md px-4 py-2"
+                className="text-sm text-gray-700 text-md w-full border rounded-md px-4 py-2"
                 placeholder="Enter model name"
                 // defaultValue={data.model}
                 {...form.register("model")}
@@ -92,9 +92,9 @@ const CarEditForm = ({
 
           <div className="flex flex-col md:flex-row md:space-x-4">
             <label className="w-full md:w-full">
-              <span className="block mb-1 text-md">Registration Number:</span>
+              <span className="text-sm text-gray-700block mb-1 font-semibold text-md">Registration Number</span>
               <Input
-                className="text-md w-full border rounded-md px-4 py-2"
+                className="text-sm text-gray-700 text-md w-full border rounded-md px-4 py-2"
                 placeholder="Enter registration number"
                 // defaultValue={data. registration_number}
                 {...form.register("registration_number")}
@@ -104,7 +104,7 @@ const CarEditForm = ({
 
           <div className="block ">
             <label className="w-full md:w-full">
-              <span className="block mb-1 text-md">Transmission Type:</span>
+              <span className="block mb-1 text-md text-sm font-semibold text-gray-700">Transmission Type</span>
             </label>
 
             <FormField
@@ -119,12 +119,12 @@ const CarEditForm = ({
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select a Transmission Type" />
+                        <SelectValue className="text-sm text-gray-700" placeholder="Select a Transmission Type" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="AUTO">AUTO</SelectItem>
-                      <SelectItem value="MANUAL">MANUAL</SelectItem>
+                      <SelectItem className="text-sm text-gray-700" value="AUTO">Auto</SelectItem>
+                      <SelectItem className="text-sm text-gray-700" value="MANUAL">Manual</SelectItem>
                     </SelectContent>
                   </Select>
 
@@ -140,14 +140,14 @@ const CarEditForm = ({
               name="engine_model"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-md">Engine Model</FormLabel>
+                  <FormLabel className="text-md text-sm font-semibold text-gray-700">Engine Model</FormLabel>
                   <Select
                     onValueChange={field.onChange}
                     defaultValue={field.value}
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select a Engine Type" />
+                        <SelectValue className="text-sm text-gray-700" placeholder="Select a Engine Type" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -172,7 +172,7 @@ const CarEditForm = ({
 
           <div className="block ">
             <label className="w-full md:w-full">
-              <span className="block mb-1 text-md">Gas Type:</span>
+              <span className="block mb-1 text-md text-sm font-semibold text-gray-700">Gas Type</span>
             </label>
 
             <FormField
@@ -187,13 +187,13 @@ const CarEditForm = ({
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select a Gas Type" />
+                        <SelectValue className="text-sm text-gray-700" placeholder="Select a Gas Type" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="EV">Ev</SelectItem>
-                      <SelectItem value="PETROL">Petrol</SelectItem>
-                      <SelectItem value="DIESEL">Diesel</SelectItem>
+                      <SelectItem className="text-sm text-gray-700" value="EV">Ev</SelectItem>
+                      <SelectItem className="text-sm text-gray-700" value="PETROL">Petrol</SelectItem>
+                      <SelectItem className="text-sm text-gray-700" value="DIESEL">Diesel</SelectItem>
                     </SelectContent>
                   </Select>
 
@@ -209,14 +209,14 @@ const CarEditForm = ({
               name="type"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-md">Car Type</FormLabel>
+                  <FormLabel className="text-sm text-gray-700 font-semibold">Car Type</FormLabel>
                   <Select
                     onValueChange={field.onChange}
                     defaultValue={field.value}
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select Car Type" />
+                        <SelectValue className="text-sm text-gray-700" placeholder="Select Car Type" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -277,7 +277,7 @@ const CarEditForm = ({
           </div>
         </div> */}
 
-          <Button type="submit">Update car</Button>
+          <Button type="submit" className="bg-rose-700 text-white font-semibold hover:bg-red-800 mt-4">Update car</Button>
         </form>
       </Form>
       </section>

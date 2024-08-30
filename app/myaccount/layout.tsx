@@ -46,9 +46,13 @@ export default async function MyAccountLayout({
   
   return (
     <>
-      <div className="w-full p-3 sm:pt-6 sm:px-4">
-        <div className=" container mx-auto px-4 mb-14">
-          <h1 className="text-center text-3xl m-4 font-bold">My Account</h1>
+    <div className="bg-rose-700 p-4">
+      {/* Header Section */}
+      <h1 className="text-white text-center text-2xl font-bold">My Account</h1>
+    </div>
+      <div className=" w-auto p-3 bg-stone-100 sm:pt-6 sm:px-4">
+        <div className="mx-auto px-4 mb-9"> 
+          <h1 className="text-3xl text-whit font-medium capitalize">Welcome back, {user.first_name} </h1>
         </div>
 
         {/* <div className="flex flex-col md:flex-row justify-center w-full sm:w-4/5 md:w-4/5 lg:w-4/5 xl:w-3/5 mx-auto shadow-md rounded-lg mb-14 py-5">
@@ -86,10 +90,10 @@ export default async function MyAccountLayout({
               </div>
             </div>
           </div>
-        </div> */}
+        </div> */}          
 
-        <div className="flex flex-col md:flex-row justify-center w-full sm:w-4/5 md:w-3/5 lg:w-4/5 xl:w-3/5 mx-auto shadow-md rounded-lg mb-14 overflow-hidden">
-          <div className="w-full before:h-20 lg:before:h-28 before:bg-gradient-to-r from-red-500 via-red-300 to-red-50 flex flex-col">
+        <div className="mx-48 bg-white flex flex-col md:flex-row justify-center shadow-md shadow-stone-400 rounded-md mb-14 overflow-hidden">
+          <div className="w-full before:h-20 lg:before:h-28 before:bg-gradient-to-r from-rose-950 via-rose-700 to-rose-500 flex flex-col">
             <div className="flex flex-col lg:flex-row items-center lg:justify-between lg:px-5">
               <div className="flex flex-col items-center justify-center gap-2 relative bottom-6 lg:bottom-12">
                 {/* <CircleUserRound className="h-20 w-20" /> */}
@@ -102,28 +106,31 @@ export default async function MyAccountLayout({
                     className="h-full w-full"
                   />
                 </div>
-                <h5 className="md:text-xl lg:text-2xl font-semibold capitalize">
+                <h5 className="md:text-xl lg:text-2xl text-gray-800 font-semibold capitalize">
                   {user.first_name} {user.last_name}
                 </h5>
-                <p className="text-base lg:text-lg">
-                  <span className="font-semibold">Date Joined :</span>
-                  {dateFormatter(user.date_joined)}
-                </p>
-              </div>
 
-              <div className="h-full flex flex-col items-center justify-center lg:justify-between lg:py-2 gap-3 lg:gap-2 pb-3">
-                <ul className="text-base lg:text-lg flex flex-col items-center justify-center lg:items-start gap-3 lg:gap-2">
+                <ul className="text-base lg:text-lg text-gray-800 flex flex-col items-center justify-center lg:items-start gap-3 lg:gap-2">
                   <li>
-                    <span className="font-semibold"><Mail className="inline-block mx-2 h-5 w-5 lg:h-6 lg:w-6" />Email :</span>
+                    <span className="font-semibold text-gray-800 text-sm"><Mail className="inline-block mx-2 h-3 w-3 lg:h-5 lg:w-5" /></span>
                     {user.email}
                   </li>
                   <li>
-                    <span className="font-semibold"><Phone className="inline-block mx-2 h-5 w-5 lg:h-6 lg:w-6" />Contact number :</span>
+                    <span className="font-semibold text-gray-800 text-sm"><Phone className="inline-block mx-2 h-3 w-3 lg:h-5 lg:w-5" /></span>
                     {user.phone}
                   </li>
                 </ul>
-                <p className="text-base lg:text-lg">
-                  <span className="font-semibold"><LogIn className="inline-block mx-2 h-5 w-5 lg:h-6 lg:w-6" />Last Login :</span>
+
+                
+              </div>
+
+              <div className="h-full flex flex-col items-end justify-center lg:justify-between lg:py-2 gap-3 pb-3">
+                <p className="text-base items-end lg:text-md">
+                  <span className="text-gray-800 font-semibold text-right">Date Joined :</span>
+                  {dateFormatter(user.date_joined)}
+                </p>
+                <p className="text-base lg:text-md">
+                  <span className="font-semibold text-gray-800 "><LogIn className="text-gray-800 text-right inline-block mx-2 h-5 w-5 lg:h-6 lg:w-6" />Last Login :</span>
                   { dateTimeFormatter(user.last_login)}
                 </p>
               </div>
@@ -131,9 +138,9 @@ export default async function MyAccountLayout({
           </div>
         </div>
 
-        <div className="mb-3 flex items-center justify-center">
+        <div className="ml-5 mb-10 flex items-center justify-center">
           <div className="flex flex-col w-full md:w-4/5 lg:w-4/5 xl:w-3/5 lg:flex-row gap-5 lg:divide-gray-300 lg:divide-x-2">
-            <div className="flex flex-col bg-white h-64 w-full sm:w-3/5 lg:w-2/5 gap-2 space-y-4">
+            <div className="flex flex-col bg-transparent h-64 w-full sm:w-3/5 lg:w-2/5 gap-2 space-y-4">
               <MyAccountNavBar />
             </div>
             {children}
@@ -141,5 +148,7 @@ export default async function MyAccountLayout({
         </div>
       </div>
     </>
-  );
+
+);
+  
 }

@@ -18,7 +18,7 @@ import { logout } from "@/app/action";
 export default function MainNavBar({ user }: { user: any }) {
   return (
     <>
-      <nav className="relative bg-black max-w[1440px] py-6 px-3 md:px-6 flex justify-between items-center z-30 border-b">
+      <nav className="relative bg-white y-300 max-w[1440px] py-6 px-3 md:px-6 flex justify-between items-center z-30 border-b">
         <div className="flex gap-4">
           <div className="md:hidden">
             <AppDrawer user={user} />
@@ -33,7 +33,7 @@ export default function MainNavBar({ user }: { user: any }) {
           {user ? (
             <Popover>
               <PopoverTrigger className="flex items-center justify-center gap-3 mr-5">
-                <h6 className=" text-lg capitalize">
+                <h6 className=" font-bold text-lg capitalize">
                   {user ? user.username : user.phone}
                 </h6>
                 <Avatar>
@@ -47,21 +47,21 @@ export default function MainNavBar({ user }: { user: any }) {
                     href="/myaccount"
                     className="w-full flex items-center gap-3 hover:bg-gray-100 p-2 "
                   >
-                    <CircleUserRound className=" text-red-600" />
+                    <CircleUserRound className=" text-rose-700" />
                     <span className="inline-block">Profile</span>
                   </Link>
                   <Link
                     href="/setting"
                     className="w-full flex items-center gap-3 hover:bg-gray-100 p-2"
                   >
-                    <Settings className="text-red-600" />
+                    <Settings className="text-rose-700" />
                     <span className="inline-block">Settings</span>
                   </Link>
                   <Link
                     href={""}
                     className="w-full flex items-center gap-3 hover:bg-gray-100 p-2"
                   >
-                    <LogOut className="text-red-600" />
+                    <LogOut className="text-rose-700" />
                     <span onClick={() => logout()} className="inline-block">
                       Logout
                     </span>
