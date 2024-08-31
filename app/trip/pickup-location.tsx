@@ -175,18 +175,17 @@ export const TripDetailForm = ({ carlists }: any) => {
   return (
     <>
     {
-      display1 ? 
+      display1 ?    
       <Form {...form}>
-        <div
-          className={`w-full flex flex-col items-center justify-center capitalize gap-2 p-5 my-4 sm:p-0`}
-        >
-          <h1 className="text-3xl md:text-4xl font-bold capitalize text-center text-primary">
-            book my trip
+        <div className={`w-full h-full flex flex-col items-center justify-center bg-stone-300/50 capitalize`}>
+
+          <h1 className="text-xl text-white p-3 w-full bg-rose-700 md:text-3xl mb-10 font-semibold capitalize text-center text-primary">
+            Book My Trip
           </h1>
-          <div className="w-full sm:w-4/5 md:w-3/5  xl:w-2/5 h-auto  border-2 rounded-lg  p-3 md:p-7 lg:p-8 flex items-center flex-col relative">
+          <div className="w-full sm:w-4/5 md:w-3/5  xl:w-2/5 h-full mb-24  bg-rose-700 shadow-rose-800 shadow-md rounded-lg my-10 md:p-7 lg:p-8 flex items-center flex-col relative">
             <Button
               type="button"
-              className={`justify-evenly items-center capitalize text-sm md:text-md font-semibold absolute top-2 right-2 ${
+              className={`justify-evenly items-center bg-stone-950 hover:bg-stone-700 capitalize text-sm md:text-md font-semibold absolute top-2 right-2 ${
                 display ? "hidden" : "flex"
               }`}
             >
@@ -204,7 +203,7 @@ export const TripDetailForm = ({ carlists }: any) => {
                   }`}
                 >
                   <div className="flex flex-col gap-2">
-                    <Label className="text-xl">from</Label>
+                    <Label className="text-xl text-white">from</Label>
                     <PlaceAutocomplete
                       type="text"
                       placeholder="Enter your location"
@@ -217,13 +216,13 @@ export const TripDetailForm = ({ carlists }: any) => {
                       lng="from_lng"
                     />
                     {form.formState.errors.from && (
-                      <div className="text-red-500 text-start text-sm lg:text-base">
+                      <div className="text-rose-600 text-start text-sm lg:text-base">
                         {form.formState.errors.from.message}
                       </div>
                     )}
                   </div>
                   <div className="flex flex-col gap-2">
-                    <Label className="text-xl">to</Label>
+                    <Label className="text-xl text-white">to</Label>
                     <PlaceAutocomplete
                       type="text"
                       placeholder="Enter your drop location"
@@ -237,13 +236,13 @@ export const TripDetailForm = ({ carlists }: any) => {
                       lng="to_lng"
                     />
                     {form.formState.errors.to && (
-                      <div className="text-red-500 text-start text-sm lg:text-base">
+                      <div className="text-rose-500 text-start text-sm lg:text-base">
                         {form.formState.errors.to.message}
                       </div>
                     )}
                   </div>
                   <div className="flex flex-col gap-2">
-                    <Label className="text-xl">date</Label>
+                    <Label className="text-xl text-white">date</Label>
                     <input
                       {...form.register("date", {})}
                       type="datetime-local"
@@ -253,7 +252,7 @@ export const TripDetailForm = ({ carlists }: any) => {
                     />
 
                     {form.formState.errors.date && (
-                      <div className="text-red-500 text-start text-sm lg:text-base">
+                      <div className="text-rose-500 text-start text-sm lg:text-base">
                         {form.formState.errors.date.message}
                       </div>
                     )}
@@ -261,7 +260,7 @@ export const TripDetailForm = ({ carlists }: any) => {
                   <div className="flex items-center justify-end">
                     <Button
                       type="button"
-                      className="w-full flex items-center capitalize"
+                      className="w-full flex bg-stone-950 hover:bg-stone-700 items-center capitalize"
                       onClick={handleNext}
                     >
                       next
@@ -280,7 +279,7 @@ export const TripDetailForm = ({ carlists }: any) => {
                       name="tripType"
                       render={({ field }) => (
                         <FormItem>
-                          <Label className="text-xl">Trip type</Label>
+                          <Label className="text-xl text-white">Trip type</Label>
                           <div className="w-full">
                             <Select
                               onValueChange={field.onChange}
@@ -301,7 +300,7 @@ export const TripDetailForm = ({ carlists }: any) => {
                               </SelectContent>
                             </Select>
                             {form.formState.errors.tripType && (
-                              <span className="text-red-500 text-sm lg:text-base">
+                              <span className="text-rose-500 text-sm lg:text-base">
                                 {form.formState.errors.tripType.message}
                               </span>
                             )}
@@ -311,20 +310,20 @@ export const TripDetailForm = ({ carlists }: any) => {
                     />
                   </div>
                   <div className="flex flex-col gap-2">
-                    <Label className="text-xl">landmark</Label>
+                    <Label className="text-xl text-white">landmark</Label>
                     <Input
                       {...form.register("landmark", {})}
                       type="text"
                       placeholder="Enter landmark"
                     />
                     {form.formState.errors.landmark && (
-                      <span className="text-red-500 text-sm lg:text-base">
+                      <span className="text-rose-500 text-sm lg:text-base">
                         {form.formState.errors.landmark.message}
                       </span>
                     )}
                   </div>
                   <div className="flex flex-col gap-2">
-                    <Label className="text-xl">alternative phone number</Label>
+                    <Label className="text-xl text-white">alternative phone number</Label>
                     <Input
                       {...form.register("phoneNumber", {
                         maxLength: {
@@ -336,7 +335,7 @@ export const TripDetailForm = ({ carlists }: any) => {
                       placeholder="Enter phone number"
                     />
                     {form.formState.errors.phoneNumber && (
-                      <span className="text-red-500 text-sm lg:text-base">
+                      <span className="text-rose-500 text-sm lg:text-base">
                         {form.formState.errors.phoneNumber.message}
                       </span>
                     )}
@@ -344,7 +343,7 @@ export const TripDetailForm = ({ carlists }: any) => {
                   <div className="flex items-center justify-end">
                     <Button
                       type="button"
-                      className="w-full flex items-center capitalize"
+                      className="w-full flex bg-stone-950 hover:bg-stone-700 items-center capitalize"
                       onClick={handleNext}
                     >
                       next
@@ -357,7 +356,7 @@ export const TripDetailForm = ({ carlists }: any) => {
                   display ? "hidden" : "flex flex-col  gap-5"
                 }`}
               >
-                <h4 className="text-center capitilize text-2xl md:text-3xl text-primary font-semibold">
+                <h4 className="text-center text-white capitilize text-2xl md:text-3xl text-primary font-semibold">
                   car list
                 </h4>
                 <div className="w-full flex  items-center justify-center">
@@ -375,10 +374,10 @@ export const TripDetailForm = ({ carlists }: any) => {
                             {carlists?.results?.map((carList, index) => {
                               return (
                                 <FormItem
-                                  className={`w-full lg:w-3/4 flex items-center justify-between gap-5 space-x-3 space-y-0 bg-white p-4 rounded-lg shadow-lg relative capitalize ${
+                                  className={`w-full lg:w-3/4 flex items-center justify-between gap-5 space-x-3 space-y-0 bg-white p-4 rounded-lg shadow-md relative capitalize ${
                                     field.value === `${carList.company_name}`
-                                      ? " shadow-red-500/50"
-                                      : " shadow-gray-200"
+                                      ? " shadow-stone-400"
+                                      : ""
                                   }`}
                                   key={index}
                                 >
@@ -448,7 +447,7 @@ export const TripDetailForm = ({ carlists }: any) => {
                   <Button
                     disabled={form.formState.isSubmitting}
                     type="submit"
-                    className="w-full lg:w-3/4 justify-evenly items-center capitalize text-lg font-bold"
+                    className="w-full lg:w-3/4 bg-stone-950 hover:bg-stone-700 justify-evenly items-center capitalize text-lg font-bold"
                   >
                     {form.formState.isSubmitting ? "Loading..." : "submit"}
                   </Button>
@@ -458,6 +457,7 @@ export const TripDetailForm = ({ carlists }: any) => {
           </div>
         </div>
       </Form>
+      
       :
       <PreViewCard personData={personData}/>
     }
