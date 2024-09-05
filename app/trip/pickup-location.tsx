@@ -67,12 +67,7 @@ const tripFormSchema = z.object({
   from_lng: z.number(),
   to_lat: z.number(),
   to_lng: z.number(),
-  // carType: z.string().refine((val) => {
-  //   val.length < 1,
-  //     {
-  //       message: "please fill out the empty field",
-  //     };
-  // }),
+  carType: z.union([z.string(), z.number()])
 });
 
 type TtripFormSchema = z.infer<typeof tripFormSchema>;
@@ -84,11 +79,13 @@ export const TripDetailForm = ({ carlists }: any) => {
   const [login, setLogin] = useState(true);
   const [personData, setPersonData] = useState([]);
   const [isTall, setIsTall] = useState(true);
+  const [carListId,setCarListId] = useState(0);
 
   const dateTimeInputRef = useRef(null);
   const router = useRouter();
 
   console.log(personData,"persondata")
+  // console.log(carlists.results)
   // console.log(carlists);
   // const {
   //   register,
@@ -128,6 +125,11 @@ export const TripDetailForm = ({ carlists }: any) => {
       form.setValue("from_lng", users.from_lng);
       form.setValue("to_lat", users.to_lat);
       form.setValue("to_lng", users.to_lng);
+      form.setValue("carType", users.carType);
+
+      const newData = JSON.stringify(users)
+
+      console.log(newData,"newdata");
 
       setPersonData(users);
     }
@@ -136,6 +138,7 @@ export const TripDetailForm = ({ carlists }: any) => {
   useEffect(() => {
     const subcription = form.watch((value) => {
       let personDetail = JSON.stringify(value);
+      console.log(personDetail)
       localStorage.setItem("PersonDetail", personDetail);
     });
 
@@ -144,7 +147,7 @@ export const TripDetailForm = ({ carlists }: any) => {
 
   // let personDetail;
   const onSubmit: SubmitHandler<TtripFormSchema> = async (data) => {
-    console.log("submit",data);
+    // console.log("submit",data);
    
     setDisplay1(false);
    
@@ -367,19 +370,22 @@ export const TripDetailForm = ({ carlists }: any) => {
                       <FormItem className="space-y-3 w-full">
                         <FormControl>
                           <RadioGroup
+                            
+                            required={false}
                             onValueChange={field.onChange}
+                            // onValueChange={(value)=>{setCarListId(value)}}
                             defaultValue={field.value}
                             className="w-full flex flex-col items-center justify-center space-y-1"
                           >
-                            {carlists?.results?.map((carList, index) => {
+                            {carlists?.results?.map((carList) => {
                               return (
                                 <FormItem
-                                  className={`w-full lg:w-3/4 flex items-center justify-between gap-5 space-x-3 space-y-0 bg-white p-4 rounded-lg shadow-md relative capitalize ${
-                                    field.value === `${carList.company_name}`
-                                      ? " shadow-stone-400"
-                                      : ""
+                                  className={`w-full lg:w-3/4 flex items-center justify-between gap-5 space-x-3 space-y-0 bg-white p-4 rounded-lg shadow-lg relative capitalize ${
+                                    field.value === `${carList.id}`
+                                      ? " shadow-red-500/50"
+                                      : " shadow-gray-200"
                                   }`}
-                                  key={index}
+                                  key={carList.id}
                                 >
                                   <div>
                                     <FormLabel className="font-bold text-lg md:text-xl text-primary flex gap-2">
@@ -424,7 +430,7 @@ export const TripDetailForm = ({ carlists }: any) => {
 
                                   <FormControl className="">
                                     <RadioGroupItem
-                                      value={`${carList.company_name}`}
+                                      value={`${carList.id}`}
                                     />
                                   </FormControl>
                                 </FormItem>
@@ -459,7 +465,7 @@ export const TripDetailForm = ({ carlists }: any) => {
       </Form>
       
       :
-      <PreViewCard personData={personData}/>
+      <PreViewCard personData={personData} carListId={carListId}/>
     }
       
     </>
