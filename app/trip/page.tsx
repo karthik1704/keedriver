@@ -27,11 +27,13 @@ const res = await fetch(`${API_URL}/car/`,{
   }
  
 });
+
 const data = await res.json();
 
 // console.log(data);
 return data;
 }
+
 
 
 
