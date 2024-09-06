@@ -45,7 +45,7 @@ const TripPage = async() => {
 
  
   return (
-    <div className={`flex flex-col items-center`}>
+    <div className={`flex flex-col h-full items-center`}>
         <TripDetailForm carlists={carlists}/>
         {/* <PickupLocation/> */}
 
