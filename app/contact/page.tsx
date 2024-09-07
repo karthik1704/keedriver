@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 export default function Contact() {
   return (
     <>
-      <main className="flex mx-auto bg-gray-100 p-4">
+      <main className="flex flex-col lg:flex-row h-full items-center bg-gray-100">
         <div className="max-w-4xl mx-auto py-8 px-4">
-          <h2 className="text-2xl mb-2 text-red-500 font-semibold">
+          <h2 className="text-2xl mb-2 text-rose-600 font-semibold">
             DROP US A LINE
           </h2>
           <div className="flex flex-col  md:flex-row gap-20">
@@ -22,25 +22,27 @@ export default function Contact() {
               <ContactForm />
             </div>
             <div className="mx-auto md:w-96">
-              <h2 className="text-2xl p-2 text-red-500 font-semibold">
+              <h2 className="text-2xl p-2 text-rose-600 font-semibold">
                 REACH US
               </h2>
-              <div className="bg-white shadow overflow-hidden sm:rounded-lg">
+              <div className="bg-white px-5m-auto shadow overflow-hidden sm:rounded-lg">
                 <div className="px-4 py-5 sm:px-6">
                   <h2 className=" leading-6  text-gray-900 text-base">
-                    No.62, Station Rd, Radha Nagar, Chromepet,Chennai,
+                    No.62, Station Rd, Radha Nagar,
+                    <br/>
+                     Chromepet,Chennai,
                     <br />
                     Tamil Nadu - 600044.
                   </h2>
                 </div>
                 <div className="p-4 px-6 border-gray-200 justify-between">
                   <div className="flex items-center gap-2 p-1">
-                    <FaPhone className=" text-red-500 size-4" />
+                    <FaPhone className=" text-rose-500 size-4" />
                     <p className="text-base">+91-7845885888</p>
                   </div>
 
                   <div className="flex items-center gap-2 p-1">
-                    <MdEmail className=" text-red-500 size-6" />
+                    <MdEmail className=" text-rose-500 size-6" />
                     <p className="text-base">info@keedriver.com</p>
                   </div>
                 </div>

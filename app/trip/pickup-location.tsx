@@ -185,7 +185,7 @@ export const TripDetailForm = ({ carlists }: any) => {
           <h1 className="text-xl text-white p-3 w-full bg-rose-700 md:text-3xl mb-10 font-semibold capitalize text-center text-primary">
             Book My Trip
           </h1>
-          <div className="w-full sm:w-4/5 md:w-3/5  xl:w-2/5 h-full mb-24  bg-rose-700 shadow-rose-800 shadow-md rounded-lg my-10 md:p-7 lg:p-8 flex items-center flex-col relative">
+          <div className="w-4/5 sm:w-4/5 md:w-3/5 xl:w-2/5 h-full mb-24 mx-10 bg-rose-700 shadow-rose-800 shadow-md rounded-lg my-10 p-5 md:p-7 lg:p-8 flex items-center flex-col relative">
             <Button
               type="button"
               className={`justify-evenly items-center bg-stone-950 hover:bg-stone-700 capitalize text-sm md:text-md font-semibold absolute top-2 right-2 ${
