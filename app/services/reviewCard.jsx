@@ -35,17 +35,17 @@ const reviewDetail = [
     <>
     {
         reviewDetail.map((reviewList,id)=>{
-            return <div className="flex flex-col justify-between rounded-sm w-full lg:h-96 shadow-xl p-5" key={id}>
+            return <div className="flex flex-col justify-between rounded-sm bg-rose-700 my-5 md:my-0 w-full lg:h-96 shadow-xl p-5" key={id}>
                 <div className='flex flex-col justify-center items-center md:items-start gap-3'>
             <div className="m-5"><Image src={reviewList.image} alt="client-image" width={75} height={75} className="rounded-full"/></div>
-            <p className="text-zinc-600 capitalize text-left">
+            <p className="text-white capitalize text-left">
                 {
                     reviewList.tripReview
                 }
         
             </p>
             </div>
-            <p className="text-zinc-600 text-left pt-5  before:border-2  before:border-slate-700">{reviewList?.clientName}/ <span className="text-primary font-bold">{reviewList?.tripType}</span></p>
+            <p className="text-white text-left pt-5  before:border-2  before:border-slate-700">{reviewList?.clientName}/ <span className="text-rose-300 font-bold">{reviewList?.tripType}</span></p>
         </div>
         })
     }
