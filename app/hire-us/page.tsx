@@ -1,90 +1,201 @@
 import Image from "next/image";
-import img1 from "@/app/services/image/warning.jpg";
-import img2 from "@/app/services/image/green_double_circle_check_mark.jpg";
-import img3 from "@/app/services/image/wrong-icon.jpg";
+import img from "@/app/services/image/driver_hire.jpeg";
+import img1 from "@/app/services/image/edperienced_driver.webp";
+import img2 from "@/app/services/image/punctual.avif";
+import img3 from "@/app/services/image/cabs.jpg";
+import img4 from "@/app/services/image/cutomer_services.jpeg";
+
+import img5 from "@/app/services/image/special_offer.jpg";
+import img6 from "@/app/services/image/home/trip.png";
+import img7 from "@/app/services/image/home/driver.png";
+import img8 from "@/app/services/image/home/start.png";
 import { buttonVariants } from "@/components/ui/button";
 
 import Link from "next/link";
+import TempDriverCard from "./tempDriverCard";
+import ReviewCard from "./ReviewsCard";
 
 const HireUS = () => {
   return (
     <>
       <main className=" bg-gray-100">
-        {/* No Trip found */}
+        <section className="bg-rose-700 flex flex-col md:flex-row items-center justify-center text-white text-center md:text-start py-12">
+          <div className="mx-16 w-full md:w-2/3 lg:w-1/2 items-center justify-center">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold">
+              Drive with Confidence- Hire Expert Drivers Today!
+            </h1>
+            <h2 className="text-lg md:text-xl lg:text-2xl font-semibold mt-2">
+              Hire a Driver with KEEDRIVER!
+            </h2>
+            <button className="bg-white text-rose-700 text-2xl md:text-xl lg:text-3xl xl:text-4xl font-medium mt-6 p-5 py-2 px-4 rounded-full hover:bg-rose-100 hover:shadow-md hover:shadow-rose-200">
+              Book a Driver Now
+            </button>
+          </div>
+          <div className="w-4/5 mx-10 lg:mx-20 mt-5 md:2/5 lg:w-2/5 items-center justify-center">
+            <Image src={img} alt="" className="object-cover" />
+          </div>
+        </section>
 
-        <div className="flex h-[75vh] items-center justify-center p-5">
-          {/* Increase max-width and adjust padding for wider layout */}
-          <div className="max-w-2xl w-full p-8 sm:p-12 md:p-16 bg-white shadow-md rounded-lg">
-            <div className="flex justify-center">
+        <section className="flex items-center justify-center">
+          <div className="w-full md:w-4/5 m-10 py-5 sm:px-10 md:px-20 items-center justify-cente md:mx-12 flex flex-col md:flex-rowmb-14 overflow-hidden">
+            <h3 className="text-2xl md:text-4xl lg:text-6xl text-center font-semibold text-rose-600">
+              Seamless Rides, Exceptional Service
+            </h3>
+            <p className="mt-4 text-lg md:text-xl text-center text-semibold text-gray-800">
+              Welcome to KeeDriver, where your comfort and safety are our top
+              priorities. Whether you need a driver for a special event, daily
+              commutes, or just a reliable ride, we’ve got you covered.
+            </p>
+            <p className="mt-4 text-md md:text-lg text-justify text-gray-800">
+              At KeeDriver, we understand that your time and comfort are
+              precious. That's why we go the extra mile to provide you with a
+              driving experience that is not only reliable but also tailored to
+              your specific requirements. Whether you're planning a business
+              trip, a family outing, or need a chauffeur for a special occasion,
+              our professional drivers are here to ensure you reach your
+              destination safely and on time.When you choose KeeDriver, you're not just hiring a driver—you're
+              gaining a partner who is dedicated to making your journey as
+              seamless and enjoyable as possible. Let us take the wheel while
+              you sit back, relax, and enjoy the ride. Whether it's a quick trip
+              across town or a long-distance journey, KeeDriver is here to
+              provide you with exceptional service, every step of the way.
+            </p>
+            
+          </div>
+        </section>
+
+        {/* Service Features Section */}
+        <section className="flex justify-center items-center">
+          <div className="w-full sm:w-5/6 py-10">
+            <TempDriverCard />
+          </div>
+
+          {/* <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
+          <div>
+            <Image src={img1} alt="" className="mx-auto" />
+            <h3 className="text-xl font-bold mt-4">Experienced Professionals</h3>
+            <p className="mt-2">Our drivers are highly skilled and trained to ensure a smooth, safe journey.</p>
+          </div>
+          <div>
+            <Image src={img2} alt="" className="mx-auto" />
+            <h3 className="text-xl font-bold mt-4">Punctual & Reliable</h3>
+            <p className="mt-2">We value your time. Expect timely arrivals and departures, every time.</p>
+          </div>
+          <div>
+            <Image src={img3} alt="" className="mx-auto" />
+            <h3 className="text-xl font-bold mt-4">Top-Notch Vehicles</h3>
+            <p className="mt-2">Travel in comfort and style with our well-maintained, modern fleet.</p>
+          </div>
+          <div>
+            <Image src={img4} alt="" className="mx-auto" />
+            <h3 className="text-xl font-bold mt-4">Customer-Centric Service</h3>
+            <p className="mt-2">Your satisfaction is our goal. Our drivers are courteous and attentive to your needs.</p>
+          </div>
+        </div> */}
+        </section>
+
+        <section className="flex bg-rose-700 flex-col p-10 items-center justify-center">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-white">How It Works</h3>
+          <div className="flex flex-col md:flex-row text-gray-800">
+          <div className="flex flex-col lg:flex-row md:flex-wrap md:gap-6 md:justify-center my-10 mx-auto">
+          <div className="m-3 py-10 px-5 rounded-md basis-1/4 shadow-md shadow-rose-400 bg-white text-center">
+          <p className="py-5 text-lg sm:text-2xl uppercase font-semibold">Choose Your Service</p>
+            <div className="flex justify-center mb-5">
               <Image
-                src={img1}
-                height={100}
-                width={100}
+                src={img6}
                 alt=""
-                className="object-center w-auto h-auto md:h-30 md:w-30 animate-fadeIn"
+                width={75}
+                height={75}
+                className="rounded-full"
               />
             </div>
-            <h1 className="text-xl md:text-2xl lg:text-3xl font-semibold text-center mb-6 mt-6">
-              We sincerely apologize, but something went wrong with your
-              booking.
-            </h1>
-            <p className="text-center text-sm md:text-base lg:text-md mb-4 pb-10">
-              We invite you to try again, or reach out to us if you need further
-              assistance.
+            <p className="py-5 text-sm sm:text-base font-semibold">
+            Select from a range of options, from hourly hires to full-day
+            services.
             </p>
-
-            <Link
-              href="#"
-              className="bg-rose-600 text-white text-lg font-bold hover:bg-stone-700 transition-colors mx-auto block rounded-lg py-4 px-8 sm:px-12 text-center"
-            >
-              Return to Home Page
-            </Link>
           </div>
-        </div>
 
-        {/* trip message */}
-
-        <div className="flex h-[55vh] items-center justify-center p-5">
-          <div className="max-w-sm w-full p-6 bg-white shadow-md rounded-lg flex flex-col items-center text-center">
-            <div className="flex justify-center mb-4">
-              <Image src={img2} height={80} width={80} alt="" />
+          <div className="m-3 py-10 px-5 rounded-md basis-1/4 shadow-md shadow-rose-400 bg-white text-center">
+          <p className="py-5 text-lg sm:text-2xl uppercase font-semibold">Book Your Driver</p>
+            <div className="flex justify-center mb-5">
+              <Image
+                src={img7}
+                alt=""
+                width={75}
+                height={75}
+                className="rounded-full"
+              />
             </div>
-
-            <h1 className="text-2xl font-bold mb-4">Booking Confirmed!</h1>
-
-            <p className="text-sm mb-6">
-              A driver is being arranged close to your location.
-              <br />
-              We'll keep you updated.
+            
+            <p className="py-5 text-sm sm:text-base font-semibold">
+            Use our app to schedule your ride at your convenience.
             </p>
-
-            <button
-              type="submit"
-              className="bg-green-500 text-white text-lg font-semibold hover:bg-green-600 transition-colors rounded-lg py-2 px-10"
-            >
-              Ok
-            </button>
           </div>
-        </div>
 
-        {/* trip not succesfull */}
-
-        <div className="flex h-[55vh] items-center justify-center p-5">
-          <div className="max-w-sm w-full p-10 md:p-14 bg-white shadow-md rounded-lg flex flex-col items-center text-center">
-            <div className="mb-4">
-              <Image src={img3} height={100} width={100} alt="" />
+          <div className="m-3 py-10 px-5 rounded-md basis-1/4 shadow-md shadow-rose-400 bg-white text-center">
+          <p className="py-5 text-lg sm:text-2xl uppercase font-semibold">Enjoy the Ride</p>
+            <div className="flex justify-center mb-5">
+              <Image
+                src={img8}
+                alt=""
+                width={75}
+                height={75}
+                className="rounded-full"
+              />
             </div>
-            <h1 className="text-xl font-semibold mb-4">
-              Your trip has been canceled successfully.
-            </h1>
-            <button
-              type="submit"
-              className="bg-red-500 text-white text-base font-medium hover:bg-red-600 transition-colors rounded-lg py-2 px-10"
-            >
-              Ok
-            </button>
+            
+            <p className="py-5 text-sm sm:text-base font-semibold">
+            Sit back and relax as our professional driver takes you where
+            you need to go.
+            </p>
           </div>
         </div>
+          </div>
+        </section>
+
+        <section className="bg-white flex flex-col md:flex-row p-5 md:p-10 md:gap-20 lg:gap-32 items-center justify-center">
+          <div className="w-full sm:w-4/5 md:w-3/5 lg:w-2/5 p-5 md:p-10 lg:p-20 items-center justify-center">
+            <div className="w-full flex items-center justify-center">
+              <Image
+                src={img5}
+                alt=""
+                className=" items-center object-cover w-4/5 h-auto"
+              />
+            </div>
+            <p className="mt-4 text-lg md:text-xl text-semibold text-center text-gray-800">
+              Take advantage of our ongoing promotions and discounts for a
+              limited time. <br />
+              Check out our offers in the app for the best deals!
+            </p>
+          </div>
+
+          <div className="w-full sm:w-4/5 border rounded-xl shadow-lg shadow-gray-400 bg-gray-50 md:w-3/5 lg:w-1/4 xl:w-1/5 mb-8 p-10 items-center justify-center">
+            <h3 className="text-4xl font-semibold text-center text-rose-600">
+              Get Started
+            </h3>
+            <p className="mt-4 text-lg text-center ">
+              Ready to experience top-quality driving services? Download the{" "}
+              <span className="font-bold">KEEDRIVER</span> app and book your
+              driver today.
+            </p>
+            <p className="mt-4 py-8 text-lg text-center">
+              <p className="text-xl font-bold">For Assistance</p> Contact us at{" "}
+              <a href="tel:07200588582" className="text-rose-600 font-semibold">
+                7200588582
+              </a>
+              !
+            </p>
+          </div>
+        </section>
+
+        <section className="w-full text-center sm:text-left flex flex-col items-center justify-center">
+          <h1 className="text-3xl w-full text-center justify-items-center text-white bg-rose-600 p-4 font-bold  uppercase">
+            Reviews
+          </h1>
+          <div className="w-4/5 sm:w-3/5 md:w-11/12 lg:w-4/5 xl:w-3/5 flex flex-col gap-4 md:flex-row md:gap-4 md:justify-center my-5">
+            <ReviewCard />
+          </div>
+        </section>
       </main>
     </>
   );

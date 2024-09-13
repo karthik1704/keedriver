@@ -1,8 +1,8 @@
 import img from "@/app/services/image/home.webp";
-import img1 from "@/app/services/image/trust.webp";
-import img2 from "@/app/services/image/secure.webp";
-import img3 from "@/app/services/image/Versatile.webp";
-import img4 from "@/app/services/image/Tracking.webp";
+import img1 from "@/app/services/image/trust.jpg";
+import img2 from "@/app/services/image/secure.png";
+import img3 from "@/app/services/image/versatile.jpg";
+import img4 from "@/app/services/image/tracking.jpg";
 import img5 from "@/app/services/image/Fare Price.jpg";
 import img6 from "@/app/services/image/hour.jpg";
 import img7 from "@/app/services/image/Corporate.jpg";
