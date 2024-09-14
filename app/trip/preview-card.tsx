@@ -44,39 +44,39 @@ const PreViewCard = ({ personData}) => {
   return (
     <>
       {
-        messageShow ? <section className="w-full flex items-center justify-center p-5">
+        messageShow ? <section className="w-full bg-stone-100 flex items-center justify-center p-5">
         <div className="w-full flex flex-col lg:flex-row items-center justify-center gap-5">
           <div className="md:w-4/5 lg:w-[66%] xl:w-[55%] bg-rose-700 flex flex-col items-center justify-center px-5 py-6 xl:py-8 rounded-lg ">
-            <h2 className="text-2xl mb-4  font-semibold text-white">
-              Trip Details
+            <h2 className="text-2xl mb-4 font-semibold text-white">
+              TRIP DETAILS
             </h2>
 
             <div className="w-4/5 flex flex-col items-center justify-between gap-3">
               <ul className="w-full flex flex-col gap-2 lg:grid lg:grid-cols-2 items-start lg:gap-5 ">
                 <li className="w-full">
-                  <span className="mb-3 inline-block text-white font-bold">
+                  <span className="mb-3 inline-block text-white text-lg font-semibold">
                     From
                   </span>
-                  <div className="flex min-h-28 w-full gap-2 p-2 bg-white rounded-lg justify-center items-center lg:items-start shadow-sm shadow-current">
-                    <span className="inline-block">
+                  <div className="flex min-h-16 w-full gap-2 p-2 bg-white rounded-lg justify-start items-center lg:items-start shadow-sm shadow-current">
+                    <span className="inline-block px-2">
                       {" "}
                       <MapPinned className="text-red-600" />{" "}
                     </span>
-                    <span className="inline-block md:text-base lg:text-lg capitalize font-semibold">
+                    <span className="inline-block md:text-base lg:text-lg capitalize font-semibold text-gray-700">
                       {from}
                     </span>
                   </div>
                 </li>
                 <li className="w-full">
-                  <span className="mb-3 inline-block text-white font-bold">
+                  <span className="mb-3 inline-block text-white text-lg font-semibold">
                     To
                   </span>
-                  <div className="flex min-h-28 w-full gap-2 p-2 bg-white rounded-lg justify-center items-center lg:items-start shadow-sm shadow-current ">
-                    <span className="inline-block">
+                  <div className="flex min-h-16 w-full gap-2 p-2 bg-white rounded-lg justify-start items-center lg:items-start shadow-sm shadow-current ">
+                    <span className="inline-block px-2">
                       {" "}
                       <MapPinned className="text-red-600" />{" "}
                     </span>
-                    <span className="inline-block md:text-base lg:text-lg capitalize font-semibold">
+                    <span className="inline-block md:text-base lg:text-lg capitalize text-gray-700 font-semibold">
                       {to}
                     </span>
                   </div>
@@ -84,80 +84,80 @@ const PreViewCard = ({ personData}) => {
               </ul>
 
               <div className="w-full">
-                <span className="mb-3 inline-block text-white font-bold">
+                <span className="mb-3 inline-block text-white text-lg font-semibold">
                   Land Mark
                 </span>
-                <div className="flex w-full gap-2 p-2 bg-white rounded-lg justify-center shadow-sm shadow-current ">
-                  <span className="inline-block">
+                <div className="flex w-full gap-2 p-2 bg-white rounded-lg justify-start shadow-sm shadow-current ">
+                  <span className="inline-block px-2">
                     {" "}
                     <Landmark className="text-red-600" />{" "}
                   </span>
 
-                  <span className="inline-block md:text-base lg:text-lg capitalize font-semibold">
+                  <span className="inline-block md:text-base lg:text-lg text-gray-700 capitalize font-semibold">
                     {landmark}
                   </span>
                 </div>
               </div>
-              <ul className="w-full flex flex-wrap lg:grid lg:grid-cols-2 items-center justify-between lg:justify-items-center gap-2 lg:gap-4">
+              <ul className="w-full flex flex-wrap lg:grid lg:grid-cols-2 items-start justify-start lg:justify-items-start gap-2 lg:gap-4">
                 <li className="w-full sm:w-auto lg:w-full">
-                  <span className="mb-3 inline-block text-white font-bold">
+                  <span className="mb-3 inline-block text-white text-lg font-semibold">
                     Trip Date
                   </span>
                   <div className="flex w-full sm:w-36 md:w-40 lg:w-full gap-2 p-2 bg-white rounded-lg justify-center shadow-sm shadow-current ">
-                    <span className="inline-block">
+                    <span className="inline-block px-2">
                       {" "}
                       <Calendar className="text-red-600" />{" "}
                     </span>
 
-                    <span className="inline-block md:text-base lg:text-lg capitalize font-semibold">
+                    <span className="inline-block md:text-base lg:text-lg capitalize text-gray-700 font-semibold">
                       04/09/2024
                     </span>
                   </div>
                 </li>
 
                 <li className="w-full sm:w-auto lg:w-full">
-                  <span className="mb-3 inline-block text-white font-bold">
+                  <span className="mb-3 inline-block text-white text-lg font-semibold">
                     Trip Time
                   </span>
                   <div className="flex w-full sm:w-36 md:w-40 lg:w-full gap-2 p-2 bg-white rounded-lg justify-center shadow-sm shadow-current ">
-                    <span className="inline-block">
+                    <span className="inline-block px-2">
                       {" "}
                       <Clock3 className="text-red-600" />{" "}
                     </span>
 
-                    <span className="inline-block md:text-base lg:text-lg capitalize font-semibold">
+                    <span className="inline-block md:text-base lg:text-lg capitalize text-gray-700 font-semibold">
                       10:30 am
                     </span>
                   </div>
                 </li>
 
                 <li className="w-full sm:w-auto lg:w-full">
-                  <span className="mb-3 inline-block text-white font-bold">
+                  <span className="mb-3 inline-block text-white text-lg font-semibold">
                     Trip Type
                   </span>
                   <div className="flex w-full  sm:w-36 md:w-40 lg:w-full gap-2 p-2 bg-white rounded-lg justify-center shadow-sm shadow-current ">
-                    <span className="inline-block">
+                    <span className="inline-block px-2">
                       {" "}
                       <Route className="text-red-600" />{" "}
                     </span>
 
-                    <span className="inline-block md:text-base lg:text-lg capitalize font-semibold">
+                    <span className="inline-block md:text-base lg:text-lg text-gray-700 capitalize font-semibold">
                       {tripType}
                     </span>
                   </div>
                 </li>
 
                 <li className="w-full sm:w-auto lg:w-full">
-                  <span className="mb-3 inline-block text-white font-bold">
+                  <span className="mb-3 inline-block text-white text-lg font-semibold">
                     Phone Number
                   </span>
                   <div className="flex w-full  sm:w-36 md:w-40  lg:w-full gap-2 p-2 bg-white rounded-lg  items-center justify-center shadow-sm shadow-current ">
-                    <span className="inline-block">
+                    <span className="inline-block px-2">
                       {" "}
                       <Phone className="text-red-600 h-5 w-5" />{" "}
                     </span>
 
-                    <span className="inline-block md:text-base lg:text-lg capitalize font-semibold">
+                    <span className="inline-block md:text-base lg:text-lg text-gray-700 capitalize font-semibold">
                       {phoneNumber}
                     </span>
                   </div>
@@ -165,52 +165,52 @@ const PreViewCard = ({ personData}) => {
               </ul>
               <div className="w-full">
                <h3 className="text-xl mb-4 font-semibold text-white text-center">
-                Car Details
+                CAR DETAILS
 
                </h3>
                <ul className="w-full bg-white rounded-lg flex flex-wrap lg:grid lg:grid-cols-3 items-center justify-between lg:justify-items-center gap-2 lg:gap-4 p-3">
                 <li className="w-full sm:w-auto lg:w-full">
-                  <span className="mb-3 inline-block text-gray-600 font-bold border-b-2 border-rose-700 pb-1">
+                  <span className="mb-3 inline-block text-gray-800 text-lg font-semibold border-b-2 border-rose-700 pb-1">
                     Car Name
                   </span>
-                  <div className="flex w-full sm:w-36 md:w-40 lg:w-full gap-2 p-2 rounded-lg justify-center">
-                    <span className="inline-block">
+                  <div className="flex w-full sm:w-36 md:w-40 lg:w-full gap-2 p-2 rounded-lg justify-start">
+                    <span className="inline-block px-2">
                       {" "}
                       <CarFront className="text-red-600" />{" "}
                     </span>
 
-                    <span className="inline-block md:text-base lg:text-lg capitalize font-semibold">
+                    <span className="inline-block md:text-base lg:text-lg text-gray-700 capitalize font-semibold">
                       innova
                     </span>
                   </div>
                 </li>
 
                 <li className="w-full sm:w-auto lg:w-full">
-                  <span className="mb-3 inline-block text-gray-600 font-bold border-b-2 border-rose-700 pb-1">
+                  <span className="mb-3 inline-block text-gray-800 text-lg font-semibold border-b-2 border-rose-700 pb-1">
                     Car Model
                   </span>
-                  <div className="flex w-full sm:w-36 md:w-40 lg:w-full gap-2 p-2 bg-white rounded-lg justify-center ">
-                    <span className="inline-block">
+                  <div className="flex w-full sm:w-36 md:w-40 lg:w-full gap-2 p-2 bg-white rounded-lg justify-start ">
+                    <span className="inline-block px-2">
                       <Car className="text-red-600" />
                     </span>
 
-                    <span className="inline-block md:text-base lg:text-lg capitalize font-semibold">
+                    <span className="inline-block md:text-base lg:text-lg text-gray-700 capitalize font-semibold">
                       Suv
                     </span>
                   </div>
                 </li>
 
                 <li className="w-full sm:w-auto lg:w-full">
-                  <span className="mb-3 inline-block text-gray-600 font-bold border-b-2 border-rose-700 pb-1">
+                  <span className="mb-3 inline-block text-gray-800  text-lg font-semibold border-b-2 border-rose-700 pb-1">
                     Registration No
                   </span>
-                  <div className="flex w-full  sm:w-36 md:w-40 lg:w-full gap-2 p-2 bg-white rounded-lg justify-center ">
-                    <span className="inline-block">
+                  <div className="flex w-full  sm:w-36 md:w-40 lg:w-full gap-2 p-2 bg-white rounded-lg justify-start ">
+                    <span className="inline-block px-2">
                       {" "}
                       < RectangleEllipsis className="text-red-600" />{" "}
                     </span>
 
-                    <span className="inline-block md:text-base lg:text-lg capitalize font-semibold">
+                    <span className="inline-block md:text-base text-gray-700 lg:text-lg capitalize font-semibold">
                      TN 85 q 0931
                     </span>
                   </div>
@@ -232,31 +232,31 @@ const PreViewCard = ({ personData}) => {
                   </div>
                 </li> */}
                 <li className="w-full sm:w-auto lg:w-full">
-                  <span className="mb-3 inline-block text-gray-600 font-bold border-b-2 border-rose-700 pb-1">
+                  <span className="mb-3 inline-block text-gray-800 text-lg font-semibold border-b-2 border-rose-700 pb-1">
                     Gear Type
                   </span>
-                  <div className="flex w-full  sm:w-36 md:w-40 lg:w-full gap-2 p-2 bg-white rounded-lg justify-center ">
-                    <span className="inline-block">
+                  <div className="flex w-full  sm:w-36 md:w-40 lg:w-full gap-2 p-2 bg-white rounded-lg justify-start ">
+                    <span className="inline-block px-2">
                       {" "}
                       <Cog className="text-red-600" />{" "}
                     </span>
 
-                    <span className="inline-block md:text-base lg:text-lg capitalize font-semibold">
+                    <span className="inline-block md:text-base lg:text-lg text-gray-700 capitalize font-semibold">
                      {carTypeData.transmission_type}
                     </span>
                   </div>
                 </li>
                 <li className="w-full sm:w-auto lg:w-full">
-                  <span className="mb-3 inline-block text-gray-600 font-bold border-b-2 border-rose-700 pb-1">
+                  <span className="mb-3 inline-block text-gray-800 text-lg font-semibold border-b-2 border-rose-700 pb-1">
                     Gas
                   </span>
-                  <div className="flex w-full sm:w-36 md:w-40 lg:w-full gap-2 p-2 bg-white rounded-lg justify-center ">
-                    <span className="inline-block">
+                  <div className="flex w-full sm:w-36 md:w-40 lg:w-full gap-2 p-2 bg-white rounded-lg justify-start ">
+                    <span className="inline-block px-2">
                       {" "}
                       <Fuel className="text-red-600" />{" "}
                     </span>
 
-                    <span className="inline-block md:text-base lg:text-lg capitalize font-semibold">
+                    <span className="inline-block md:text-base lg:text-lg text-gray-700 capitalize font-semibold">
                       petrol
                     </span>
                   </div>
@@ -268,7 +268,7 @@ const PreViewCard = ({ personData}) => {
 
           <div className="w-full md:w-4/5 lg:w-1/3 xl:w-1/4 flex flex-col gap-7">
             <div className="w-full flex flex-col items-center  bg-rose-700 rounded-lg p-4">
-              <h2 className="text-xl text-center font-semibold text-white p-3">
+              <h2 className="text-xl text-center font-semibold uppercase text-white p-3">
                 Trip Amount
               </h2>
               <ul className="w-full flex flex-col items-center text-white text-lg gap-4">

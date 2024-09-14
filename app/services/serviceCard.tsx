@@ -15,8 +15,8 @@ const serviceFeature = [
     },
     {
         featureName : 'Versatile',
-        featureDescription:'Book a driver for office commutes, shopping trips, airport transfers, night-outs, or weekend getaways—our hourly packages cover all your needs.',
-        image:img3
+        featureDescription:'Book a driver in KeeDriver for office commutes, shopping trips, airport transfers, night-outs, or weekend getaways—our hourly packages cover all your needs and wishes.',
+        image:img3 
     },
     {
         featureName : 'Tracking',
@@ -29,9 +29,10 @@ const ServiceCard = () => {
    <>
    {
     serviceFeature.map((featureIteam,id)=>{
-        return <div className="w-2/3 sm:w-2/3 md:w-3/5 lg:1/4 xl:w-1/5 h-full mx-5 my-3 md:my-5 flex flex-col border rounded-md shadow-sm shadow-black bg-white items-center justify-center gap-3 p-5" key={id}>
-            <div className='w-2/5 lg:w-4/5 xl:w-3/5 rounded-full border border-rose-600 hover:shadow-md hover:shadow-rose-800'>
-            <Image src={featureIteam.image} alt="" className='object-cover'/>
+        return <div className="w-2/3 sm:w-2/3 md:w-3/5 lg:1/4 xl:w-1/5 max-h-96 mx-5 my-3 md:my-5 flex flex-col border rounded-md shadow-sm shadow-black bg-white items-center justify-center gap-3 p-5" key={id}>
+            <div className='w-2/5 lg:w-4/5 xl:w-3/5 items-center justify-center rounded-full'>
+            <Image src={featureIteam.image} alt="" width={185}
+                height={185} className='object-cover'/>
             </div>
              
            <div className="font-bold text-rose-800 text-2xl uppercase ">{featureIteam.featureName}</div>

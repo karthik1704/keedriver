@@ -219,7 +219,7 @@ export const TripDetailForm = ({ carlists }: any) => {
                       lng="from_lng"
                     />
                     {form.formState.errors.from && (
-                      <div className="text-rose-600 text-start text-sm lg:text-base">
+                      <div className="text-white text-start text-sm lg:text-base">
                         {form.formState.errors.from.message}
                       </div>
                     )}
@@ -239,7 +239,7 @@ export const TripDetailForm = ({ carlists }: any) => {
                       lng="to_lng"
                     />
                     {form.formState.errors.to && (
-                      <div className="text-rose-500 text-start text-sm lg:text-base">
+                      <div className="text-white text-start text-sm lg:text-base">
                         {form.formState.errors.to.message}
                       </div>
                     )}
@@ -255,7 +255,7 @@ export const TripDetailForm = ({ carlists }: any) => {
                     />
 
                     {form.formState.errors.date && (
-                      <div className="text-rose-500 text-start text-sm lg:text-base">
+                      <div className="text-white text-start text-sm lg:text-base">
                         {form.formState.errors.date.message}
                       </div>
                     )}
@@ -303,7 +303,7 @@ export const TripDetailForm = ({ carlists }: any) => {
                               </SelectContent>
                             </Select>
                             {form.formState.errors.tripType && (
-                              <span className="text-rose-500 text-sm lg:text-base">
+                              <span className="text-white text-sm lg:text-base">
                                 {form.formState.errors.tripType.message}
                               </span>
                             )}
@@ -320,7 +320,7 @@ export const TripDetailForm = ({ carlists }: any) => {
                       placeholder="Enter landmark"
                     />
                     {form.formState.errors.landmark && (
-                      <span className="text-rose-500 text-sm lg:text-base">
+                      <span className="text-white text-sm lg:text-base">
                         {form.formState.errors.landmark.message}
                       </span>
                     )}
@@ -338,7 +338,7 @@ export const TripDetailForm = ({ carlists }: any) => {
                       placeholder="Enter phone number"
                     />
                     {form.formState.errors.phoneNumber && (
-                      <span className="text-rose-500 text-sm lg:text-base">
+                      <span className="text-white text-sm lg:text-base">
                         {form.formState.errors.phoneNumber.message}
                       </span>
                     )}
@@ -356,13 +356,13 @@ export const TripDetailForm = ({ carlists }: any) => {
               </div>
               <div
                 className={`w-full ${
-                  display ? "hidden" : "flex flex-col  gap-5"
+                  display ? "hidden" : "flex flex-col gap-5"
                 }`}
               >
                 <h4 className="text-center text-white capitilize text-2xl md:text-3xl text-primary font-semibold">
                   car list
                 </h4>
-                <div className="w-full flex  items-center justify-center">
+                <div className="w-full flex items-center justify-center">
                   <FormField
                     control={form.control}
                     name="carType"
@@ -375,15 +375,15 @@ export const TripDetailForm = ({ carlists }: any) => {
                             onValueChange={field.onChange}
                             // onValueChange={(value)=>{setCarListId(value)}}
                             defaultValue={field.value}
-                            className="w-full flex flex-col items-center justify-center space-y-1"
+                            className="w-full flex flex-col lg:flex-row flex-wrap items-center justify-center space-y-1"
                           >
                             {carlists?.results?.map((carList) => {
                               return (
                                 <FormItem
-                                  className={`w-full lg:w-3/4 flex items-center justify-between gap-5 space-x-3 space-y-0 bg-white p-4 rounded-lg shadow-lg relative capitalize ${
+                                  className={`w-full lg:w-1/2 flex items-center justify-between gap-5 space-x-3 space-y-0 bg-white p-4 rounded-lg shadow-lg relative capitalize ${
                                     field.value === `${carList.id}`
-                                      ? " shadow-red-500/50"
-                                      : " shadow-gray-200"
+                                      ? "border-4 border-gray-600 shadow-black"
+                                      : "border border-rose-700 "
                                   }`}
                                   key={carList.id}
                                 >
