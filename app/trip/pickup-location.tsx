@@ -216,7 +216,7 @@ export const TripDetailForm = ({ carlists }: any) => {
           <h1 className="text-xl text-white p-3 w-full bg-rose-700 md:text-3xl mb-10 font-semibold capitalize text-center text-primary">
             Book My Trip
           </h1>
-          <div className="w-full sm:w-4/5 md:w-3/5  xl:w-2/5 h-full mb-24  bg-rose-700 shadow-rose-800 shadow-md rounded-lg my-10 md:p-7 lg:p-8 flex items-center flex-col relative">
+          <div className="w-4/5 sm:w-4/5 md:w-3/5 xl:w-2/5 h-full mb-24 mx-10 bg-rose-700 shadow-rose-800 shadow-md rounded-lg my-10 p-5 md:p-7 lg:p-8 flex items-center flex-col relative">
             <Button
               type="button"
               className={`justify-evenly items-center bg-stone-950 hover:bg-stone-700 capitalize text-sm md:text-md font-semibold absolute top-2 right-2 ${
@@ -250,7 +250,7 @@ export const TripDetailForm = ({ carlists }: any) => {
                       lng="from_lng"
                     />
                     {form.formState.errors.from && (
-                      <div className="text-rose-600 text-start text-sm lg:text-base">
+                      <div className="text-white text-start text-sm lg:text-base">
                         {form.formState.errors.from.message}
                       </div>
                     )}
@@ -270,7 +270,7 @@ export const TripDetailForm = ({ carlists }: any) => {
                       lng="to_lng"
                     />
                     {form.formState.errors.to && (
-                      <div className="text-rose-500 text-start text-sm lg:text-base">
+                      <div className="text-white text-start text-sm lg:text-base">
                         {form.formState.errors.to.message}
                       </div>
                     )}
@@ -288,7 +288,7 @@ export const TripDetailForm = ({ carlists }: any) => {
                     />
 
                     {form.formState.errors.date && (
-                      <div className="text-rose-500 text-start text-sm lg:text-base">
+                      <div className="text-white text-start text-sm lg:text-base">
                         {form.formState.errors.date.message}
                       </div>
                     )}
@@ -336,7 +336,7 @@ export const TripDetailForm = ({ carlists }: any) => {
                               </SelectContent>
                             </Select>
                             {form.formState.errors.tripType && (
-                              <span className="text-rose-500 text-sm lg:text-base">
+                              <span className="text-white text-sm lg:text-base">
                                 {form.formState.errors.tripType.message}
                               </span>
                             )}
@@ -353,7 +353,7 @@ export const TripDetailForm = ({ carlists }: any) => {
                       placeholder="Enter landmark"
                     />
                     {form.formState.errors.landmark && (
-                      <span className="text-rose-500 text-sm lg:text-base">
+                      <span className="text-white text-sm lg:text-base">
                         {form.formState.errors.landmark.message}
                       </span>
                     )}
@@ -371,7 +371,7 @@ export const TripDetailForm = ({ carlists }: any) => {
                       placeholder="Enter phone number"
                     />
                     {form.formState.errors.phoneNumber && (
-                      <span className="text-rose-500 text-sm lg:text-base">
+                      <span className="text-white text-sm lg:text-base">
                         {form.formState.errors.phoneNumber.message}
                       </span>
                     )}
@@ -389,13 +389,13 @@ export const TripDetailForm = ({ carlists }: any) => {
               </div>
               <div
                 className={`w-full ${
-                  display ? "hidden" : "flex flex-col  gap-5"
+                  display ? "hidden" : "flex flex-col gap-5"
                 }`}
               >
                 <h4 className="text-center text-white capitilize text-2xl md:text-3xl text-primary font-semibold">
                   car list
                 </h4>
-                <div className="w-full flex  items-center justify-center">
+                <div className="w-full flex items-center justify-center">
                   <FormField
                     control={form.control}
                     name="carType"
@@ -408,15 +408,15 @@ export const TripDetailForm = ({ carlists }: any) => {
                             onValueChange={field.onChange}
                             // onValueChange={(value)=>{setCarListId(value)}}
                             defaultValue={field.value}
-                            className="w-full flex flex-col items-center justify-center space-y-1"
+                            className="w-full flex flex-col lg:flex-row flex-wrap items-center justify-center space-y-1"
                           >
                             {carlists?.results?.map((carList) => {
                               return (
                                 <FormItem
-                                  className={`w-full lg:w-3/4 flex items-center justify-between gap-5 space-x-3 space-y-0 bg-white p-4 rounded-lg shadow-lg relative capitalize ${
+                                  className={`w-full lg:w-1/2 flex items-center justify-between gap-5 space-x-3 space-y-0 bg-white p-4 rounded-lg shadow-lg relative capitalize ${
                                     field.value === `${carList.id}`
-                                      ? " shadow-red-500/50"
-                                      : " shadow-gray-200"
+                                      ? "border-4 border-gray-600 shadow-black"
+                                      : "border border-rose-700 "
                                   }`}
                                   key={carList.id}
                                 >

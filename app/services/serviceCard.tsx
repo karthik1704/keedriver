@@ -5,22 +5,22 @@ import {img1,img2,img3,img4} from './image';
 const serviceFeature = [
     {
         featureName : 'Trust',
-        featureDescription:'With our fleet of trained, verified and trusted drivers. we make the drive better and safer for you and your family.',
+        featureDescription:'With our team of fully trained, verified, and dependable drivers, we ensure every journey is safer, smoother, and more enjoyable for your family.',
         image:img1
     },
     {
         featureName : 'Secure',
-        featureDescription:'DriveU Secure helps you insure your drives from vehicle damages and personal injuries, while we insure our drivers for all trips.',
+        featureDescription:'KeeDriver Secure safeguards your rides against vehicle damages & personal injuries, while our drivers are insured on all trips, offering peace of mind.',
         image:img2
     },
     {
         featureName : 'Versatile',
-        featureDescription:'Book a driver for daily office commutes, mid-day shopping, night-outs, airport transfers, or weekend getaways with our hourly packages.',
-        image:img3
+        featureDescription:'Book a driver in KeeDriver for office commutes, shopping trips, airport transfers, night-outs, or weekend getaways—our hourly packages cover all your needs and wishes.',
+        image:img3 
     },
     {
         featureName : 'Tracking',
-        featureDescription:'Live track your driver as he reaches the pickup location and share your real-time trip status with family and friends along with your drive.',
+        featureDescription:'Easily track your driver in real-time as they reach your pickup point, and share live trip updates with your family and friends for added assurance.',
         image:img4
     }
 ]
@@ -29,13 +29,14 @@ const ServiceCard = () => {
    <>
    {
     serviceFeature.map((featureIteam,id)=>{
-        return <div className="w-full sm:w-1/2 md:w-2/5 lg:1/4 xl:w-1/5 my-3 md:my-5 flex flex-col items-center justify-center gap-3 p-5" key={id}>
-            <div className='w-3/5 lg:w-4/5 xl:w-3/5 rounded-full'>
-            <Image src={featureIteam.image} alt="" className='object-cover'/>
+        return <div className="w-2/3 sm:w-2/3 md:w-3/5 lg:1/4 xl:w-1/5 max-h-96 mx-5 my-3 md:my-5 flex flex-col border rounded-md shadow-sm shadow-black bg-white items-center justify-center gap-3 p-5" key={id}>
+            <div className='w-2/5 lg:w-4/5 xl:w-3/5 items-center justify-center rounded-full'>
+            <Image src={featureIteam.image} alt="" width={185}
+                height={185} className='object-cover'/>
             </div>
              
-           <div className="font-bold">{featureIteam.featureName}</div>
-            <p className="xl:w-4/5 text-center text-sm text-zinc-600">{featureIteam.featureDescription}</p>
+           <div className="font-bold text-rose-800 text-2xl uppercase ">{featureIteam.featureName}</div>
+            <p className="xl:w-4/5 text-center text-sm text-zinc-700">{featureIteam.featureDescription}</p>
             </div>
     })
 
