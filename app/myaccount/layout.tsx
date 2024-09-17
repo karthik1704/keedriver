@@ -143,7 +143,9 @@ export default async function MyAccountLayout({
             <div className="flex flex-col bg-transparent h-64 w-full sm:w-3/5 lg:w-2/5 gap-2 space-y-4">
               <MyAccountNavBar />
             </div>
+            <div className="w-full">
             {children}
+            </div>
           </div>
         </div>
       </div>
