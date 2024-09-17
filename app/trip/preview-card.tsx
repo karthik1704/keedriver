@@ -19,6 +19,7 @@ import {
     CarFront
 } from "lucide-react";
 import HireUS from "../hire-us/page";
+import SuccessCard from "./success-card";
 import { GET } from "../api/cars/route";
 
 const PreViewCard = ({ personData}) => {
@@ -315,7 +316,7 @@ const PreViewCard = ({ personData}) => {
         </div>
       </section>
       :
-      <HireUS/>
+      <SuccessCard/>
       }
       
     </>
