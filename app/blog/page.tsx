@@ -42,7 +42,7 @@ export default async function Blog() {
   const { results: resPins } = pins;
   console.log(resPins)
   return (
-    <div className="flex flex-col items-start justify-center md:flex-row md:justify-evenly p-5 ">
+    <div className="bg-stone-100 flex flex-col items-start justify-center md:flex-row md:justify-evenly p-5 ">
       <div className="flex flex-col w-full  md:w-1/2 md:gap-0 lg:grid lg:grid-cols-2 lg:gap-6">
         {results.map((bd, index) => {
           return (

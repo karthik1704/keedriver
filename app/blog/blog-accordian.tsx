@@ -3,7 +3,7 @@ import Link from "next/link";
 const BlogAccordian = ({pinsData}) => {
   return <>
   <div className='flex flex-col justify-center gap-6 capitalize w-full'>
-    <h2 className='text-3xl font-bold'>keedriver article</h2>
+    <h2 className='text-3xl text-rose-600 font-bold'>keedriver article</h2>
     <ul className='w-full flex flex-col justify-center items-start text-lg'>
       {
         pinsData.map((pd)=>{
