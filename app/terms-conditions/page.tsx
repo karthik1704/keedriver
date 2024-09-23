@@ -9,9 +9,10 @@ export const metadata:Metadata =  {
 export default function TermsConditions() {
   return (
 
-    <main className="flex mx-auto">
+    <main className="flex flex-col bg-stone-100">
+       <h1 className="text-white bg-rose-700 p-4 text-center text-2xl md:text-3xl font-bold">KeeDriver Terms and Conditions</h1>
       <div className="max-w-4xl mx-auto p-8">
-        <h1 className="text-4xl font-semibold mb-4 text-center">KeeDriver Terms and Conditions</h1>
+       
 
         <section className="mt-8">
           <p className="text-gray-700 mb-3">
