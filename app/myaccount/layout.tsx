@@ -49,7 +49,7 @@ export default async function MyAccountLayout({
     <>
       <div className="w-full bg-rose-700">
         {/* Header Section */}
-        <h1 className="text-white p-4 text-center text-xl md:text-2xl font-bold">
+        <h1 className="text-white p-4 text-center text-2xl md:text-3xl font-bold">
           My Account
         </h1>
       </div>

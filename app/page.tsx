@@ -8,7 +8,7 @@ import img4 from "@/app/services/image/booking_process.jpeg";
 import img5 from "@/app/services/image/driver.jpeg";
 import img6 from "@/app/services/image/happy_customer.jpeg";
 
-const Home = () => {
+const Home = () => {   
   return (
     <>
       <div className="bg-stone-100">
