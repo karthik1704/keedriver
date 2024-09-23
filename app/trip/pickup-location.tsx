@@ -59,6 +59,9 @@ const tripFormSchema = z.object({
     .min(1, "The 'From' field cannot be empty. Please enter a value."),
   to: z.string().min(1, "please fill out the empty field"),
   // date:z.tuple([z.date(),z.string().time()]),
+  date: z.string().min(1, "The 'From' field cannot be empty. Please enter a value.").refine((val) => !isNaN(Date.parse(val)), {
+    message: "Invalid date format. Please provide a valid date.",
+  }),// Validates the date string
   // date:z.string(),
   tripType: z.string().min(1, "please fill out the empty field"),
   landmark: z.string().min(1, "please fill out the empty field"),
@@ -79,7 +82,10 @@ export const TripDetailForm = ({ carlists }: any) => {
   const [login, setLogin] = useState(true);
   const [personData, setPersonData] = useState([]);
   const [isTall, setIsTall] = useState(true);
-  const [carListId, setCarListId] = useState(0);
+
+  const [carListId,setCarListId] = useState(0);
+  const [step, setStep] = useState(1);
+
 
   const dateTimeInputRef = useRef(null);
   const router = useRouter();
@@ -156,26 +162,53 @@ export const TripDetailForm = ({ carlists }: any) => {
       dateTimeInputRef.current.showPicker();
     }
   }
+  // async function handleNext() {
+  //   const inputFieldsOne = await form.trigger(["from", "to","date"]);
+  //   if (inputFieldsOne) {
+  //     const inputFieldsTwo = await form.trigger([
+  //       "tripType",
+  //       "landmark",
+  //       "phoneNumber",
+  //     ]);
+  //     if (!show && inputFieldsTwo) {
+  //       if (!carlists) {
+  //         router.push("/login");
+  //       }
+  //       setDisplay(!display);
+  //       return;
+  //     }
+  //     setShow(!show);
+  //   }
+  // }
   async function handleNext() {
-    const inputFieldsOne = await form.trigger(["from", "to"]);
+  if (step === 1) {
+    const inputFieldsOne = await form.trigger(["from", "to", "date"]);
     if (inputFieldsOne) {
-      const inputFieldsTwo = await form.trigger([
-        "tripType",
-        "landmark",
-        "phoneNumber",
-      ]);
-      if (!show && inputFieldsTwo) {
+      // Move to the next step
+      setStep(2);
+      setShow(!show);
+    }
+  } else if (step === 2) {
+    const inputFieldsTwo = await form.trigger([
+      "tripType",
+      "landmark",
+      "phoneNumber",
+    ]);
+    if (inputFieldsTwo) {
+      if (!show) {
         if (!carlists) {
           router.push("/login");
         }
         setDisplay(!display);
         return;
       }
-      setShow(!show);
     }
   }
+}
+  //  console.log(form.formState.errors.date.message)
   return (
     <>
+
       {display1 ? (
         <Form {...form}>
           <div
@@ -253,6 +286,7 @@ export const TripDetailForm = ({ carlists }: any) => {
                         onFocus={dateTimePicker}
                       />
 
+
                       {form.formState.errors.date && (
                         <div className="text-white text-start text-sm lg:text-base">
                           {form.formState.errors.date.message}
@@ -269,6 +303,18 @@ export const TripDetailForm = ({ carlists }: any) => {
                       </Button>
                     </div>
                   </div>
+
+                  <div className="flex flex-col gap-2">
+                    <Label className="text-xl text-white">date</Label>
+                   
+                    <input
+                      {...form.register("date")}
+                      type="datetime-local"
+                      name="date"
+                      className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                      // ref={dateTimeInputRef}
+                      onFocus={dateTimePicker}
+                    />
 
                   <div
                     className={`w-full flex-col  justify-center gap-5   ${

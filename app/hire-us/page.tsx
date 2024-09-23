@@ -115,43 +115,6 @@ const HireUS = () => {
             </p>
           </div>
 
-          <div className="m-3 py-10 px-5 rounded-md basis-1/4 shadow-md shadow-rose-400 bg-white text-center">
-          <p className="py-5 text-lg sm:text-2xl uppercase font-semibold">Book Your Driver</p>
-            <div className="flex justify-center mb-5">
-              <Image
-                src={img7}
-                alt=""
-                width={75}
-                height={75}
-                className="rounded-full"
-              />
-            </div>
-            
-            <p className="py-5 text-sm sm:text-base font-semibold">
-            Use our app to schedule your ride at your convenience.
-            </p>
-          </div>
-
-          <div className="m-3 py-10 px-5 rounded-md basis-1/4 shadow-md shadow-rose-400 bg-white text-center">
-          <p className="py-5 text-lg sm:text-2xl uppercase font-semibold">Enjoy the Ride</p>
-            <div className="flex justify-center mb-5">
-              <Image
-                src={img8}
-                alt=""
-                width={75}
-                height={75}
-                className="rounded-full"
-              />
-            </div>
-            
-            <p className="py-5 text-sm sm:text-base font-semibold">
-            Sit back and relax as our professional driver takes you where
-            you need to go.
-            </p>
-          </div>
-        </div>
-          </div>
-        </section>
 
         <section className="bg-white flex flex-col md:flex-row p-5 md:p-10 md:gap-20 lg:gap-32 items-center justify-center">
           <div className="w-full sm:w-4/5 md:w-3/5 lg:w-2/5 p-5 md:p-10 lg:p-20 items-center justify-center">
