@@ -8,7 +8,7 @@ import img4 from "@/app/services/image/booking_process.jpeg";
 import img5 from "@/app/services/image/driver.jpeg";
 import img6 from "@/app/services/image/happy_customer.jpeg";
 
-const Home = () => {   
+const Home = () => {
   return (
     <>
       <div className="bg-stone-100">
@@ -124,9 +124,9 @@ const Home = () => {
               individuals and families. Whether you’re commuting to work,
               running errands, or heading out for a casual outing, we offer
               reliable, professional drivers at a price that fits your budget.
-              With a fleet of good vehicles and a team of
-              experienced drivers, you can count on us for
-              a smooth, safe, and hassle-free journey every time.
+              With a fleet of good vehicles and a team of experienced drivers,
+              you can count on us for a smooth, safe, and hassle-free journey
+              every time.
             </p>
             <p className="italic font-bold">
               {" "}
@@ -264,14 +264,43 @@ const Home = () => {
 
         <div className="flex flex-col items-center justify-center text-center py-20">
           <div className="font-bold text-4xl text-rose-600">Testimonial</div>
-          <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 border shadow-md shadow-stone-400 bg-white rounded-lg m-10">
-            <div className="pt-10 md:pt-24 mx-10 font-medium">
-              &quot;I highly recommend KeeDriver! Their drivers are always
-              punctual, picking us up and dropping us off on time. KeeDriver
-              truly values punctuality! We always feel safe and secure with
-              their experienced and professional drivers.&quot;
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-center mx-5 md:mx-11 my-8 mb-24">
+            <div className="w-full border shadow-md shadow-stone-400 bg-white rounded-lg">
+              <div className="pt-10 md:pt-24 mx-8 font-medium">
+                &quot;I highly recommend KeeDriver! Their drivers are always
+                punctual, picking us up and dropping us off on time. KeeDriver
+                truly values punctuality! We always feel safe and secure with
+                their experienced and professional drivers.&quot;
+              </div>
+              <div className="font-semibold p-10 text-xl">— Alex</div>
             </div>
-            <div className="font-semibold p-10 text-xl">— Alex</div>
+            <div className="w-full border shadow-md shadow-stone-400 bg-white rounded-lg">
+              <div className="pt-10 md:pt-24 mx-8 font-medium">
+                &quot;I highly recommend KeeDriver! Their drivers are always
+                punctual, picking us up and dropping us off on time. KeeDriver
+                truly values punctuality! We always feel safe and secure with
+                their experienced and professional drivers.&quot;
+              </div>
+              <div className="font-semibold p-10 text-xl">— Alex</div>
+            </div>
+            <div className="w-full border shadow-md shadow-stone-400 bg-white rounded-lg">
+              <div className="pt-10 md:pt-24 mx-8 font-medium">
+                &quot;I highly recommend KeeDriver! Their drivers are always
+                punctual, picking us up and dropping us off on time. KeeDriver
+                truly values punctuality! We always feel safe and secure with
+                their experienced and professional drivers.&quot;
+              </div>
+              <div className="font-semibold p-10 text-xl">— Alex</div>
+            </div>
+            <div className="w-full border shadow-md shadow-stone-400 bg-white rounded-lg">
+              <div className="pt-10 md:pt-24 mx-8 font-medium">
+                &quot;I highly recommend KeeDriver! Their drivers are always
+                punctual, picking us up and dropping us off on time. KeeDriver
+                truly values punctuality! We always feel safe and secure with
+                their experienced and professional drivers.&quot;
+              </div>
+              <div className="font-semibold p-10 text-xl">— Alex</div>
+            </div>
           </div>
         </div>
       </div>
