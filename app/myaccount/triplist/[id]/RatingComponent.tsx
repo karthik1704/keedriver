@@ -5,9 +5,10 @@ import { Star } from 'lucide-react';
 
 interface RatingComponentProps {
   onClose: () => void;
+  onSubmit: (rating: number, review: string, date: string) => void;
 }
 
-const RatingComponent: React.FC<RatingComponentProps> = ({ onClose }) => {
+const RatingComponent: React.FC<RatingComponentProps> = ({ onClose, onSubmit }) => {
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
   const [review, setReview] = useState('');
@@ -21,8 +22,8 @@ const RatingComponent: React.FC<RatingComponentProps> = ({ onClose }) => {
   };
 
   const handleSubmit = () => {
-    console.log('Rating:', rating);
-    console.log('Review:', review);
+    const date = new Date().toLocaleString(); // Get current date and time
+    onSubmit(rating, review, date); // Pass data to TripDetailCard
     onClose();
   };
 
@@ -38,7 +39,7 @@ const RatingComponent: React.FC<RatingComponentProps> = ({ onClose }) => {
               className={`w-8 h-8 cursor-pointer ${
                 star <= (hoverRating || rating) ? 'text-yellow-500' : 'text-gray-300'
               }`}
-              fill={star <= (hoverRating || rating) ? 'yellow' : 'none'}  // This is where the star fill is set
+              fill={star <= (hoverRating || rating) ? 'yellow' : 'none'}
               onClick={() => handleRatingClick(star)}
               onMouseEnter={() => setHoverRating(star)}
               onMouseLeave={() => setHoverRating(0)}

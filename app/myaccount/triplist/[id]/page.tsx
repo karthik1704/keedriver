@@ -22,9 +22,19 @@ import {
 import React, { useState } from 'react';
 import RatingComponent from './RatingComponent';
 
+interface Review {
+  rating: number;
+  review: string;
+  date: string;
+}
 
 const TripDetailCard = () => {
   const [showRating, setShowRating] = useState(false);
+  const [reviews, setReviews] = useState<Review[]>([]);
+
+  const handleReviewSubmit = (rating: number, review: string, date: string) => {
+    setReviews([...reviews, { rating, review, date }]);
+  };
   return (
     <>
       <div className="w-full flex flex-col items-center rounded-lg bg-rose-700 p-4 relative">
@@ -213,15 +223,42 @@ const TripDetailCard = () => {
         </div>
 
         <button
-        className="bg-white text-rose-600 text-lg font-bold px-4 py-2 rounded-md hover:bg-amber-50 mt-4"
-        onClick={() => setShowRating(true)}
-      >
-        Rate Your Trip
-      </button>
+          className="bg-white text-rose-600 text-lg font-bold px-4 py-2 rounded-md hover:bg-amber-50 mt-4"
+          onClick={() => setShowRating(true)}
+        >
+          Rate Your Trip
+        </button>
 
-      {/* Conditionally show the rating component */}
-      {showRating && <RatingComponent onClose={() => setShowRating(false)} />}
+        {showRating && (
+          <RatingComponent
+            onClose={() => setShowRating(false)}
+            onSubmit={handleReviewSubmit}
+          />
+        )}
+
+        {/* Display the reviews if available */}
+        {reviews.length > 0 && (
+          <div className="w-full mt-6 p-4 bg-white rounded-lg">
+            <h3 className="text-lg font-semibold text-gray-800">Reviews</h3>
+            <ul>
+              {reviews.map((rev, index) => (
+                <li key={index} className="mt-4 border-t border-gray-200 pt-4">
+                  <div className="flex items-center">
+                    <span className="text-yellow-500 font-semibold">
+                      {rev.rating} Stars
+                    </span>
+                    <span className="ml-auto text-gray-500 text-sm">
+                      {rev.date}
+                    </span>
+                  </div>
+                  <p className="text-gray-700 mt-2">{rev.review}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
+
     </>
   );
 };
