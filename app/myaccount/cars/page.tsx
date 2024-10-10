@@ -27,12 +27,12 @@ async function getData() {
 const Cars = async () => {
   const carsLists = await getData();
   return (
-    <div className="w-full flex flex-col items-center justify-center gap-4 relative">
-      <div className="w-full flex justify-end">
+    <div className="w-full flex flex-col items-center justify-end gap-4 relative">
+      <div className="w-full mx-20 flex justify-end">
         <Link href={"/myaccount/cars/new"}>
           <Button
             type="button"
-            className="text-lg font-semibold bg-rose-700 hover:bg-rose-700"
+            className="text-lg font-semibold justify-end bg-rose-700 hover:bg-rose-700"
           >
             <Plus />
             Add Car
@@ -44,7 +44,7 @@ const Cars = async () => {
         return (
           <Link key={i} href={`/myaccount/cars/${carsList.id}`}>
             <div
-              className={`w-full flex items-center justify-around space-x-6 space-y-0 bg-white rounded-lg shadow-lg shadow-stone-400 relative capitalize hover:shadow-lg hover:shadow-gray-500 cursor-pointer`}
+              className={`w-full flex items-center justify-around space-x-6 space-y-0 py-3 bg-white rounded-lg shadow-lg shadow-stone-400 relative capitalize hover:shadow-lg hover:shadow-gray-500 md:mx-20 cursor-pointer`}
             >
               <div>
                 <h4 className="font-bold text-lg md:text-xl text-rose-600 flex gap-2">
