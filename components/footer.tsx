@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <div className="flex flex-col  bg-black text-gray-300 pt-5 h-1/2">
       <div className="flex  justify-between flex-col-reverse flex-wrap md:flex-row md:justify-around ">
-        <div>
+        <div className="flex justify-center">
           <Link href="/">
             <Image src="/images/logo.png" alt="logo" width={200} height={200} />
           </Link>{" "}
