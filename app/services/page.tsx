@@ -25,11 +25,13 @@ const Done = () => {
           </div>
         </div>
 
-        <div className="w-full flex flex-col py-10 items-center justify-center lg:flex-row bg-rose-600 my-4 lg:my-12 lg:items-center lg:justify-center">
-          <ServiceCard />
+        <div className="w-full flex flex-col px-10 py-10 items-center justify-center md:flex-row bg-rose-600 my-4 lg:my-12">
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1 items-center justify-center ">
+            <ServiceCard />
+          </div>
         </div>
 
-        <div className="text-center pb-10">
+        <div className="text-center pb-7">
           <h1 className="text-3xl md:text-4xl lg:text-5xl text-rose-700 pb-5 font-bold uppercase">Temporary Drivers</h1>
           <p className="text-lg md:text-xl text-zinc-800">
             {" "}
@@ -38,17 +40,17 @@ const Done = () => {
           </p>
         </div>
 
-        <div className="w-full lg:w-5/6 xl:w-5/6 p-5 flex flex-col items-center gap-0 md:gap-5">
+        <div className="w-full lg:w-5/6 xl:w-5/6 flex flex-col px-5 items-center gap-0 md:gap-5">
           <TemporaryDriverCard />
           <div className="flex justify-center">
-            <button className="bg-rose-600 text-white font-semibold p-10 py-3 hover:bg-rose-700 hover:shadow-md hover:shadow-rose-600 md:px-12 lg:px-14 xl:px-20 md:py-4 text-lg md:text-2xl rounded-full mt-10">
+            <button className="bg-rose-600 text-white font-bold p-10 py-4 hover:bg-rose-700 hover:shadow-md hover:shadow-rose-600 md:px-12 lg:px-14 xl:px-20 md:py-4 text-2xl md:text-3xl xl:text-5xl rounded-full my-8">
               Book Now
             </button>
           </div>
         </div>
 
 
-        <h1 className="text-3xl w-full text-center justify-items-center text-white bg-rose-600 p-4 font-bold mt-10 uppercase">Reviews</h1>
+        <h1 className="text-3xl w-full text-center justify-items-center text-white bg-rose-600 p-4 font-bold mt-6 uppercase">Reviews</h1>
 
         <div className="w-4/5 sm:w-3/5 md:w-4/5 xl:w-3/5 flex flex-col gap-4 md:flex-row md:gap-4 md:justify-center my-5">
           <ReviewCard />

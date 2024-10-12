@@ -38,14 +38,14 @@ const reviewDetail = [
             return <div className="flex flex-col justify-between rounded-sm bg-rose-700 my-5 md:my-0 w-full lg:h-96 shadow-xl p-5" key={id}>
             <div className='flex flex-col justify-center items-center gap-3'>
         <div className="m-5 align-middle"><Image src={reviewList.image} alt="client-image" width={75} height={75} className="rounded-full"/></div>
-        <p className="text-white capitalize text-center">
+        <p className="text-white xl:text-lg capitalize text-center">
             {
                 reviewList.tripReview
             }
     
         </p>
         </div>
-        <p className="text-white text-left pt-5  before:border-2  before:border-slate-700">{reviewList?.clientName}/ <span className="text-rose-300 font-bold">{reviewList?.tripType}</span></p>
+        <p className="text-white text-left pt-5  before:border-2 before:border-slate-700"><span className='text-transparent'>.</span> {reviewList?.clientName} / <span className="text-rose-300 italic font-semibold">{reviewList?.tripType}</span></p>
     </div>
         })
     }
