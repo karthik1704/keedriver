@@ -9,7 +9,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function dateFormatter(dateStr:string){
+export function dateFormatter(dateStr:Date){
   const formattesDate = dayjs(dateStr).format('DD/MM/YYYY')
   return formattesDate
 
