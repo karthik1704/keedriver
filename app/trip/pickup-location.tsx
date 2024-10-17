@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
+import { CalendarIcon, Clock, Plus } from "lucide-react";
 import {
   Select,
   SelectGroup,
@@ -24,6 +24,12 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { Calendar } from "@/components/ui/calendar";
+import DatePicker from "react-multi-date-picker";
+import TimePicker from "react-multi-date-picker/plugins/time_picker";
+import { format } from "date-fns";
+import { dateFormatter } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { assert } from "console";
@@ -59,9 +65,12 @@ const tripFormSchema = z.object({
     .min(1, "The 'From' field cannot be empty. Please enter a value."),
   to: z.string().min(1, "please fill out the empty field"),
   // date:z.tuple([z.date(),z.string().time()]),
-  date: z.string().min(1, "The 'From' field cannot be empty. Please enter a value.").refine((val) => !isNaN(Date.parse(val)), {
-    message: "Invalid date format. Please provide a valid date.",
-  }),// Validates the date string
+  date:z.date({
+    required_error: "Please select at least one date.",
+  }),
+  // time:z.string().regex(/^(0[1-9]|1[0-2]):([0-5][0-9]) (AM|PM)$/, {
+  //   message: "Invalid time format. Please select a valid time (e.g., 10:30 AM).",
+  // }),
   // date:z.string(),
   tripType: z.string().min(1, "please fill out the empty field"),
   landmark: z.string().min(1, "please fill out the empty field"),
@@ -85,6 +94,7 @@ export const TripDetailForm = ({ carlists }: any) => {
 
   const [carListId,setCarListId] = useState(0);
   const [step, setStep] = useState(1);
+  const [dateTime,setDateTime] = useState(null);
 
 
   const dateTimeInputRef = useRef(null);
@@ -119,11 +129,13 @@ export const TripDetailForm = ({ carlists }: any) => {
       }
       const users = JSON.parse(value);
 
+      const restoreDate = dateFormatter(users.date);
+
       // console.log(users,users.carType,"hello")
 
       form.setValue("from", users.from);
       form.setValue("to", users.to);
-      form.setValue("date", users.date);
+      form.setValue("date", restoreDate);
       form.setValue("tripType", users.tripType);
       form.setValue("landmark", users.landmark);
       form.setValue("phoneNumber", users.phoneNumber);
@@ -205,10 +217,17 @@ export const TripDetailForm = ({ carlists }: any) => {
     }
   }
 }
+
+function handleTimePicker(newDateTime){
+  setDateTime(newDateTime)
+
+}
   //  console.log(form.formState.errors.date.message)
   return (
     <>
 
+
+         
       {display1 ? (
         <Form {...form}>
           <div
@@ -302,10 +321,11 @@ export const TripDetailForm = ({ carlists }: any) => {
                         next
                       </Button>
                     </div>
+
                   </div>
 
                   <div className="flex flex-col gap-2">
-                    <Label className="text-xl text-white">date</Label>
+                    {/* <Label className="text-xl text-white">date</Label>
                    
                     <input
                       {...form.register("date")}
@@ -314,7 +334,92 @@ export const TripDetailForm = ({ carlists }: any) => {
                       className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                       // ref={dateTimeInputRef}
                       onFocus={dateTimePicker}
+                    /> */}
+                   <FormField
+          control={form.control}
+          name="date"
+          render={({ field }) => (
+            <FormItem className="flex flex-col">
+              <FormLabel className="text-white text-xl">Date</FormLabel>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <FormControl>
+                    <Button
+                      variant={"outline"}
+                      className={cn(
+                        "w-full pl-3 text-left font-normal",
+                        !field.value && "text-muted-foreground"
+                      )}
+                    >
+                      {field.value ? (
+                        dateFormatter(field.value)
+                      ) : (
+                        <span>DD/MM/YYYY</span>
+                      )}
+                      <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                    </Button>
+                  </FormControl>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0" align="start">
+                  <Calendar
+                    mode="single"
+                    selected={field.value}
+                    onSelect={field.onChange}
+                    // disabled={(date) =>
+                    //   date > new Date() || date < new Date("1900-01-01")
+                    // }
+                    // initialFocus
+                  />
+                </PopoverContent>
+              </Popover>
+            </FormItem>
+          )}
+        />
+                   
+
+
+                    {form.formState.errors.date && (
+                      <div className="text-white text-start text-sm lg:text-base">
+                        {form.formState.errors.date.message}
+                      </div>
+                    )}
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <Label className="text-xl text-white">Time</Label>
+                    <div className="w-full relative">
+                    <DatePicker
+                    name="time"
+                    // className="flex h-10 w-full rounded-md border border-input px-3 py-2 text-sm placeholder:text-muted-foreground"
+                    containerClassName="w-full"
+                    inputClass="flex h-10 w-full rounded-md border border-input px-3 py-2 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                    disableDayPicker
+                    value={dateTime}
+                    onChange={handleTimePicker}
+                    format="hh:mm A"
+                    plugins={[<TimePicker position="bottom" className="cursor-pointer w-full"/>]}
+                    placeholder="hh:mm:ss"
+            
                     />
+                     <div className="absolute inset-y-0 right-5 flex items-center pl-3 pointer-events-none">
+                  <Clock className="w-4 h-4 text-gray-500" />
+                    </div>
+
+                    </div>
+                    
+                    {form.formState.errors.time && (
+                      <div className="text-white text-start text-sm lg:text-base">
+                        {form.formState.errors.time.message}
+                      </div>
+                    )}
+                  </div>
+                  <div className="flex items-center justify-end">
+                    <Button
+                      type="button"
+                      className="w-full flex bg-stone-950 hover:bg-stone-700 items-center capitalize"
+                      onClick={handleNext}
+                    >
+                      next
+                    </Button>
 
                   <div
                     className={`w-full flex-col  justify-center gap-5   ${
@@ -401,6 +506,7 @@ export const TripDetailForm = ({ carlists }: any) => {
                         next
                       </Button>
                     </div>
+
                   </div>
                 </div>
                 <div
