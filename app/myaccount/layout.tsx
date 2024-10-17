@@ -97,7 +97,7 @@ export default async function MyAccountLayout({
           </div>
         </div> */}
 
-        <div className="mx-12 bg-white flex flex-col md:flex-row justify-center shadow-md shadow-stone-400 rounded-md mb-14 overflow-hidden">
+        <div className="mx-3 sm:mx-8 md:mx-12 bg-white flex flex-col md:flex-row justify-center shadow-md shadow-stone-400 rounded-md mb-14 overflow-hidden">
           <div className="w-full before:h-20 lg:before:h-28 before:bg-gradient-to-r from-rose-950 via-rose-700 to-rose-500 flex flex-col">
             <div className="flex flex-col sm:flex-row items-center sm:justify-between sm:px-5">
               <div className="flex flex-col items-center justify-center gap-2 relative bottom-6 lg:bottom-12">
@@ -150,7 +150,7 @@ export default async function MyAccountLayout({
           </div>
         </div>
 
-        <div className="mx-12 mb-10 flex items-center justify-center">
+        <div className="mx-3 sm:mx-8 md:mx-12 mb-10 flex items-center justify-center">
           <div className="flex flex-col w-full md:flex-row gap-5 lg:divide-gray-300 lg:divide-x-2">
             <div className="flex flex-col bg-transparent h-64 w-full sm:w-full md:w-1/3 lg:w-1/5 xl:w-1/5 gap-2 space-y-4">
               <MyAccountNavBar />

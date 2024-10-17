@@ -31,15 +31,15 @@ const temporaryDriverDetail = [
       {
         temporaryDriverDetail?.map((temIteam,id)=>{
             return <div className={`w-full flex  flex-col-reverse items-center justify-center ${ id%2===0 ?'md:flex-row-reverse':'md:flex-row' } md:justify-evenly md:items-center my-4 md:mx-5 gap-3 md:gap-7 `} key={id}>
-            <div className="w-full md:w-1/2 lg:w-1/2 flex flex-col  p-10 md:justify-start items-start">
+            <div className="w-full md:w-1/2 lg:w-1/2 flex flex-col p-5 lg:p-7 xl:p-10 md:justify-start items-start">
               <h4 className="font-bold text-xl md:text-2xl lg:text-3xl m-0">{temIteam?.title}</h4>
-              <p className="text-zinc-600 text-left my-5">
+              <p className="text-justify text-base xl:text-xl text-zinc-600 my-5">
                 {
                     temIteam?.description
                 }
               </p>
             </div>
-            <div className="w-full lg:w-1/2">
+            <div className="w-full md:w-1/2 lg:w-1/2">
               <Image src={temIteam?.image} alt=""/>
             </div>
           </div>

@@ -56,8 +56,8 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row md:flex-wrap md:gap-4 md:justify-center my-20 mx-auto">
-          <div className="m-3 py-10 px-5 rounded-md basis-1/4 shadow-xl shadow-stone-400 bg-red-400 text-center">
+        <div className="flex flex-col md:flex-row md:flex-wrap lg:gap-4 md:justify-around my-20 mx-3 sm:mx-20 md:mx-2">
+          <div className="m-2 py-2 sm:py-5 xl:py-8 px-5 rounded-md basis-1/4 shadow-xl shadow-stone-400 bg-red-400 text-center">
             <div className="flex justify-center mb-5">
               <Image
                 src={img1}
@@ -67,14 +67,14 @@ const Home = () => {
                 className="rounded-full"
               />
             </div>
-            <p className="py-5 text-2xl font-semibold">SELECT YOUR TRIP</p>
-            <p className="py-5 text-white text-5xl font-bold">1</p>
-            <p className="py-5 font-semibold">
-              Select your trip by entering location in Pickup & Drop Menu
+            <p className="py-2 lg:py-5 text-xl lg:text-2xl font-semibold">SELECT A TRIP</p>
+            <p className="lg:py-2 text-white text-3xl lg:text-5xl font-bold">1</p>
+            <p className="py-2 lg:py-5 text-md lg:text-base font-semibold">
+              Select your Pickup & Drop location Menu
             </p>
           </div>
 
-          <div className="m-3 py-10 px-5 rounded-md basis-1/4 shadow-xl shadow-stone-400 bg-amber-400 text-center">
+          <div className="m-2 py-2 sm:py-5 xl:py-8 px-5 rounded-md basis-1/4 shadow-xl shadow-stone-400 bg-amber-400 text-center">
             <div className="flex justify-center mb-5">
               <Image
                 src={img2}
@@ -84,14 +84,14 @@ const Home = () => {
                 className="rounded-full"
               />
             </div>
-            <p className="py-5 text-2xl font-semibold">BOOK A DRIVER</p>
-            <p className="py-5 text-white text-5xl font-bold">2</p>
-            <p className="py-5 font-semibold">
+            <p className="py-2 lg:py-5 text-xl lg:text-2xl font-semibold">BOOK A DRIVER</p>
+            <p className="lg:py-2 text-white text-3xl lg:text-5xl font-bold">2</p>
+            <p className="py-2 lg:py-5 text-md lg:text-base font-semibold">
               Enter the Date and Time for Booking.
             </p>
           </div>
 
-          <div className="m-3 py-10 px-5 rounded-md basis-1/4 shadow-xl shadow-stone-400 bg-green-500 text-center">
+          <div className="m-2 py-2 sm:py-5 xl:py-8 px-5 rounded-md basis-1/4 shadow-xl shadow-stone-400 bg-green-500 text-center">
             <div className="flex justify-center mb-5">
               <Image
                 src={img3}
@@ -101,21 +101,21 @@ const Home = () => {
                 className="rounded-full"
               />
             </div>
-            <p className="py-5 text-2xl font-semibold">ALL SET TO GO</p>
-            <p className="py-5 text-white text-5xl font-bold">3</p>
-            <p className="py-5 font-semibold">
-              That's it. Our Driver will call you in 10 minutes before the TRIP
+            <p className="py-2 lg:py-5 text-xl lg:text-2xl font-semibold">ALL SET TO GO</p>
+            <p className="lg:py-2 text-white text-3xl lg:text-5xl font-bold">3</p>
+            <p className="py-2 lg:py-5 text-md lg:text-base font-semibold">
+              Our Driver will call you in 10 minutes before the TRIP
             </p>
           </div>
         </div>
 
-        <h1 className="text-center text-4xl text-rose-600 font-bold pt-5">
+        <h1 className="text-center text-4xl my-2 text-rose-600 font-bold">
           OUR TARIFF
         </h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-center mx-5 md:mx-11 my-8 mb-24">
-          <div className=" m-5 p-5">
-            <h1 className="p-3 text-rose-600 text-xl font-semibold">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-center mx-2 md:mx-4 mb-10">
+          <div className=" m-5">
+            <h1 className="p-2 text-rose-600 text-xl font-semibold">
               Normal Tariff
             </h1>
             <p>
@@ -134,8 +134,8 @@ const Home = () => {
               rates, Real-time tracking, Easy booking process.
             </p>
           </div>
-          <div className="m-5 p-5">
-            <h1 className="p-3 text-rose-600 text-xl font-semibold">
+          <div className="m-5">
+            <h1 className="p-2 text-rose-600 text-xl font-semibold">
               Normal Tariff
               <br />
               (Hi-Luxury cars)
@@ -155,8 +155,8 @@ const Home = () => {
               Guaranteed punctuality.
             </p>
           </div>
-          <div className="m-5 p-5">
-            <h1 className="p-3 text-rose-600 text-xl font-semibold">
+          <div className="m-5">
+            <h1 className="p-2 text-rose-600 text-xl font-semibold">
               Outstation Tariff
             </h1>
             <p>
@@ -174,11 +174,9 @@ const Home = () => {
               comfortable vehicles, Flexible stops along the way.
             </p>
           </div>
-          <div className=" m-5 p-5">
-            <h1 className="p-3 text-rose-600 text-xl font-semibold">
-              Outstation Drop Only
-              <br />
-              (Calculated Per KM)
+          <div className=" m-5">
+            <h1 className="p-2 text-rose-600 text-xl font-semibold">
+              Outstation Drop Only (Calculated Per KM)
             </h1>
             <p>
               This service is perfect for those who need a one-way drop to a
@@ -198,7 +196,7 @@ const Home = () => {
           </div>
         </div>
 
-        <h1 className="text-center py-5 pt-10 text-rose-600 text-3xl md:text-4xl font-bold">
+        <h1 className="text-center py-2 text-rose-600 text-3xl md:text-4xl font-bold">
           Why Choose KeeDriver
         </h1>
 
@@ -216,7 +214,7 @@ const Home = () => {
             <h3 className="font-semibold text-center mb-5 text-rose-500 text-2xl">
               Convenient Booking Process
             </h3>
-            <p className="text-white text-center md:text-justify text-lg">
+            <p className="text-white text-center lg:text-justify text-lg">
               With over 1,000 successful bookings, our user-friendly platform
               makes it easy to book your ride anytime, anywhere. Your
               convenience is our commitment.
@@ -235,7 +233,7 @@ const Home = () => {
             <h3 className="font-semibold text-center mb-5 text-rose-500 text-2xl">
               Experienced and Trusted Drivers
             </h3>
-            <p className="text-white text-center md:text-justify text-lg">
+            <p className="text-white text-center lg:text-justify text-lg">
               Our drivers are highly experienced and background-verified to
               provide you with the safest and smoothest rides. Your security and
               satisfaction are our top priorities.
@@ -254,7 +252,7 @@ const Home = () => {
             <h3 className="font-semibold text-center mb-5 text-rose-500 text-2xl">
               Thousands of Happy Customers
             </h3>
-            <p className="text-white text-center md:text-justify text-lg">
+            <p className="text-white text-center lg:text-justify text-lg">
               Join our community of over 2,000 satisfied customers who trust
               KeeDriver for their travel needs. We are dedicated to providing
               exceptional service, making every trip memorable.
@@ -262,7 +260,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-center text-center py-20">
+        <div className="flex flex-col items-center justify-center text-center pt-20">
           <div className="font-bold text-4xl text-rose-600">Testimonial</div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-center mx-5 md:mx-11 my-8 mb-24">
             <div className="w-full border shadow-md shadow-stone-400 bg-white rounded-lg">
