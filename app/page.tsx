@@ -109,38 +109,92 @@ const Home = () => {
           </div>
         </div>
 
-        <h1 className="text-center text-4xl text-rose-600 font-bold py-5">
+        <h1 className="text-center text-4xl text-rose-600 font-bold pt-5">
           OUR TARIFF
         </h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-center mx-5 md:mx-11 my-16 mb-24">
-          <div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-center mx-5 md:mx-11 my-8 mb-24">
+          <div className=" m-5 p-5">
             <h1 className="p-3 text-rose-600 text-xl font-semibold">
               Normal Tariff
             </h1>
-            <p>Read more</p>
+            <p>
+              Here’s an improved version with added detail: Our standard tariff
+              is tailored to meet the everyday transportation needs of both
+              individuals and families. Whether you’re commuting to work,
+              running errands, or heading out for a casual outing, we offer
+              reliable, professional drivers at a price that fits your budget.
+              With a fleet of good vehicles and a team of experienced drivers,
+              you can count on us for a smooth, safe, and hassle-free journey
+              every time.
+            </p>
+            <p className="italic font-bold">
+              {" "}
+              24/7 availability, Background-verified drivers, Affordable city
+              rates, Real-time tracking, Easy booking process.
+            </p>
           </div>
-          <div>
+          <div className="m-5 p-5">
             <h1 className="p-3 text-rose-600 text-xl font-semibold">
               Normal Tariff
               <br />
               (Hi-Luxury cars)
             </h1>
-            <p>Read more</p>
+            <p>
+              For those who prefer to travel in style, our luxury car service is
+              the perfect choice. This premium offering allows you to ride in
+              high-end vehicles such as BMWs, Audis, and Mercedes-Benz,
+              accompanied by highly trained drivers who prioritize your comfort
+              and privacy. Ideal for business trips, special occasions, or when
+              you simply want to enjoy a luxurious experience on the road.
+            </p>
+            <p className="italic font-bold">
+              {" "}
+              Premium luxury vehicles, Professional chauffeur service, Enhanced
+              comfort and privacy, Ideal for business or special events,
+              Guaranteed punctuality.
+            </p>
           </div>
-          <div>
+          <div className="m-5 p-5">
             <h1 className="p-3 text-rose-600 text-xl font-semibold">
               Outstation Tariff
             </h1>
-            <p>Read more</p>
+            <p>
+              Heading out of town? Our outstation service is designed to make
+              long-distance travel stress-free. Whether you're going for a
+              family vacation, a business trip, or a weekend getaway, we offer
+              well-planned routes and expert drivers who are familiar with
+              outstation journeys. Enjoy the freedom to travel without worrying
+              about fuel, tolls, or navigation—we take care of everything.
+            </p>
+            <p className="italic font-bold">
+              {" "}
+              Transparent pricing for long trips, Experienced drivers for
+              outstation travel, One-way or round-trip options, Safe,
+              comfortable vehicles, Flexible stops along the way.
+            </p>
           </div>
-          <div>
+          <div className=" m-5 p-5">
             <h1 className="p-3 text-rose-600 text-xl font-semibold">
               Outstation Drop Only
               <br />
               (Calculated Per KM)
             </h1>
-            <p>Read more</p>
+            <p>
+              This service is perfect for those who need a one-way drop to a
+              destination outside the city. Whether you're visiting relatives,
+              traveling for work, or need a transfer to another city, you only
+              pay for the kilometers you travel, ensuring a cost-effective
+              solution for your one-way travel needs. Enjoy a comfortable,
+              timely, and safe journey, while our professional drivers handle
+              the road.
+            </p>
+            <p className="italic font-bold">
+              {" "}
+              Pay-per-kilometer pricing, Ideal for one-way outstation trips,
+              Reliable and timely service, Vehicle options for comfort, Easy,
+              cost-effective booking.
+            </p>
           </div>
         </div>
 
@@ -210,14 +264,43 @@ const Home = () => {
 
         <div className="flex flex-col items-center justify-center text-center py-20">
           <div className="font-bold text-4xl text-rose-600">Testimonial</div>
-          <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 border shadow-md shadow-stone-400 bg-white rounded-lg m-10">
-            <div className="pt-10 md:pt-24 mx-10 font-medium">
-              &quot;I highly recommend KeeDriver! Their drivers are always
-              punctual, picking us up and dropping us off on time. KeeDriver
-              truly values punctuality! We always feel safe and secure with
-              their experienced and professional drivers.&quot;
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-center mx-5 md:mx-11 my-8 mb-24">
+            <div className="w-full border shadow-md shadow-stone-400 bg-white rounded-lg">
+              <div className="pt-10 md:pt-24 mx-8 font-medium">
+                &quot;I highly recommend KeeDriver! Their drivers are always
+                punctual, picking us up and dropping us off on time. KeeDriver
+                truly values punctuality! We always feel safe and secure with
+                their experienced and professional drivers.&quot;
+              </div>
+              <div className="font-semibold p-10 text-xl">— Alex</div>
             </div>
-            <div className="font-semibold p-10 text-xl">— Alex</div>
+            <div className="w-full border shadow-md shadow-stone-400 bg-white rounded-lg">
+              <div className="pt-10 md:pt-24 mx-8 font-medium">
+                &quot;I highly recommend KeeDriver! Their drivers are always
+                punctual, picking us up and dropping us off on time. KeeDriver
+                truly values punctuality! We always feel safe and secure with
+                their experienced and professional drivers.&quot;
+              </div>
+              <div className="font-semibold p-10 text-xl">— Alex</div>
+            </div>
+            <div className="w-full border shadow-md shadow-stone-400 bg-white rounded-lg">
+              <div className="pt-10 md:pt-24 mx-8 font-medium">
+                &quot;I highly recommend KeeDriver! Their drivers are always
+                punctual, picking us up and dropping us off on time. KeeDriver
+                truly values punctuality! We always feel safe and secure with
+                their experienced and professional drivers.&quot;
+              </div>
+              <div className="font-semibold p-10 text-xl">— Alex</div>
+            </div>
+            <div className="w-full border shadow-md shadow-stone-400 bg-white rounded-lg">
+              <div className="pt-10 md:pt-24 mx-8 font-medium">
+                &quot;I highly recommend KeeDriver! Their drivers are always
+                punctual, picking us up and dropping us off on time. KeeDriver
+                truly values punctuality! We always feel safe and secure with
+                their experienced and professional drivers.&quot;
+              </div>
+              <div className="font-semibold p-10 text-xl">— Alex</div>
+            </div>
           </div>
         </div>
       </div>

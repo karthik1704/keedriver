@@ -38,10 +38,10 @@ const ProfileForm = ({ user }: { user: any }) => {
   };
 
   return (
-    <div className="w-full h-full bg-white flex flex-col justify-center shadow-md rounded-md shadow-stone-400 p-5 px-5 overflow-hidden">
+    <div className="w-full h-full bg-white flex flex-col justify-center shadow-md rounded-md shadow-stone-400 p-5 sm:px-5 md:px-0 lg:px-5 overflow-visible">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className=" flex flex-col space-y-4 w-full px-5 pr-10 sm:mx-5 md:mx-5"
+        className=" flex flex-col space-y-4 w-full sm:px-10 lg:px-20"
       >
         <div className="flex flex-col sm:flex-row sm:space-x-4">
           <label className="w-full md:w-full">
