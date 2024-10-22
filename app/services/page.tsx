@@ -25,8 +25,8 @@ const Done = () => {
           </div>
         </div>
 
-        <div className="w-full flex flex-col px-10 py-10 items-center justify-center md:flex-row bg-rose-600 my-4 lg:my-12">
-          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1 items-center justify-center ">
+        <div className="w-full flex py-10 items-center justify-center bg-rose-600 my-4 lg:my-12">
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-center justify-center justify-items-center ">
             <ServiceCard />
           </div>
         </div>

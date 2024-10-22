@@ -29,7 +29,7 @@ const ServiceCard = () => {
    <>
    {
     serviceFeature.map((featureIteam,id)=>{
-        return <div className="w-4/5 max-h-fit mx-10 my-3 md:my-5 flex flex-col border rounded-md shadow-sm shadow-black bg-white items-center justify-center p-5 m-2 py-2 sm:py-5 xl:py-8 text-center" key={id}>
+        return <div className="w-4/5 max-h-fit my-3 md:my-5 flex flex-col border rounded-md shadow-sm shadow-black bg-white items-center justify-center p-5 m-2 py-2 sm:py-5 xl:py-8 text-center" key={id}>
             <div className='w-2/5 lg:w-4/5 xl:w-3/5 items-center justify-center rounded-full'>
             <Image src={featureIteam.image} alt="" width={185}
                 height={185} className='object-cover'/>
