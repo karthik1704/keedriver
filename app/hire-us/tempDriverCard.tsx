@@ -46,10 +46,10 @@ const TempDriverCard = () => {
           <div
             className={`w-full flex flex-col-reverse items-center justify-center ${
               id % 2 === 0 ? "lg:flex-row-reverse" : "lg:flex-row"
-            } lg:justify-evenly lg:items-center my-4 lg:mx-5 gap-3 lg:gap-7 p-10 `}
+            } lg:justify-evenly lg:items-center lg:mx-5 gap-3 xl:gap-7 p-6 xl:p-10 `}
             key={id}
           >
-            <div className="w-full lg:w-2/3 flex flex-col md:justify-start items-start md:mr-5">
+            <div className="w-full lg:w-4/5 xl:w-2/3 flex flex-col md:justify-start items-start md:mr-5">
               <h4 className="font-bold text-xl md:text-2xl lg:text-3xl m-0">
                 {temItem?.title}
               </h4>
