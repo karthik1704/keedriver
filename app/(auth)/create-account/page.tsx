@@ -1,5 +1,6 @@
 import Image from 'next/image'
-import type { Metadata } from 'next'
+import type { Metadata } from 'next';
+import CreateUserAccount from './create-user-account';
 
 export const metadata:Metadata =  {
     title: 'Create Account | Keedriver',
@@ -8,8 +9,8 @@ export const metadata:Metadata =  {
   
 export default function CreateAccount() {
   return (
-    <main className="flex mx-auto">
-      Hello Create Account
+    <main className="w-full mx-auto">
+      <CreateUserAccount/>
     </main>
   )
 }
