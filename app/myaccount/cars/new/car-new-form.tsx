@@ -25,6 +25,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { buttonVariants } from "@/components/ui/button";
+import { error } from "console";
 
 const CarNewForm = ({
   carType,
@@ -66,7 +67,7 @@ const CarNewForm = ({
           </label>
         </div> */}
 
-          <div className="flex flex-col md:flex-row md:space-x-4">
+          <div className="flex flex-col md:space-x-4">
             <label className="w-full md:w-full">
               <span className="block mb-1 text-md  text-gray-700 text-sm font-semibold">
                 Maker
@@ -74,12 +75,15 @@ const CarNewForm = ({
               <Input
                 className="text-sm w-full border border-gray-600 rounded-md px-4 py-2 text-gray-700"
                 placeholder="Enter maker name"
-                {...form.register("company_name")}
+                {...form.register("company_name",{
+                  required:"Maker name is required."
+                })}
               />
             </label>
+            {form.formState.errors.company_name && <p className="text-sm text-red-600 mt-1">{form.formState.errors.company_name.message}</p>}
           </div>
 
-          <div className="flex flex-col md:flex-row md:space-x-4">
+          <div className="flex flex-col md:space-x-4">
             <label className="w-full md:w-full">
               <span className="block mb-1 text-md  text-gray-700 text-sm font-semibold">
                 Model Name
@@ -87,12 +91,16 @@ const CarNewForm = ({
               <Input
                 className="text-sm w-full border border-gray-600 rounded-md px-4 py-2 text-gray-700"
                 placeholder="Enter model name"
-                {...form.register("model")}
+                {...form.register("model",{
+                  required:"Model name is required"
+                })}
               />
             </label>
+            {form.formState.errors.model && <p className="text-sm text-red-600 mt-1">{form.formState.errors.model.message}</p>}
+
           </div>
 
-          <div className="flex flex-col md:flex-row md:space-x-4">
+          <div className="flex flex-col md:space-x-4">
             <label className="w-full md:w-full">
               <span className="block mb-1 text-md  text-gray-700 text-sm font-semibold">
                 Registration Number
@@ -100,63 +108,75 @@ const CarNewForm = ({
               <Input
                 className="text-sm w-full border border-gray-600 rounded-md px-4 py-2  text-gray-700"
                 placeholder="Enter registration number"
-                {...form.register("registration_number")}
+                {...form.register("registration_number",{
+                  required:"Registration number is required"
+                })}
               />{" "}
             </label>
+            {form.formState.errors.registration_number && <p className="text-sm text-red-600 mt-1">{form.formState.errors.registration_number.message}</p>}
+
           </div>
 
-          <div className="block ">
-            <label className="w-full md:w-full">
-              <span className="block mb-1 text-md text-gray-700 text-sm font-semibold">
-                Transmission Type
-              </span>
-            </label>
-            <div className="text-sm w-full border border-gray-600 rounded-md text-gray-700">
-              <FormField
-                control={form.control}
-                name="transmission_type"
-                render={({ field }) => (
-                  <FormItem>
-                    {/* <FormLabel>Engine Model</FormLabel> */}
-                    <Select
-                      onValueChange={field.onChange}
-                      defaultValue={field.value}
-                    >
-                      <FormControl>
-                        <SelectTrigger>
-                          <SelectValue
-                            className="text-sm text-gray-700"
-                            placeholder="Select a Transmission Type"
-                          />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        <SelectItem
-                          className="text-sm text-gray-700"
-                          value="AUTO"
-                        >
-                          Auto
-                        </SelectItem>
-                        <SelectItem
-                          className="text-sm text-gray-700"
-                          value="MANUAL"
-                        >
-                          Mannual
-                        </SelectItem>
-                      </SelectContent>
-                    </Select>
+          <div className="flex flex-col md:space-x-4">
+          <div className="w-full md:w-full">
+  <label className="w-full md:w-full">
+    <span className="block mb-1 text-md text-gray-700 text-sm font-semibold">
+      Transmission Type
+    </span>
+  </label>
+  <div className="text-sm w-full border border-gray-600 rounded-md text-gray-700 ">
+    <FormField
+      control={form.control}
+      name="transmission_type"
+      {...form.register("transmission_type", {
+        required: "Please choose a valid option from the transmission type",
+      })}
+      render={({ field }) => (
+        <FormItem>
+          <Select onValueChange={field.onChange} defaultValue={field.value}>
+            <FormControl>
+              <SelectTrigger>
+                <SelectValue
+                  className="text-sm text-gray-700 w-full"
+                  placeholder="Select a Transmission Type"
+                />
+              </SelectTrigger>
+            </FormControl>
+            <SelectContent>
+              <SelectItem
+                className="text-sm text-gray-700"
+                value="AUTO"
+              >
+                Auto
+              </SelectItem>
+              <SelectItem
+                className="text-sm text-gray-700"
+                value="MANUAL"
+              >
+                Manual
+              </SelectItem>
+            </SelectContent>
+          </Select>
+        </FormItem>
+      )}
+    />
+  </div>
+  </div>
+  {/* Error message */}
+  {form.formState.errors.transmission_type && (
+    <p className="text-sm text-red-600 mt-1">
+      {form.formState.errors.transmission_type.message}
+    </p>
+  )}
+</div>
 
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-          </div>
-
-          <div className="block">
+<div className="flex flex-col md:space-x-4">
             <FormField
               control={form.control}
               name="engine_model"
+              {...form.register("engine_model", {
+                required: "Please choose a valid option from the engine model",
+              })}
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-md text-gray-700 text-sm font-semibold">
@@ -189,14 +209,23 @@ const CarNewForm = ({
                       </SelectContent>
                     </Select>
                   </div>
-
-                  <FormMessage />
                 </FormItem>
               )}
             />
-          </div>
+            {form.formState.errors.engine_model && (
+    <p className="text-sm text-red-600 mt-1">
+      {form.formState.errors.engine_model.message}
+    </p>
+  )}
+ </div>
 
-          <div className="block ">
+
+
+
+
+
+          <div className="flex flex-col md:space-x-4">
+            <div>
             <label className="w-full md:w-full">
               <span className="block mb-1 text-md text-gray-700 text-sm font-semibold">
                 Gas Type
@@ -207,6 +236,9 @@ const CarNewForm = ({
               <FormField
                 control={form.control}
                 name="gas_type"
+                {...form.register("gas_type", {
+                  required: "Please choose a valid option from the gas type",
+                })}
                 render={({ field }) => (
                   <FormItem>
                     {/* <FormLabel>Engine Model</FormLabel> */}
@@ -243,18 +275,25 @@ const CarNewForm = ({
                         </SelectItem>
                       </SelectContent>
                     </Select>
-
-                    <FormMessage />
                   </FormItem>
                 )}
               />
             </div>
+            </div>
+            {form.formState.errors.gas_type && (
+          <p className="text-sm text-red-600 mt-1">
+            {form.formState.errors.gas_type.message}
+          </p>
+        )}
           </div>
 
-          <div className="block">
+          <div className="flex flex-col md:space-x-4">
             <FormField
               control={form.control}
               name="type"
+              {...form.register("type", {
+                required: "Please choose a valid option from the car type",
+              })}
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-md text-gray-700 text-sm font-semibold">
@@ -287,10 +326,14 @@ const CarNewForm = ({
                       </SelectContent>
                     </Select>
                   </div>
-                  <FormMessage />
                 </FormItem>
               )}
             />
+            {form.formState.errors.type && (
+          <p className="text-sm text-red-600 mt-1">
+            {form.formState.errors.type.message}
+          </p>
+        )}
           </div>
 
           {/* <div className="flex flex-col md:flex-row md:space-x-4 p-3 ">

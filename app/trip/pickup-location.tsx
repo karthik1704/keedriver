@@ -295,7 +295,7 @@ function handleTimePicker(newDateTime){
                         </div>
                       )}
                     </div>
-                    <div className="flex flex-col gap-2">
+                    {/* <div className="flex flex-col gap-2">
                       <Label className="text-xl text-white">date</Label>
                       <input
                         {...form.register("date", {})}
@@ -311,8 +311,8 @@ function handleTimePicker(newDateTime){
                           {form.formState.errors.date.message}
                         </div>
                       )}
-                    </div>
-                    <div className="flex items-center justify-end">
+                    </div> */}
+                    {/* <div className="flex items-center justify-end">
                       <Button
                         type="button"
                         className="w-full flex bg-stone-950 hover:bg-stone-700 items-center capitalize"
@@ -320,9 +320,9 @@ function handleTimePicker(newDateTime){
                       >
                         next
                       </Button>
-                    </div>
+                    </div> */}
 
-                  </div>
+                  
 
                   <div className="flex flex-col gap-2">
                     {/* <Label className="text-xl text-white">date</Label>
@@ -420,6 +420,11 @@ function handleTimePicker(newDateTime){
                     >
                       next
                     </Button>
+                 </div>
+
+                 </div>
+
+
 
                   <div
                     className={`w-full flex-col  justify-center gap-5   ${
