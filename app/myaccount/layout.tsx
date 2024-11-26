@@ -11,6 +11,10 @@ export async function getData() {
   const cookiesStore = cookies();
   const access = cookiesStore.get("access");
 
+  if (!access) {
+    redirect("/login")
+  }
+
   const res = await fetch(`${API_URL}/user/`, {
     headers: {
       "Content-Type": "application/json",

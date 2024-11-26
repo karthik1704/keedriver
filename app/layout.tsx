@@ -46,7 +46,6 @@ export async function getData() {
   const cookiesStore = cookies();
   const access = cookiesStore.get("access");
 
-  console.log(access);
   if (!access) {
     return null;
   }
@@ -66,8 +65,7 @@ export async function getData() {
   }
 
   const user = await res.json();
-  console.log(user);
-
+  
   return user;
 }
 
@@ -92,7 +90,7 @@ export default async function RootLayout({
           
         </main>
         <Footer />
-        <Toaster />
+        <Toaster position="top-right"  richColors />
         {/* <script
           defer
           src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=YOUR_CALLBACK_NAME"
