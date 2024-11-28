@@ -57,15 +57,13 @@ export default function MainNavBar({ user }: { user: any }) {
                     <Settings className="text-rose-700" />
                     <span className="inline-block">Settings</span>
                   </Link>
-                  <Link
-                    href={""}
+                  <button
+                    onClick={() => logout()}
                     className="w-full flex items-center gap-3 hover:bg-gray-100 p-2"
                   >
                     <LogOut className="text-rose-700" />
-                    <span onClick={() => logout()} className="inline-block">
-                      Logout
-                    </span>
-                  </Link>
+                    <span className="inline-block">Logout</span>
+                  </button>
                 </div>
               </PopoverContent>
             </Popover>

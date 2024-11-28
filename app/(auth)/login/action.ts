@@ -11,10 +11,11 @@ const schema = z.object({
   phone: z
     .string()
     .regex(phoneRegex, "Please enter valid 10 digit phone number"),
-    
 });
 
-export async function signIn(prevState: any, formData: FormData) {
+
+
+export async function sendOTP(prevState: any, formData: FormData) {
   const phone = formData.get("phone");
 
   const validatedFields = schema.safeParse({
@@ -31,13 +32,11 @@ export async function signIn(prevState: any, formData: FormData) {
       },
     };
   }
-  const res = await fetch(`${API_URL}/login/`, {
+  const res = await fetch(`${API_URL}/sendotp/`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      username: "",
       phone,
-      password: "",
     }),
   });
 
@@ -45,8 +44,20 @@ export async function signIn(prevState: any, formData: FormData) {
     return {};
   }
 
-  const resJson = await res.json();
+  if (res.status !==200){
+    const error = await res.json();
 
-  cookies().set("access", resJson.access);
-  redirect("/");
+    return {
+      message: "something went wrong",
+    }
+    
+  }
+
+  const resJson = await res.json();
+  console.log(resJson);
+  const encodedPhone = Buffer.from(validatedFields.data.phone).toString(
+    "base64"
+  );
+  redirect("/otp?q=" + encodedPhone);
 }
+
