@@ -13,6 +13,7 @@ import { Button } from "./ui/button";
 import {
   Menu,
   LogOut,
+  CircleUserRound,
 } from "lucide-react";
 import Link from "next/link"; 
 
@@ -38,18 +39,37 @@ const AppDrawer = ({ user }: { user: any }) => {
             </Avatar>
           </SheetTitle>
           <SheetDescription>
-            {user ? (
-              user?.first_name || user?.last_name
-            ) : (
-              <div>
-                <span className="inline-block mr-2">
-                  Already have an account?
-                </span>
-                <Link href="/login" className="text-rose-700 font-bold">
-                  Login
-                </Link>
-              </div>
-            )}
+          {user ? (
+  <div className="flex flex-col justify-between items-center mt-4">
+    <span className="inline-block">{user?.first_name || user?.last_name}</span>
+  </div>
+) : (
+  <div>
+    <span className="inline-block mr-2">Already have an account?</span>
+    <Link href="/login" className="text-rose-700 font-bold">
+      Login
+    </Link>
+  </div>
+)}
+
+{/* {user ? (
+  <div className="flex flex-col justify-start mr-44 mt-4 mb-2">
+    <Link
+      href="/myaccount"
+      className="flex items-center justify-center"
+    >
+      <CircleUserRound className="text-black" />
+      <span className="inline-block ml-2 text-black font-semibold">Profile</span>
+    </Link>
+  </div>
+) : (
+  <div>
+    <span className="inline-block mr-2">Already have an account?</span>
+    <Link href="/login" className="text-rose-700 font-bold">
+      Login
+    </Link>
+  </div>
+)} */}
           </SheetDescription>
         </SheetHeader>
         <div className="grid gap-4 py-4">
@@ -64,11 +84,22 @@ const AppDrawer = ({ user }: { user: any }) => {
             />
           ))}
         </div>
-        {user ? (
+        {user ? (<>
+<div className="flex flex-col justify-start mr-44 mb-2">
+<Link
+  href="/myaccount"
+  className="flex items-center justify-center"
+>
+  <CircleUserRound className="text-black" />
+  <span className="inline-block ml-2 text-black font-semibold">Profile</span>
+</Link>
+</div>
+
           <Button className="w-full" onClick={() => logout()}>
             <LogOut />
             <span className="mr-2">Logout</span>
           </Button>
+          </>
         ) : (
           ""
         )}

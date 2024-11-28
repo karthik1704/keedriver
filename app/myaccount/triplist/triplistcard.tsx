@@ -28,8 +28,8 @@ const TripListCard = ({ user }: { user: any }) => {
   const onSubmit = (data: any) => console.log(data);
 
   return (
-    <section className="flex justify-center w-full p-4">
-      <div className="w-full max-w-4xl h-auto rounded-lg flex flex-col lg:flex-row items-center justify-around bg-white shadow-lg border-t-4 border-stone-100 shadow-stone-400 hover:shadow-stone-500 md:mx-3 p-6 relative">
+    <section className=" w-full flex flex-col items-end justify-end gap-4 relative lg:pl-10">
+      <div className="w-full lg:w-full h-auto rounded-lg flex flex-col lg:flex-row items-end justify-end gap-4 bg-white shadow-lg border-t-4 border-stone-100 shadow-stone-400 hover:shadow-stone-500 p-6 relative">
         {/* Status */}
         <p className="flex items-center text-lg font-bold text-gray-800 gap-2 absolute top-2 right-2">
           <Check className="text-green-600" />

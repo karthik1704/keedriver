@@ -59,7 +59,7 @@ const schema = z.object({
   //   .string(),
   // .regex(phoneRegex, "Please enter valid 10 digit phone number"),
   // model: z.string().min(1, "Name is required"),
-  model: z.string(),
+  model: z.string().min(1, 'Model is required'),
   companyname: z.string(),
   registrationnumber: z.string(),
   transmissiontype: z.string(),

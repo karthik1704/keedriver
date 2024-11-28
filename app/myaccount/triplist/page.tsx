@@ -30,7 +30,9 @@ export async function getData(){
 const TripListPage = async() => {
     const {user} = await getData();
   return <>
+  <div className="w-full flex md:w-full lg:flex-col mx-2 lg:ml-10 items-center justify-end">
   <TripListCard user={user}/> 
+  </div>
   </>
 }
 

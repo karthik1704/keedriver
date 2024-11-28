@@ -33,7 +33,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="flex items-center justify-center my-5">
-        <p>&copy; 2023 Keedriver All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} Keedriver All rights reserved.</p>
       </div>
     </div>
   );

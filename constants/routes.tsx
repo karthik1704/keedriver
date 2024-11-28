@@ -1,4 +1,3 @@
-
 import {
     Menu,
     LogOut,
@@ -15,7 +14,7 @@ import {
   } from "lucide-react";
 
 export const routes = [
-    { routeName: "Home", href: "/", icon: <Home /> },
+    { routeName: 'Home', href: "/", icon: <Home /> },
     {
       routeName: "Services",
       icon: <Car />,

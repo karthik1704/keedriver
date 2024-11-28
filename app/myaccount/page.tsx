@@ -164,7 +164,7 @@ export async function getData() {
 const MyAccount = async () => {
   const { cartype, user, carenginetype }: any = await getData();
   return (
-    <div className="w-full flex mx-2 lg:mx-10 items-center justify-center">
+    <div className="w-full lg:mx-10">
            
     <ProfileForm user={user} />
  
