@@ -1,7 +1,6 @@
 "use server";
 
 import { API_URL } from "@/constants";
-import { error } from "console";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import z from "zod";
@@ -14,13 +13,7 @@ const schema = z.object({
     .regex(phoneRegex, "Please enter valid 10 digit phone number"),
 });
 
-const OTPSchema = z.object({
-  phone: z
-    .string()
-    .regex(phoneRegex, "Please enter valid 10 digit phone number"),
 
-  otp: z.string().length(6, "Please enter valid 6 digit OTP"),
-});
 
 export async function sendOTP(prevState: any, formData: FormData) {
   const phone = formData.get("phone");
@@ -68,69 +61,3 @@ export async function sendOTP(prevState: any, formData: FormData) {
   redirect("/otp?q=" + encodedPhone);
 }
 
-const signInschema = z.object({
-  phone: z
-    .string()
-    .regex(phoneRegex, "Please enter valid 10 digit phone number"),
-  otp: z.string().length(6, "Please enter valid 6 digit OTP"),
-});
-
-export async function signIn(
-  prevState: any,
-  formData: { otp: string; phone: string }
-) {
-  const { phone, otp } = formData;
-
-  const validatedFields = OTPSchema.safeParse({
-    phone,
-    otp,
-  });
-
-  // Return early if the form data is invalid
-  if (!validatedFields.success) {
-    console.log(validatedFields.error.flatten().fieldErrors);
-    return {
-      message: null,
-      fieldErrors: {
-        phone: validatedFields.error.flatten().fieldErrors.phone,
-        otp: validatedFields.error.flatten().fieldErrors.otp,
-      },
-    };
-  }
-  const res = await fetch(`${API_URL}/login/`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      username: "",
-      phone,
-      password: "",
-      role: "customer",
-      otp: otp,
-    }),
-  });
-
-  if (!res.ok) {
-    console.log(res);
-    const error = await res.json();
-    console.log(error);
-    if (error.non_field_errors) {
-      return {
-        message: error.non_field_errors[0],
-      };
-    }
-
-    return {
-      message: "Something went wrong"
-    }
-  }
-
-  const resJson = await res.json();
-  console.log(resJson);
-  cookies().set("access", resJson.access);
-
-  if (!resJson.user.email) {
-    redirect("/create-account");
-  }
-
-  redirect("/");
-}

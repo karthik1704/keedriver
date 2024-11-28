@@ -1,8 +1,5 @@
-import Image from "next/image";
-import { Button, buttonVariants } from "@/components/ui/button";
-import Link from "next/link";
+
 import type { Metadata } from "next";
-import { signIn } from "./action";
 import SigninForm from "./signin-form";
 
 export const metadata: Metadata = {
@@ -20,17 +17,7 @@ function LoginPage() {
           <p className="text-white text-center text-xl marker:mb-4">Hey there!</p>
           <p className="text-transparent">.</p>
           <SigninForm />
-          {/* <button type="submit" className="w-full bg-primary text-white py-2 rounded-lg hover:bg-red-600 focus:outline-none focus:bg-red-600">Get Otp</button> */}
-          <div className="flex justify-center">
-            {/* <Link
-              href="/verification"
-              className={buttonVariants({
-                // className: 'text-center'
-              })}
-            >
-              Get OTP
-            </Link>  */}
-          </div>
+         
         </div>
       </div>
     </>

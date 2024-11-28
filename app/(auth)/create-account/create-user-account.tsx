@@ -1,10 +1,38 @@
-import React from "react";
+'use client';
 import Image from "next/image";
 import createAccountImage from "public/images/create account/create-account-img.webp";
 import { createAccount } from "./actions";
+import { useFormState } from "react-dom";
+import { useEffect } from "react";
+import { toast } from "sonner";
+import SubmitButton from "@/components/submit-button";
+
+type InitialState =  {
+  message?: undefined | string;
+  fieldErrors?: {
+    phone?: undefined | string |string[],
+  },
+}
+
+const initialState:InitialState =  {
+  message: undefined,
+  fieldErrors: {
+    phone: undefined,
+  },
+}
+
 
 const CreateUserAccount = () => {
+  const [state, formAction] = useFormState(createAccount, initialState);
 
+  useEffect(() => {
+    if (state.message) {
+      toast.error(state?.message, {
+        duration: 10000,
+        closeButton: true,
+      });
+    }
+  }, [state.message]);
 
 
   return (
@@ -19,7 +47,7 @@ const CreateUserAccount = () => {
               </span>
             </div>
             <form
-              action={createAccount}
+              action={formAction}
               className="w-full flex flex-col items-start justify-center gap-3"
             >
               <div className="w-full">
@@ -33,6 +61,7 @@ const CreateUserAccount = () => {
                   placeholder="Enter your first name"
                   className="w-full border-2 p-2 rounded-lg mt-2 focus:outline-none focus:ring-2  focus:ring-red-600"
                 />
+                {state.fieldErrors?.first_name && <p className="text-red-500">{state.fieldErrors?.first_name}</p>}
               </div>
               <div className="w-full">
                 <label htmlFor="">
@@ -45,6 +74,7 @@ const CreateUserAccount = () => {
                   placeholder="Enter your last name"
                   className="w-full border-2 p-2 rounded-lg mt-2 focus:outline-none focus:ring-2  focus:ring-red-600"
                 />
+                {state.fieldErrors?.last_name && <p className="text-red-500">{state.fieldErrors?.last_name}</p>}
               </div>
               <div className="w-full">
                 <label htmlFor="">
@@ -57,17 +87,16 @@ const CreateUserAccount = () => {
                   placeholder="Enter your email"
                   className="w-full border-2 p-2 rounded-lg mt-2 focus:outline-none focus:ring-2  focus:ring-red-600"
                 />
+                {state.fieldErrors?.email && <p className="text-red-500">{state.fieldErrors?.email}</p>}
               </div>
-              {/* <div className='w-full'>
-    <label htmlFor="">Phone-number<span className='text-red-500'>*</span></label> <br />
-    <input type="email" placeholder='Enter your phone-number' className='w-full border-2 p-2 rounded-lg mt-2 focus:outline-none focus:ring-2  focus:ring-red-600' />
-   </div> */}
+           
               <button
                 type="submit"
                 className="w-full py-3 mt-2 bg-red-600 rounded-lg text-lg text-white"
               >
                 Create account
               </button>
+              <SubmitButton name="Create Account" />
             </form>
             {/* <p className='text-center'>Already have an account? <span className='inline-block underline font-bold ml-2'>Log in</span></p> */}
           </div>
