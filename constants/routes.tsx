@@ -1,7 +1,5 @@
 
 import {
-    Menu,
-    LogOut,
     Home,
     Car,
     Handshake,

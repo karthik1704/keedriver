@@ -17,23 +17,20 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { updateCar } from "./actions";
+import { useParams } from "next/navigation";
 
 const CarEditForm = ({
-  carType,
-  carEngineType,
+  carTypes,
+  carEngineTypes,
   data,
-  actionFn
 }: {
-  carType: any;
-  carEngineType: any;
+  carTypes: any;
+  carEngineTypes: any;
   data:any;
-  actionFn:any
 }) => {
-  const { results } = carType;
-  const { results: engine } = carEngineType;
-
-  console.log(data);
-
+  const { results } = carTypes;
+  const { results: engine } = carEngineTypes;
   const form = useForm({
     defaultValues:{
       company_name:data.company_name,
@@ -43,14 +40,15 @@ const CarEditForm = ({
       engine_model:data.engine_model.toString(),
       gas_type:"",
       type:data.type.toString()
-
-
     }
   });
 
+  const {id} = useParams<{id:string}>();
+  const updateCarWithId = updateCar.bind(null, id);
+
   const onSubmit = async (data:any) => {
-    await actionFn(data);
     console.log(data);
+    await updateCarWithId(data);
   
   };
   return (
@@ -60,12 +58,7 @@ const CarEditForm = ({
           className="w-full flex flex-col gap-3 justify-start lg:mx-5"
           onSubmit={form.handleSubmit(onSubmit)}
         >
-          {/* <div className="w-full flex flex-col md:flex-row md:space-x-4">
-          <label className="w-full md:w-full">
-            <span className="block mb-1 text-md">Model Name:</span>
-            <Input className="text-md w-full border rounded-md px-4 py-2" placeholder="Enter car name" {...form.register("car_name")} />
-          </label>
-        </div> */}
+        
 
           <div className="flex flex-col md:flex-row md:space-x-4">
             <label className="w-full md:w-full">
