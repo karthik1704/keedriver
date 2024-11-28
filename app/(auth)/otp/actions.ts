@@ -126,7 +126,7 @@ export async function resendOTP( formData: FormData) {
   }
 
   const resJson = await res.json();
-
+  console.log(resJson);
   return {
     message: "OTP sent successfully",
   }
