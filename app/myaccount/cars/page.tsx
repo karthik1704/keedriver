@@ -7,7 +7,7 @@ import Image from "next/image";
 const Cars = async () => {
   const cars = await getCars();
   return (
-    <div className="w-full flex flex-col items-end justify-end gap-4 relative">
+    <div className="lg:w-11/12 w-full flex flex-col items-end justify-end gap-4 relative">
       <div className="w-full flex justify-end">
         <Link href={"/myaccount/cars/new"}>
           <Button

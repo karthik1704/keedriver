@@ -38,10 +38,10 @@ const ProfileForm = ({ user }: { user: any }) => {
   };
 
   return (
-    <div className="w-full h-full bg-white flex flex-col shadow-md shadow-stone-400 sm:px-5 md:px-0 lg:px-5 overflow-visible mx-2 sm:mx-8 md:mx-4 lg:mx-8 p-5 lg:p-10 items-center justify-center rounded-md lg:w-4/5">
+    <div className="w-full h-full bg-white flex flex-col shadow-md shadow-stone-400 md:px-0 lg:px-5 overflow-visible mx-2 md:mx-4 lg:mx-8 p-5 lg:p-10 items-center justify-end rounded-md lg:w-full">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className=" flex flex-col space-y-4 w-full sm:px-10"
+        className=" flex flex-col space-y-4 w-full md:px-10"
       >
         <div className="flex flex-col sm:flex-row sm:space-x-4">
           <label className="w-full md:w-full">
@@ -52,6 +52,7 @@ const ProfileForm = ({ user }: { user: any }) => {
               {...register("first_name")}
               className="capitalize text-gray-800 w-full border rounded-md px-4 py-2"
             />
+            {errors.first_name && <p className="text-red-500 text-sm py-2">{errors.first_name.message}</p>}
           </label>
         </div>
 
@@ -64,6 +65,7 @@ const ProfileForm = ({ user }: { user: any }) => {
               {...register("last_name")}
               className="capitalize text-gray-800 w-full border rounded-md px-4 py-2"
             />
+            {errors.last_name && <p className="text-red-500 text-sm py-2">{errors.last_name.message}</p>}
           </label>
         </div>
 
@@ -76,6 +78,7 @@ const ProfileForm = ({ user }: { user: any }) => {
               {...register("email")}
               className="text-gray-800 w-full border rounded-md px-4 py-2"
             />
+            {errors.email && <p className="text-red-500 text-sm py-2">{errors.email.message}</p>}
           </label>
         </div>
 
