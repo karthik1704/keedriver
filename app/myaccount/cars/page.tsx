@@ -57,7 +57,7 @@ const Cars = async () => {
                 <div className="h-auto w-full">
                   <Image
                     className="h-full w-full object-cover"
-                    src="https://5.imimg.com/data5/SELLER/Default/2020/12/YP/IV/KC/118359422/innova-car.jpg"
+                    src="/images/cars/innova-car.jpg"
                     alt="car-image"
                     width={200}
                     height={200}
