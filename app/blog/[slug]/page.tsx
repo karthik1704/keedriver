@@ -1,3 +1,4 @@
+import { API_URL } from "@/constants";
 import { Metadata } from "next";
 
 
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
 
 async function getData(slug: any) {
   
-  const res = await fetch(`http://devapi.keedriver.com/api/v1/blogs/${slug}/`, {
+  const res = await fetch(`${API_URL}/blogs/${slug}/`, {
     headers: {
       "Content-Type": "application/json",
     },
@@ -16,6 +17,10 @@ async function getData(slug: any) {
 
   if (!res.ok) {
     console.log("blog data");
+    console.log(res);
+    console.log(slug);
+    console.log(await res.json());
+    throw new Error("error");
   }
   const blog = await res.json();
   return blog;
