@@ -94,19 +94,23 @@ export function InputOTPForm() {
   }
 
   return (
-    <div className="w-full h-full flex justify-center items-center mt-3">
+    <div className="w-full h-full flex justify-center items-center">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="w-full flex flex-col justify-center items-center gap-2"
+          className="w-full flex flex-col items-center gap-2 max-w-lg p-6 sm:p-10 md:p-14 lg:pt-0 lg:pb-10 backdrop-blur-sm bg-white/30  rounded-md"
         >
           <FormField
             control={form.control}
             name="otp"
             render={({ field }) => (
-              <FormItem className="flex flex-col items-center">
+              <>
+              <div>
+                <img src="/images/home/Handheld-smartphone-1.png" alt="phone" className="w-60 h-52" />
+              </div>
+              <FormItem className="flex flex-col items-center text-white">
                 <FormLabel>One-Time Password</FormLabel>
-                <FormDescription>
+                <FormDescription className="text-white">
                   Please enter the one-time password sent to your phone.
                 </FormDescription>
                 <FormControl>
@@ -127,9 +131,10 @@ export function InputOTPForm() {
 
                 <FormMessage />
               </FormItem>
+              </>
             )}
           />
-          <div className="flex flex-col items-center text-center text-sm text-muted-foreground">
+          <div className="flex flex-col items-center text-center text-sm text-muted-foreground text-white">
             <p>Didn&apos;t receive the OTP?</p>
             <button
               type="button"
