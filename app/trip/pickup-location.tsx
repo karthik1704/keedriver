@@ -43,6 +43,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import PreViewCard from "./preview-card";
+import Image from "next/image";
 // import { MapPin } from 'lucide-react';
 
 // type FormFields = {
@@ -84,7 +85,7 @@ const tripFormSchema = z.object({
 
 type TtripFormSchema = z.infer<typeof tripFormSchema>;
 
-export const TripDetailForm = ({ carlists }: any) => {
+export const TripDetailForm = ({ cars }: any) => {
   const [show, setShow] = useState(true);
   const [display, setDisplay] = useState(true);
   const [display1, setDisplay1] = useState(true);
@@ -101,16 +102,7 @@ export const TripDetailForm = ({ carlists }: any) => {
   const router = useRouter();
 
   console.log(personData, "persondata");
-  // console.log(carlists.results)
-  // console.log(carlists);
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   control,
-  //   form,
-  //   setValue,
-  //   formState: { errors, isSubmitting },
-  // } = useForm<FormFields>();
+  
 
   const form = useForm<TtripFormSchema>({
     defaultValues: {
@@ -295,46 +287,12 @@ function handleTimePicker(newDateTime){
                         </div>
                       )}
                     </div>
-                    {/* <div className="flex flex-col gap-2">
-                      <Label className="text-xl text-white">date</Label>
-                      <input
-                        {...form.register("date", {})}
-                        type="datetime-local"
-                        className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                        ref={dateTimeInputRef}
-                        onFocus={dateTimePicker}
-                      />
-
-
-                      {form.formState.errors.date && (
-                        <div className="text-white text-start text-sm lg:text-base">
-                          {form.formState.errors.date.message}
-                        </div>
-                      )}
-                    </div> */}
-                    {/* <div className="flex items-center justify-end">
-                      <Button
-                        type="button"
-                        className="w-full flex bg-stone-950 hover:bg-stone-700 items-center capitalize"
-                        onClick={handleNext}
-                      >
-                        next
-                      </Button>
-                    </div> */}
+                
 
                   
 
                   <div className="flex flex-col gap-2">
-                    {/* <Label className="text-xl text-white">date</Label>
-                   
-                    <input
-                      {...form.register("date")}
-                      type="datetime-local"
-                      name="date"
-                      className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                      // ref={dateTimeInputRef}
-                      onFocus={dateTimePicker}
-                    /> */}
+              
                    <FormField
           control={form.control}
           name="date"
@@ -535,22 +493,22 @@ function handleTimePicker(newDateTime){
                               defaultValue={field.value}
                               className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full items-center justify-center"
                             >
-                              {carlists?.results?.map((carList) => (
+                              {cars?.results?.map((car) => (
                                 <FormItem
                                   className={`flex w-full items-center justify-between gap-5 bg-white p-4 rounded-lg shadow-lg relative capitalize ${
-                                    field.value === `${carList.id}`
+                                    field.value === `${car.id}`
                                       ? "border-4 border-gray-600 shadow-black"
                                       : "border border-rose-700"
                                   }`}
-                                  key={carList.id}
+                                  key={car.id}
                                 >
                                   <div>
                                     <FormLabel className="font-bold text-lg md:text-xl text-primary flex gap-2">
-                                      {carList.company_name} innova
+                                      {car.company_name} innova
                                       <br />
                                     </FormLabel>
                                     <span className="font-medium text-sm md:text-md inline-block text-slate-600">
-                                      {carList.registration_number}
+                                      {car.registration_number}
                                     </span>
                                     <br />
                                     <br />
@@ -558,7 +516,7 @@ function handleTimePicker(newDateTime){
                                       <span className="text-primary font-semibold">
                                         model :
                                       </span>
-                                      {carList.model}
+                                      {car.model}
                                     </span>
                                     <br />
                                     <span className="font-medium text-sm md:text-md inline-block text-slate-600">
@@ -572,20 +530,22 @@ function handleTimePicker(newDateTime){
                                       <span className="text-primary font-semibold">
                                         gear type :
                                       </span>
-                                      {carList.transmission_type}
+                                      {car.transmission_type}
                                     </span>
                                   </div>
                                   <div className="w-1/2 md:w-2/5">
                                     <div className="h-auto w-full">
-                                      <img
+                                      <Image
+                                        width={100}
+                                        height={100}
                                         className="h-full w-full object-cover"
-                                        src="https://5.imimg.com/data5/SELLER/Default/2020/12/YP/IV/KC/118359422/innova-car.jpg"
+                                        src="/images/cars/innova-car.jpg"
                                         alt="car-image"
                                       />
                                     </div>
                                   </div>
                                   <FormControl>
-                                    <RadioGroupItem value={`${carList.id}`} />
+                                    <RadioGroupItem value={`${car.id}`} />
                                   </FormControl>
                                 </FormItem>
                               ))}
