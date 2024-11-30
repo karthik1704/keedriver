@@ -13,7 +13,7 @@ const myAccountRoutLists = [
   },
   {
     name: "Trips",
-    pathname: "/myaccount/triplist",
+    pathname: "/myaccount/trips",
     Icon: <Map size={24} />,
   },
   {

@@ -4,13 +4,9 @@ import { redirect } from "next/navigation";
 import { API_URL } from "@/constants";
 import z from "zod";
 
-// import { getErrorMessage } from "@/lib/utils";
 import { revalidateTag } from "next/cache";
-import { json } from "stream/consumers";
 
 export async function updateUser(
-  //   id: string,
-  //   prevState: any,
   formData: FormData
 ) {
   let jsonObject = formData;
@@ -18,12 +14,14 @@ export async function updateUser(
   console.log(jsonObject);
   const access_token = cookies().get("access");
 
+  if(!access_token){
+    redirect("/login");
+  }
+
   const res = await fetch(`${API_URL}/user/`, {
-    method: "PUT", // *GET, POST, PUT, DELETE, etc.
-    // mode: "cors", // no-cors, *cors, same-origin
+    method: "PUT", 
     headers: {
       "Content-Type": "application/json",
-      // "Content-Type": "application/x-www-form-urlencoded",
       Authorization: `Bearer ${access_token?.value}`,
     },
     body: JSON.stringify(jsonObject),
@@ -40,7 +38,7 @@ export async function updateUser(
     // };
   }
 
-  revalidateTag("Branch");
+  revalidateTag("user");
 
   //   if (res.status === 204) {
   //     return {

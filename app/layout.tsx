@@ -42,39 +42,13 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://keedriver.com"),
 };
 
-export async function getData() {
-  const cookiesStore = cookies();
-  const access = cookiesStore.get("access");
 
-  if (!access) {
-    return null;
-  }
-  const res = await fetch(`${API_URL}/user/`, {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${access?.value}`,
-    },
-  });
-
-  if (!res.ok) {
-    console.log("error");
-  }
-
-  if (res.status === 401) {
-    return null;
-  }
-
-  const user = await res.json();
-  
-  return user;
-}
 
 export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const user = await getData();
   return (
     <html lang="en">
       <body
@@ -83,7 +57,7 @@ export default async function RootLayout({
 
         )}
       >
-         <MainNavBar user={user} />
+         <MainNavBar  />
         <main className="min-h-[70vh]  md:min-h-[80vh] grid items-center relative overflow-hidden">
          
           {children}

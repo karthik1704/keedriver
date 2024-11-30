@@ -8,6 +8,18 @@ const nextConfig = {
           port: '',
           pathname: '/media/**',
         },
+        {
+          protocol: 'https',
+          hostname: 'api.keedriver.com',
+          port: '',
+          pathname: '/media/**',
+        },
+        {
+          protocol: 'http',
+          hostname: '3.110.169.239',
+          port: '8000',
+          pathname: '/media/**',
+        },
       ],
     }
 };

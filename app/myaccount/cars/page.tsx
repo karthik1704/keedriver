@@ -1,31 +1,11 @@
 import Link from "next/link";
-import { cookies } from "next/headers";
-import { API_URL } from "@/constants";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
-
-async function getData() {
-  const cookiesStoreage = cookies();
-  const access_token = cookiesStoreage.get("access");
-  if (!access_token) {
-    return null;
-  }
-
-  const res = await fetch(`${API_URL}/car/`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${access_token?.value}`,
-    },
-  });
-
-  const data = await res.json();
-
-  return data;
-}
+import { getCars } from "@/services/cars";
+import Image from "next/image";
 
 const Cars = async () => {
-  const carsLists = await getData();
+  const cars = await getCars();
   return (
     <div className="lg:w-11/12 w-full flex flex-col items-end justify-end gap-4 relative">
       <div className="w-full flex justify-end">
@@ -40,25 +20,25 @@ const Cars = async () => {
         </Link>
       </div>
 
-      {carsLists?.results?.map((carsList, i) => {
+      {cars?.results?.map((car) => {
         return (
-          <Link key={i} href={`/myaccount/cars/${carsList.id}`}>
+          <Link key={car.id} href={`/myaccount/cars/${car.id}`}>
             <div
               className={`w-full flex items-center justify-around space-x-6 space-y-0 p-2 py-3 bg-white rounded-lg shadow-lg shadow-stone-400 relative capitalize hover:shadow-lg hover:shadow-gray-500 lg:mx-20 cursor-pointer`}
             >
               <div>
                 <h4 className="font-bold text-lg md:text-xl text-rose-600 flex gap-2">
-                  {carsList.company_name} innova
+                  {car.company_name} innova
                   <br />
                 </h4>
                 <span className="font-medium text-sm md:text-md  inline-block text-slate-600">
-                  {carsList.registration_number}
+                  {car.registration_number}
                 </span>
                 <br />
                 <br />
                 <span className="font-medium text-sm md:text-md   inline-block text-slate-600">
                   <span className="text-rose-600 font-semibold">model :</span>
-                  {carsList.model}
+                  {car.model}
                 </span>
                 <br />
                 <span className="font-medium text-sm md:text-md  inline-block text-slate-600">
@@ -70,15 +50,17 @@ const Cars = async () => {
                   <span className="text-rose-600 font-semibold">
                     gear type :
                   </span>
-                  {carsList.transmission_type}
+                  {car.transmission_type}
                 </span>
               </div>
               <div className="w-1/2 md:w-2/5">
                 <div className="h-auto w-full">
-                  <img
+                  <Image
                     className="h-full w-full object-cover"
-                    src="https://5.imimg.com/data5/SELLER/Default/2020/12/YP/IV/KC/118359422/innova-car.jpg"
+                    src="/images/cars/innova-car.jpg"
                     alt="car-image"
+                    width={200}
+                    height={200}
                   />
                 </div>
               </div>

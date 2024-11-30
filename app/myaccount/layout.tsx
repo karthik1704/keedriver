@@ -1,53 +1,16 @@
 import Image from "next/image";
 import img1 from "@/app/services/image/myacc/profilepic.jpg";
-import { cookies } from "next/headers";
-import { API_URL } from "@/constants";
-import { redirect, usePathname } from "next/navigation";
 import MyAccountNavBar from "./sidebar";
-import { Sidebar, CircleUserRound, Mail, Phone, LogIn } from "lucide-react";
+import { Mail, Phone, LogIn } from "lucide-react";
 import { dateFormatter, dateTimeFormatter } from "lib/utils";
-
-export async function getData() {
-  const cookiesStore = cookies();
-  const access = cookiesStore.get("access");
-
-  if (!access) {
-    redirect("/login")
-  }
-
-  const res = await fetch(`${API_URL}/user/`, {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${access?.value}`,
-    },
-  });
-
-  if (!res.ok) {
-    console.log("error");
-  }
-
-  if (res.status === 401) {
-    redirect("/login");
-  }
-
-  const user = await res.json();
-
-  console.log(user);
-
-  return { user };
-}
+import { getUser } from "@/services/users";
 
 export default async function MyAccountLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const { user }: any = await getData();
-  console.log(
-    dateTimeFormatter(new Date(user.last_login).toLocaleString()),
-    "hello",
-    new Date(user.last_login).toLocaleString()
-  );
+  const user = await getUser();
 
   return (
     <>
@@ -63,43 +26,6 @@ export default async function MyAccountLayout({
             Welcome back, {user.first_name}
           </h1>
         </div>
-
-        {/* <div className="flex flex-col md:flex-row justify-center w-full sm:w-4/5 md:w-4/5 lg:w-4/5 xl:w-3/5 mx-auto shadow-md rounded-lg mb-14 py-5">
-          <div
-            className=" flex justify-center basis-1/4 md:w-1/2"
-            style={{ margin: "0 10px" }}
-          >
-            <Image
-              src={img1}
-              height={100}
-              width={100}
-              alt=""
-              className="w-auto h-auto md:h-30 md:w-30 text-primary"
-            />
-          </div>
-
-          <div className="md:w-1/2 basis-3/4 text-center md:text-left ">
-            <div className="mt-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="m-3 flex flex-col gap-2">
-                  <h1><span className="font-bold md:text-lg text-slate-700">First name :</span> {user.first_name}</h1>
-                  <h1><span className="font-bold md:text-lg text-slate-700">Last name :</span>  {user.last_name}</h1>
-                  <h1><span className="font-bold md:text-lg text-slate-700">Contact number :</span> {user.phone}</h1>
-                </div>
-                <div className="m-3 flex flex-col gap-2">
-                  <h1><span className="font-bold md:text-lg text-slate-700">Email :</span> {user.email}</h1>
-                  <h1>
-                    <span className="font-bold md:text-lg text-slate-700">Last Login :</span> {new Date(user.last_login).toLocaleString()}
-                  </h1>
-                  <h1>
-                   <span className="font-bold md:text-lg text-slate-700">Date Joined :</span> 
-                    {new Date(user.date_joined).toLocaleDateString()}
-                  </h1>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> */}
 
         <div className="mx-3 sm:mx-8 md:mx-12 bg-white flex flex-col md:flex-row justify-center shadow-md shadow-stone-400 rounded-md mb-14 overflow-hidden">
           <div className="w-full before:h-20 lg:before:h-28 before:bg-gradient-to-r from-rose-950 via-rose-700 to-rose-500 flex flex-col">
@@ -162,7 +88,6 @@ export default async function MyAccountLayout({
 
             <div className="flex md:mx-10 w-full sm:w-full md:w-1/2 lg:w-11/12 xl:w-full">
               {children}
-
             </div>
           </div>
         </div>
