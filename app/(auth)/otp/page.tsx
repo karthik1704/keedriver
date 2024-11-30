@@ -14,7 +14,9 @@ const OtpVerificationInput = ({
 
   return (
     <>
+    <div className="bg-rose-800 h-full backdrop-blur-sm">
       <InputOTPForm />
+    </div>
     </>
   );
 };

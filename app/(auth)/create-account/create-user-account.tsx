@@ -90,12 +90,12 @@ const CreateUserAccount = () => {
                 {state.fieldErrors?.email && <p className="text-red-500">{state.fieldErrors?.email}</p>}
               </div>
            
-              <button
+              {/* <button
                 type="submit"
                 className="w-full py-3 mt-2 bg-red-600 rounded-lg text-lg text-white"
               >
                 Create account
-              </button>
+              </button> */}
               <SubmitButton name="Create Account" />
             </form>
             {/* <p className='text-center'>Already have an account? <span className='inline-block underline font-bold ml-2'>Log in</span></p> */}
