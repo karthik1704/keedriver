@@ -23,14 +23,14 @@ import SuccessCard from "./success-card";
 import { GET } from "../api/cars/route";
 
 const PreViewCard = ({ personData}) => {
-  const { from, to, tripType, phoneNumber, landmark, carType } = personData;
+  const { from, to, tripType, phoneNumber, landmark,  } = personData;
 
   const [carTypeData,setCarTypeData] = useState([]);
   const [messageShow,setMessageShow] = useState(true);
 
   useEffect(() => {
     const query = `id=${encodeURIComponent(carType.toString())}`;
-    fetch(`/api/cars/?${query}`)
+    fetch(`/api/cars/${query}/`)
       .then((data) => data.json())
       .then((res) => {console.log(res,"resdata"),setCarTypeData(res)})
       .catch((error) => console.log(error));
@@ -41,7 +41,7 @@ const PreViewCard = ({ personData}) => {
     setMessageShow(false)
   }
 
-  console.log(personData, "previw", personData.from);
+  console.log(personData, "preveiw", personData.from);
   return (
     <>
       {
@@ -217,21 +217,7 @@ const PreViewCard = ({ personData}) => {
                   </div>
                 </li>
 
-                {/* <li className="w-full sm:w-auto lg:w-full">
-                  <span className="mb-3 inline-block text-gray-600 font-bold">
-                    Phone Number
-                  </span>
-                  <div className="flex w-full  sm:w-36 md:w-40  lg:w-full gap-2 p-2 bg-white rounded-lg  items-center justify-center ">
-                    <span className="inline-block">
-                      {" "}
-                      <Phone className="text-red-600 h-5 w-5" />{" "}
-                    </span>
-
-                    <span className="inline-block md:text-base lg:text-lg capitalize font-semibold">
-                      {phoneNumber}
-                    </span>
-                  </div>
-                </li> */}
+               
                 <li className="w-full sm:w-auto lg:w-full">
                   <span className="mb-3 inline-block text-gray-800 text-lg font-semibold border-b-2 border-rose-700 pb-1">
                     Gear Type

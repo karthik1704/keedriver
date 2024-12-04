@@ -44,43 +44,24 @@ import {
 } from "@/components/ui/popover";
 import PreViewCard from "./preview-card";
 import Image from "next/image";
-// import { MapPin } from 'lucide-react';
-
-// type FormFields = {
-//   from: string;
-//   to: string;
-//   date: string;
-//   tripType: string;
-//   landmark: string;
-//   phoneNumber: number;
-//   from_lat: number;
-//   from_lng: number;
-//   to_lat: number;
-//   to_lng: number;
-//   carType: string;
-// };
 
 const tripFormSchema = z.object({
-  from: z
+  pickup_location: z
     .string()
     .min(1, "The 'From' field cannot be empty. Please enter a value."),
-  to: z.string().min(1, "please fill out the empty field"),
-  // date:z.tuple([z.date(),z.string().time()]),
-  date:z.date({
+  drop_location: z.string().min(1, "please fill out the empty field"),
+  pickup_date: z.date({
     required_error: "Please select at least one date.",
   }),
-  // time:z.string().regex(/^(0[1-9]|1[0-2]):([0-5][0-9]) (AM|PM)$/, {
-  //   message: "Invalid time format. Please select a valid time (e.g., 10:30 AM).",
-  // }),
-  // date:z.string(),
-  tripType: z.string().min(1, "please fill out the empty field"),
+
+  trip_type: z.string().min(1, "please fill out the empty field"),
   landmark: z.string().min(1, "please fill out the empty field"),
-  phoneNumber: z.string().min(1, "please fill out the empty field"),
+  alternate_phone_number: z.string().min(1, "please fill out the empty field"),
   from_lat: z.number(),
   from_lng: z.number(),
   to_lat: z.number(),
   to_lng: z.number(),
-  carType: z.union([z.string(), z.number()]),
+  car: z.union([z.string(), z.number()]),
 });
 
 type TtripFormSchema = z.infer<typeof tripFormSchema>;
@@ -93,26 +74,24 @@ export const TripDetailForm = ({ cars }: any) => {
   const [personData, setPersonData] = useState([]);
   const [isTall, setIsTall] = useState(true);
 
-  const [carListId,setCarListId] = useState(0);
+  const [carListId, setCarListId] = useState(0);
   const [step, setStep] = useState(1);
-  const [dateTime,setDateTime] = useState(null);
-
+  const [dateTime, setDateTime] = useState(null);
 
   const dateTimeInputRef = useRef(null);
   const router = useRouter();
 
   console.log(personData, "persondata");
-  
 
   const form = useForm<TtripFormSchema>({
     defaultValues: {
-      tripType: personData?.tripType ? personData?.tripType : "RoundedTrip",
+      trip_type: personData?.trip_type ? personData?.trip_type : "RoundedTrip",
     },
     resolver: zodResolver(tripFormSchema),
   });
 
   useEffect(() => {
-    if (carlists) {
+    if (cars) {
       const value: string | null = localStorage.getItem("PersonDetail");
 
       // console.log(value);
@@ -123,19 +102,17 @@ export const TripDetailForm = ({ cars }: any) => {
 
       const restoreDate = dateFormatter(users.date);
 
-      // console.log(users,users.carType,"hello")
-
-      form.setValue("from", users.from);
-      form.setValue("to", users.to);
-      form.setValue("date", restoreDate);
-      form.setValue("tripType", users.tripType);
+      form.setValue("pickup_location", users.pickup_location);
+      form.setValue("drop_location", users.drop_location);
+      form.setValue("pickup_date", restoreDate);
+      form.setValue("trip_type", users.trip_type);
       form.setValue("landmark", users.landmark);
-      form.setValue("phoneNumber", users.phoneNumber);
+      form.setValue("alternate_phone_number", users.alternate_phone_number);
       form.setValue("from_lat", users.from_lat);
       form.setValue("from_lng", users.from_lng);
       form.setValue("to_lat", users.to_lat);
       form.setValue("to_lng", users.to_lng);
-      form.setValue("carType", users.carType);
+      form.setValue("car", users.car);
 
       const newData = JSON.stringify(users);
 
@@ -161,11 +138,7 @@ export const TripDetailForm = ({ cars }: any) => {
 
     setDisplay1(false);
   };
-  function dateTimePicker() {
-    if (dateTimeInputRef.current) {
-      dateTimeInputRef.current.showPicker();
-    }
-  }
+ 
   // async function handleNext() {
   //   const inputFieldsOne = await form.trigger(["from", "to","date"]);
   //   if (inputFieldsOne) {
@@ -185,41 +158,37 @@ export const TripDetailForm = ({ cars }: any) => {
   //   }
   // }
   async function handleNext() {
-  if (step === 1) {
-    const inputFieldsOne = await form.trigger(["from", "to", "date"]);
-    if (inputFieldsOne) {
-      // Move to the next step
-      setStep(2);
-      setShow(!show);
-    }
-  } else if (step === 2) {
-    const inputFieldsTwo = await form.trigger([
-      "tripType",
-      "landmark",
-      "phoneNumber",
-    ]);
-    if (inputFieldsTwo) {
-      if (!show) {
-        if (!carlists) {
-          router.push("/login");
+    if (step === 1) {
+      const inputFieldsOne = await form.trigger(["pickup_location", "drop_location", "pickup_date"]);
+      if (inputFieldsOne) {
+        // Move to the next step
+        setStep(2);
+        setShow(!show);
+      }
+    } else if (step === 2) {
+      const inputFieldsTwo = await form.trigger([
+        "trip_type",
+        "landmark",
+        "alternate_phone_number",
+      ]);
+      if (inputFieldsTwo) {
+        if (!show) {
+          if (!cars) {
+            router.push("/login");
+          }
+          setDisplay(!display);
+          return;
         }
-        setDisplay(!display);
-        return;
       }
     }
   }
-}
 
-function handleTimePicker(newDateTime){
-  setDateTime(newDateTime)
-
-}
+  function handleTimePicker(newDateTime) {
+    setDateTime(newDateTime);
+  }
   //  console.log(form.formState.errors.date.message)
   return (
     <>
-
-
-         
       {display1 ? (
         <Form {...form}>
           <div
@@ -235,7 +204,7 @@ function handleTimePicker(newDateTime){
                   display ? "hidden" : "flex"
                 }`}
               >
-                <Plus /> add car
+                <Plus /> Add car
               </Button>
               <form
                 action=""
@@ -253,7 +222,7 @@ function handleTimePicker(newDateTime){
                       <PlaceAutocomplete
                         type="text"
                         placeholder="Enter your location"
-                        name="from"
+                        name="pickup_location"
                         errorMsg="Please enter a starting location in the From field"
                         register={form.register}
                         control={form.control}
@@ -261,9 +230,9 @@ function handleTimePicker(newDateTime){
                         lat="from_lat"
                         lng="from_lng"
                       />
-                      {form.formState.errors.from && (
+                      {form.formState.errors.pickup_location && (
                         <div className="text-white text-start text-sm lg:text-base">
-                          {form.formState.errors.from.message}
+                          {form.formState.errors.pickup_location.message}
                         </div>
                       )}
                     </div>
@@ -272,7 +241,7 @@ function handleTimePicker(newDateTime){
                       <PlaceAutocomplete
                         type="text"
                         placeholder="Enter your drop location"
-                        name="to"
+                        name="drop_location"
                         errorMsg="Please enter a destination location in the To field"
                         register={form.register}
                         setValue={form.setValue}
@@ -281,108 +250,108 @@ function handleTimePicker(newDateTime){
                         lat="to_lat"
                         lng="to_lng"
                       />
-                      {form.formState.errors.to && (
+                      {form.formState.errors.drop_location && (
                         <div className="text-white text-start text-sm lg:text-base">
-                          {form.formState.errors.to.message}
+                          {form.formState.errors.drop_location.message}
                         </div>
                       )}
                     </div>
-                
 
-                  
+                    <div className="flex flex-col gap-2">
+                      <FormField
+                        control={form.control}
+                        name="pickup_time"
+                        render={({ field }) => (
+                          <FormItem className="flex flex-col">
+                            <FormLabel className="text-white text-xl">
+                              Date
+                            </FormLabel>
+                            <Popover>
+                              <PopoverTrigger asChild>
+                                <FormControl>
+                                  <Button
+                                    variant={"outline"}
+                                    className={cn(
+                                      "w-full pl-3 text-left font-normal",
+                                      !field.value && "text-muted-foreground"
+                                    )}
+                                  >
+                                    {field.value ? (
+                                      dateFormatter(field.value)
+                                    ) : (
+                                      <span>DD/MM/YYYY</span>
+                                    )}
+                                    <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                                  </Button>
+                                </FormControl>
+                              </PopoverTrigger>
+                              <PopoverContent
+                                className="w-auto p-0"
+                                align="start"
+                              >
+                                <Calendar
+                                  mode="single"
+                                  selected={field.value}
+                                  onSelect={field.onChange}
+                                  // disabled={(date) =>
+                                  //   date > new Date() || date < new Date("1900-01-01")
+                                  // }
+                                  // initialFocus
+                                />
+                              </PopoverContent>
+                            </Popover>
+                          </FormItem>
+                        )}
+                      />
 
-                  <div className="flex flex-col gap-2">
-              
-                   <FormField
-          control={form.control}
-          name="date"
-          render={({ field }) => (
-            <FormItem className="flex flex-col">
-              <FormLabel className="text-white text-xl">Date</FormLabel>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <FormControl>
-                    <Button
-                      variant={"outline"}
-                      className={cn(
-                        "w-full pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                      {form.formState.errors.pickup_time && (
+                        <div className="text-white text-start text-sm lg:text-base">
+                          {form.formState.errors.pickup_time.message}
+                        </div>
                       )}
-                    >
-                      {field.value ? (
-                        dateFormatter(field.value)
-                      ) : (
-                        <span>DD/MM/YYYY</span>
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <Label className="text-xl text-white">Time</Label>
+                      <div className="w-full relative">
+                        <DatePicker
+                          name="time"
+                          // className="flex h-10 w-full rounded-md border border-input px-3 py-2 text-sm placeholder:text-muted-foreground"
+                          containerClassName="w-full"
+                          inputClass="flex h-10 w-full rounded-md border border-input px-3 py-2 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                          disableDayPicker
+                          value={dateTime}
+                          onChange={handleTimePicker}
+                          format="hh:mm A"
+                          plugins={[
+                            <TimePicker
+                              key="time-picker"
+                              position="bottom"
+                              className="cursor-pointer w-full"
+                            />,
+                          ]}
+                          placeholder="hh:mm:ss"
+                        />
+                        <div className="absolute inset-y-0 right-5 flex items-center pl-3 pointer-events-none">
+                          <Clock className="w-4 h-4 text-gray-500" />
+                        </div>
+                      </div>
+
+                      {form.formState.errors.time && (
+                        <div className="text-white text-start text-sm lg:text-base">
+                          {form.formState.errors.time.message}
+                        </div>
                       )}
-                      <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                    </Button>
-                  </FormControl>
-                </PopoverTrigger>
-                <PopoverContent className="w-auto p-0" align="start">
-                  <Calendar
-                    mode="single"
-                    selected={field.value}
-                    onSelect={field.onChange}
-                    // disabled={(date) =>
-                    //   date > new Date() || date < new Date("1900-01-01")
-                    // }
-                    // initialFocus
-                  />
-                </PopoverContent>
-              </Popover>
-            </FormItem>
-          )}
-        />
-                   
-
-
-                    {form.formState.errors.date && (
-                      <div className="text-white text-start text-sm lg:text-base">
-                        {form.formState.errors.date.message}
-                      </div>
-                    )}
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <Label className="text-xl text-white">Time</Label>
-                    <div className="w-full relative">
-                    <DatePicker
-                    name="time"
-                    // className="flex h-10 w-full rounded-md border border-input px-3 py-2 text-sm placeholder:text-muted-foreground"
-                    containerClassName="w-full"
-                    inputClass="flex h-10 w-full rounded-md border border-input px-3 py-2 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                    disableDayPicker
-                    value={dateTime}
-                    onChange={handleTimePicker}
-                    format="hh:mm A"
-                    plugins={[<TimePicker position="bottom" className="cursor-pointer w-full"/>]}
-                    placeholder="hh:mm:ss"
-            
-                    />
-                     <div className="absolute inset-y-0 right-5 flex items-center pl-3 pointer-events-none">
-                  <Clock className="w-4 h-4 text-gray-500" />
                     </div>
-
+                    <div className="flex items-center justify-end">
+                      <Button
+                        type="button"
+                        className="w-full flex bg-stone-950 hover:bg-stone-700 items-center capitalize"
+                        onClick={handleNext}
+                      >
+                        next
+                      </Button>
                     </div>
-                    
-                    {form.formState.errors.time && (
-                      <div className="text-white text-start text-sm lg:text-base">
-                        {form.formState.errors.time.message}
-                      </div>
-                    )}
                   </div>
-                  <div className="flex items-center justify-end">
-                    <Button
-                      type="button"
-                      className="w-full flex bg-stone-950 hover:bg-stone-700 items-center capitalize"
-                      onClick={handleNext}
-                    >
-                      next
-                    </Button>
-                 </div>
-
-                 </div>
-
-
 
                   <div
                     className={`w-full flex-col  justify-center gap-5   ${
@@ -392,7 +361,7 @@ function handleTimePicker(newDateTime){
                     <div className="flex flex-col gap-2">
                       <FormField
                         control={form.control}
-                        name="tripType"
+                        name="trip_type"
                         render={({ field }) => (
                           <FormItem>
                             <Label className="text-xl text-white">
@@ -445,7 +414,7 @@ function handleTimePicker(newDateTime){
                         alternative phone number
                       </Label>
                       <Input
-                        {...form.register("phoneNumber", {
+                        {...form.register("alternate_phone_number", {
                           maxLength: {
                             value: 10,
                             message: "length of mobile number should be 10",
@@ -469,7 +438,6 @@ function handleTimePicker(newDateTime){
                         next
                       </Button>
                     </div>
-
                   </div>
                 </div>
                 <div
@@ -483,7 +451,7 @@ function handleTimePicker(newDateTime){
                   <div className="w-full flex items-center justify-center">
                     <FormField
                       control={form.control}
-                      name="carType"
+                      name="car"
                       render={({ field }) => (
                         <FormItem className="space-y-3 w-full">
                           <FormControl>
@@ -493,7 +461,7 @@ function handleTimePicker(newDateTime){
                               defaultValue={field.value}
                               className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full items-center justify-center"
                             >
-                              {cars?.results?.map((car) => (
+                              {cars?.map((car) => (
                                 <FormItem
                                   className={`flex w-full items-center justify-between gap-5 bg-white p-4 rounded-lg shadow-lg relative capitalize ${
                                     field.value === `${car.id}`

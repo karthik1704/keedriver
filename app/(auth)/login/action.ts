@@ -32,7 +32,7 @@ export async function sendOTP(prevState: any, formData: FormData) {
       },
     };
   }
-  const res = await fetch(`${API_URL}/sendotp/`, {
+  const res = await fetch(`${API_URL}/getotp/`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
