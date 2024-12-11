@@ -1,5 +1,3 @@
-"use client";
-
 import {
   MapPin,
   Landmark,
@@ -17,11 +15,11 @@ import {
   Banknote,
   MoonStar,
   IndianRupee,
+  Star,
 } from "lucide-react";
-import { Star } from "lucide-react";
 
-import React, { useState } from "react";
 import RatingComponent from "./RatingComponent";
+import { getTrip } from "@/services/trips";
 
 interface Review {
   rating: number;
@@ -29,13 +27,14 @@ interface Review {
   date: string;
 }
 
-const TripDetailCard = () => {
-  const [showRating, setShowRating] = useState(false);
-  const [reviews, setReviews] = useState<Review[]>([]);
+const TripDetailCard = async ({
+  params: { id },
+}: {
+  params: { id: string };
+}) => {
+  const trip = await getTrip(id);
+  const reviews = [];
 
-  const handleReviewSubmit = (rating: number, review: string, date: string) => {
-    setReviews([...reviews, { rating, review, date }]);
-  };
   return (
     <>
       <div className="w-full flex flex-col items-center rounded-lg bg-rose-700 p-4 relative">
@@ -223,19 +222,7 @@ const TripDetailCard = () => {
           </div>
         </div>
 
-        <button
-          className="bg-white text-rose-600 text-lg font-bold px-4 py-2 rounded-md hover:bg-amber-50 mt-4"
-          onClick={() => setShowRating(true)}
-        >
-          Rate Your Trip
-        </button>
-
-        {showRating && (
-          <RatingComponent
-            onClose={() => setShowRating(false)}
-            onSubmit={handleReviewSubmit}
-          />
-        )}
+        <RatingComponent />
 
         {/* /* Display the reviews if available */}
         {reviews.length > 0 && (

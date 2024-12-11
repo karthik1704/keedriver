@@ -1,4 +1,5 @@
 
+import { AnyARecord } from "dns";
 import {
   MapPin,
   Calendar,
@@ -10,7 +11,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
-const TripCard = () => {
+const TripCard = ({trip}:{trip:any}) => {
 
 
   return (
