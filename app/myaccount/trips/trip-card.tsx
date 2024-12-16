@@ -1,4 +1,3 @@
-
 import { AnyARecord } from "dns";
 import {
   MapPin,
@@ -11,8 +10,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
-const TripCard = ({trip}:{trip:any}) => {
-
+const TripCard = ({data}:{data: any}) => {
 
   return (
     <section className=" w-full flex flex-col items-end justify-end gap-4 relative lg:pl-10">
@@ -65,7 +63,7 @@ const TripCard = ({trip}:{trip:any}) => {
                 </li>
                 <li className="flex items-center justify-start gap-1 font-medium">
                   <MapPin className="h-5 w-5 text-rose-700" />
-                  Airport
+                  {data.drop_location||'unknown'}
                 </li>
                 <li className="flex items-center justify-start gap-1 font-medium">
                   <Calendar className="h-5 w-5 text-rose-700" />
@@ -86,7 +84,7 @@ const TripCard = ({trip}:{trip:any}) => {
                 Driver Details
               </li>
               <li className="flex items-center justify-start gap-1 font-medium">
-                Name: DriverName
+                Name: {data.driver_name || 'unknown'}
               </li>
               <li className="flex items-center justify-start gap-1 font-medium">
                 Phone Number: 95454257879
@@ -98,5 +96,7 @@ const TripCard = ({trip}:{trip:any}) => {
     </section>
   );
 };
+
+
 
 export default TripCard;
