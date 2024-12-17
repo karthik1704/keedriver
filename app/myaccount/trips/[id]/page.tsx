@@ -228,7 +228,7 @@ const TripDetailCard = async (
           </div>
         </div>
 
-        <RatingComponent />
+        {/* <RatingComponent /> */}
 
         {/* /* Display the reviews if available */}
         {reviews.length > 0 && (

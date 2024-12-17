@@ -97,7 +97,7 @@ export function InputOTPForm() {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="w-full flex flex-col items-center gap-2 max-w-lg p-6 sm:p-10 md:p-14 lg:pt-0 lg:pb-10 backdrop-blur-sm bg-white/30  rounded-md"
+          className="w-full flex flex-col items-center gap-2 max-w-lg p-6 sm:p-10 md:p-14 lg:pt-0 lg:pb-10 backdrop-blur-sm bg-white  rounded-md"
         >
           <FormField
             control={form.control}
@@ -107,24 +107,24 @@ export function InputOTPForm() {
               <div>
                 <img src="/images/home/Handheld-smartphone-1.png" alt="phone" className="w-60 h-52" />
               </div>
-              <FormItem className="flex flex-col items-center text-white">
-                <FormLabel>One-Time Password</FormLabel>
-                <FormDescription className="text-white">
+              <FormItem className="flex flex-col items-center">
+                <FormLabel className="text-2xl font-bold">One-Time Password</FormLabel>
+                <FormDescription className="text-gray-500 text-base text-center">
                   Please enter the one-time password sent to your phone.
                 </FormDescription>
                 <FormControl>
                   <InputOTP maxLength={6} {...field}>
-                    <InputOTPGroup>
+                    {/* <InputOTPGroup> */}
                       <InputOTPSlot index={0} />
                       <InputOTPSlot index={1} />
                       <InputOTPSlot index={2} />
-                    </InputOTPGroup>
-                    <InputOTPSeparator />
-                    <InputOTPGroup>
+                    {/* </InputOTPGroup> */}
+                    {/* <InputOTPSeparator /> */}
+                    {/* <InputOTPGroup> */}
                       <InputOTPSlot index={3} />
                       <InputOTPSlot index={4} />
                       <InputOTPSlot index={5} />
-                    </InputOTPGroup>
+                    {/* </InputOTPGroup> */}
                   </InputOTP>
                 </FormControl>
 
@@ -133,21 +133,21 @@ export function InputOTPForm() {
               </>
             )}
           />
-          <div className="flex flex-col items-center text-center text-sm text-muted-foreground text-white">
-            <p>Didn&apos;t receive the OTP?</p>
-            <button
-              type="button"
-              onClick={resendOTPHandler}
-              className="text-blue-500 hover:text-blue-700"
-            >
-              Resend OTP
-            </button>
-          </div>
-          <Button className="w-40 text-lg" type="submit">
+         
+          <Button className="w-full text-lg" type="submit">
             {form.formState.isLoading || form.formState.isSubmitting
               ? "Loading..."
               : "Submit"}
           </Button>
+          <div className="flex items-center text-center text-gray-950 text-base space-x-2 cursor-pointer hover:underline">
+            <p>Didn&apos;t receive the OTP?</p>
+            <button
+              type="button"
+              onClick={resendOTPHandler}
+            >
+              Resend OTP
+            </button>
+          </div>
         </form>
       </Form>
     </div>
