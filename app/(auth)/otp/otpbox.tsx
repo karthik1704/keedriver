@@ -13,14 +13,14 @@ import {
 } from "@/components/ui/form";
 import {
   InputOTP,
-  InputOTPGroup,
-  InputOTPSeparator,
+  // InputOTPGroup,
+  // InputOTPSeparator,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 import { Button } from "@/components/ui/button";
 import { useSearchParams } from "next/navigation";
 import { resendOTP, signIn } from "./actions";
-import { useEffect, useState, useActionState } from "react";
+import { useEffect,  useActionState, startTransition } from "react";
 import { toast } from "sonner";
 
 const FormSchema = z.object({
@@ -68,12 +68,13 @@ export function InputOTPForm() {
       });
   }, [state?.message, state]);
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
+  async function onSubmit(data: z.infer<typeof FormSchema>) {
     console.log(data);
     const decodePhone = Buffer.from(q as string, "base64").toString("ascii");
     const new_data = { ...data, phone: decodePhone };
-
-    actionFn(new_data);
+    startTransition(() => {
+      actionFn(new_data);
+    });
   }
 
   async function resendOTPHandler() {
@@ -104,36 +105,42 @@ export function InputOTPForm() {
             name="otp"
             render={({ field }) => (
               <>
-              <div>
-                <img src="/images/home/Handheld-smartphone-1.png" alt="phone" className="w-60 h-52" />
-              </div>
-              <FormItem className="flex flex-col items-center">
-                <FormLabel className="text-2xl font-bold">One-Time Password</FormLabel>
-                <FormDescription className="text-gray-500 text-base text-center">
-                  Please enter the one-time password sent to your phone.
-                </FormDescription>
-                <FormControl>
-                  <InputOTP maxLength={6} {...field}>
-                    {/* <InputOTPGroup> */}
+                <div>
+                  <img
+                    src="/images/home/Handheld-smartphone-1.png"
+                    alt="phone"
+                    className="w-60 h-52"
+                  />
+                </div>
+                <FormItem className="flex flex-col items-center">
+                  <FormLabel className="text-2xl font-bold">
+                    One-Time Password
+                  </FormLabel>
+                  <FormDescription className="text-gray-500 text-base text-center">
+                    Please enter the one-time password sent to your phone.
+                  </FormDescription>
+                  <FormControl>
+                    <InputOTP maxLength={6} {...field}>
+                      {/* <InputOTPGroup> */}
                       <InputOTPSlot index={0} />
                       <InputOTPSlot index={1} />
                       <InputOTPSlot index={2} />
-                    {/* </InputOTPGroup> */}
-                    {/* <InputOTPSeparator /> */}
-                    {/* <InputOTPGroup> */}
+                      {/* </InputOTPGroup> */}
+                      {/* <InputOTPSeparator /> */}
+                      {/* <InputOTPGroup> */}
                       <InputOTPSlot index={3} />
                       <InputOTPSlot index={4} />
                       <InputOTPSlot index={5} />
-                    {/* </InputOTPGroup> */}
-                  </InputOTP>
-                </FormControl>
+                      {/* </InputOTPGroup> */}
+                    </InputOTP>
+                  </FormControl>
 
-                <FormMessage />
-              </FormItem>
+                  <FormMessage />
+                </FormItem>
               </>
             )}
           />
-         
+
           <Button className="w-full text-lg" type="submit">
             {form.formState.isLoading || form.formState.isSubmitting
               ? "Loading..."
@@ -141,10 +148,7 @@ export function InputOTPForm() {
           </Button>
           <div className="flex items-center text-center text-gray-950 text-base space-x-2 cursor-pointer hover:underline">
             <p>Didn&apos;t receive the OTP?</p>
-            <button
-              type="button"
-              onClick={resendOTPHandler}
-            >
+            <button type="button" onClick={resendOTPHandler}>
               Resend OTP
             </button>
           </div>
