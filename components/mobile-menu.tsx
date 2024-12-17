@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { type JSX } from "react";
 import { ChevronUp, ChevronDown, Plus, X, Sun, CircleUserRound } from "lucide-react";
 
 import { Button } from "@/components/ui/button";

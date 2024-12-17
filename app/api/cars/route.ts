@@ -6,7 +6,7 @@ export async function GET(request: Request){
     const { searchParams } = new URL(request.url)
     console.log(searchParams)
     const id = searchParams.get('id')||""
-    const cookiesStoreage = cookies();
+    const cookiesStoreage = await cookies();
     const access_token = cookiesStoreage.get('access');
 
     if(!access_token){

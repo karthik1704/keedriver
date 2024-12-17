@@ -26,7 +26,7 @@ export async function createCar(data: any) {
       fieldErrors: validatedFields.error.flatten().fieldErrors,
     };
   }
-  const access_token = cookies().get("access");
+  const access_token = (await cookies()).get("access");
 
   const res = await fetch(`${API_URL}/cars/`, {
     method: "POST",

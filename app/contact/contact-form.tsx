@@ -1,5 +1,5 @@
+import { useActionState } from "react";
 "use client";
-import { useFormState } from "react-dom";
 import { createContact } from "./action";
 import SubmitButton from "@/components/submit-button";
 import { MessageSquareWarning } from "lucide-react";
@@ -20,7 +20,7 @@ const initialState = {
 };
 
 const ContactForm = () => {
-  const [state, formAction] = useFormState(createContact, initialState);
+  const [state, formAction] = useActionState(createContact, initialState);
   return (
     <form action={formAction} className="space-y-4 flex-col p-6 border rounded-sm bg-white shadow-md shadow-stone-300">
       <div>

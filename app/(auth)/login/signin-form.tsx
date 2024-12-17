@@ -1,8 +1,7 @@
 "use client";
-import { useFormState } from "react-dom";
 import { sendOTP } from "./action";
 import SubmitButton from "@/components/submit-button";
-import {  useEffect } from "react";
+import { useEffect, useActionState } from "react";
 import { toast } from "sonner";
 
 type InitialState =  {
@@ -21,7 +20,7 @@ const initialState:InitialState =  {
 
 
 const SigninForm = () => {
-  const [state, formAction] = useFormState(sendOTP, initialState);
+  const [state, formAction] = useActionState(sendOTP, initialState);
 
   useEffect(() => {
     if (state.message) {

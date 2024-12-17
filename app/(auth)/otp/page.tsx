@@ -2,11 +2,16 @@ import React from "react";
 import { InputOTPForm } from "./otpbox";
 import { redirect } from "next/navigation";
 
-const OtpVerificationInput = ({
-  searchParams: { q },
-}: {
-  searchParams: { q: string };
-}) => {
+const OtpVerificationInput = async (
+  props: {
+    searchParams: Promise<{ q: string }>;
+  }
+) => {
+  const searchParams = await props.searchParams;
+
+  const {
+    q
+  } = searchParams;
 
   if (!q) {
     redirect("/login");

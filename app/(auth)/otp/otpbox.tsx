@@ -20,8 +20,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { useSearchParams } from "next/navigation";
 import { resendOTP, signIn } from "./actions";
-import { useFormState } from "react-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useActionState } from "react";
 import { toast } from "sonner";
 
 const FormSchema = z.object({
@@ -44,7 +43,7 @@ export function InputOTPForm() {
     },
   });
 
-  const [state, actionFn] = useFormState(signIn, initialState);
+  const [state, actionFn] = useActionState(signIn, initialState);
 
   const searchParams = useSearchParams();
   const q = searchParams.get("q");

@@ -27,11 +27,17 @@ interface Review {
   date: string;
 }
 
-const TripDetailCard = async ({
-  params: { id },
-}: {
-  params: { id: string };
-}) => {
+const TripDetailCard = async (
+  props: {
+    params: Promise<{ id: string }>;
+  }
+) => {
+  const params = await props.params;
+
+  const {
+    id
+  } = params;
+
   const trip = await getTrip(id);
   const reviews = [];
 

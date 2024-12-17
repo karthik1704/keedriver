@@ -66,7 +66,7 @@ export async function signIn(
 
   const resJson = await res.json();
   console.log(resJson);
-  cookies().set("access", resJson.access);
+  (await cookies()).set("access", resJson.access);
 
   if (!resJson.user.email) {
     redirect("/create-account");

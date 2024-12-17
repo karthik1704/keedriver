@@ -5,7 +5,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 export async function getCars() {
-  const cookiesStoreage = cookies();
+  const cookiesStoreage = await cookies();
   const access_token = cookiesStoreage.get("access");
   if (!access_token) {
     return null;
@@ -38,7 +38,7 @@ export async function getCars() {
 
 
 export async function getCar(id: string) {
-  const cookiesStoreage = cookies();
+  const cookiesStoreage = await cookies();
   const access_token = cookiesStoreage.get("access");
   if (!access_token) {
     return null;
@@ -71,7 +71,7 @@ export async function getCar(id: string) {
 
 
 export async function getCarEngineType() {
-  const cookiesStore = cookies();
+  const cookiesStore = await cookies();
   const access = cookiesStore.get("access");
 
   const res = await fetch(`${API_URL}/carenginetype/`, {
@@ -98,7 +98,7 @@ export async function getCarEngineType() {
 
 
 export async function getCarType() {
-  const cookiesStore = cookies();
+  const cookiesStore = await cookies();
   const access = cookiesStore.get("access");
 
   const res = await fetch(`${API_URL}/cartype/`, {

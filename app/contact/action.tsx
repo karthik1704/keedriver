@@ -47,6 +47,6 @@ export async function createContact(prevState: any, formData: FormData) {
 
   const resJson = await res.json();
 
-  cookies().set("access", resJson.access);
+  (await cookies()).set("access", resJson.access);
   redirect("/");
 }

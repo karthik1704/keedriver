@@ -11,7 +11,7 @@ export async function updateUser(
 ) {
   let jsonObject = formData;
 
-  const access_token = cookies().get("access");
+  const access_token = (await cookies()).get("access");
 
   if(!access_token){
     redirect("/login");

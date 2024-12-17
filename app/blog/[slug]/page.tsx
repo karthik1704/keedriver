@@ -7,7 +7,13 @@ export const metadata: Metadata = {
   description: "This is Blog page for keedriver Next.js",
 };
 
-const BlogPage = async ({ params: { slug } }: { params: { slug: string } }) => {
+const BlogPage = async (props: { params: Promise<{ slug: string }> }) => {
+  const params = await props.params;
+
+  const {
+    slug
+  } = params;
+
   const data = await getBlog(slug);
 
   return (

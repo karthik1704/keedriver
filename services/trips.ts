@@ -5,7 +5,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 export async function getTrips() {
-  const cookiesStoreage = cookies();
+  const cookiesStoreage = await cookies();
   const access_token = cookiesStoreage.get("access");
   if (!access_token) {
     return null;
@@ -38,7 +38,7 @@ export async function getTrips() {
 
 
 export async function getTrip(id: string) {
-  const cookiesStoreage = cookies();
+  const cookiesStoreage = await cookies();
   const access_token = cookiesStoreage.get("access");
   if (!access_token) {
     return null;

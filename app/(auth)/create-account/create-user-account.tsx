@@ -2,8 +2,7 @@
 import Image from "next/image";
 import createAccountImage from "public/images/create account/create-account-img.webp";
 import { createAccount } from "./actions";
-import { useFormState } from "react-dom";
-import { useEffect } from "react";
+import { useEffect, useActionState } from "react";
 import { toast } from "sonner";
 import SubmitButton from "@/components/submit-button";
 
@@ -23,7 +22,7 @@ const initialState:InitialState =  {
 
 
 const CreateUserAccount = () => {
-  const [state, formAction] = useFormState(createAccount, initialState);
+  const [state, formAction] = useActionState(createAccount, initialState);
 
   useEffect(() => {
     if (state.message) {

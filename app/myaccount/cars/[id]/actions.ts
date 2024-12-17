@@ -6,7 +6,7 @@ import { revalidateTag } from "next/cache";
 
 export async function updateCar(id: any, formData: any) {
 
-  const cookiesStore = cookies();
+  const cookiesStore = await cookies();
   const access = cookiesStore.get("access");
 
   if (!access) {

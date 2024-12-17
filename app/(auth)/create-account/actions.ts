@@ -14,7 +14,7 @@ const schema = z.object({
 export const createAccount = async (prevState:any, formData: FormData) => {
   const data = Object.fromEntries(formData);
 
-  const access = cookies().get("access");
+  const access = (await cookies()).get("access");
 
   if (!access) {
     redirect("/login");

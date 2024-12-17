@@ -3,7 +3,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 export async function getUser() {
-  const cookiesStore = cookies();
+  const cookiesStore = await cookies();
   const access = cookiesStore.get("access");
 
   if (!access) {
@@ -32,7 +32,7 @@ export async function getUser() {
 
 
 export async function getCurrentUser() {
-    const cookiesStore = cookies();
+    const cookiesStore = await cookies();
     const access = cookiesStore.get("access");
   
     if (!access) {
