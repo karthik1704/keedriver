@@ -8,7 +8,7 @@ const TripListPage = async () => {
   return (
     <div className="w-full flex gap-4 md:w-full lg:flex-col mx-2 lg:ml-10 items-center justify-end">
       {trips.map((trip) => (
-        <Link key={trip.id} href={`/trips/${trip.id}`}>
+        <Link key={trip.id} href={`trips/${trip.id}`}>
         <TripCard data={trip} />
         </Link>
       ))}

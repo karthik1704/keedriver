@@ -38,14 +38,13 @@ const formattedPickupTime = format(pickupDate, 'hh:mm a');
     <section className=" w-full flex flex-col items-end justify-end gap-4 relative lg:pl-10">
       <div className="w-full lg:w-full h-auto rounded-lg flex flex-col lg:flex-row items-end justify-end gap-4 bg-white shadow-lg border-t-4 border-stone-100 shadow-stone-400 p-6 relative">
         {/* Status */}
-        <p className={`flex items-center text-lg font-bold text-gray-800 gap-2 absolute top-2 right-2`}>
-          <Badge>
-          <Check className="text-green-600" />
-          <div className={`p-4 rounded-lg ${getStatusColor(tripStatus)}`}>
-          {data.trip_status}
-          </div>
-          </Badge>
-        </p>
+        <p className="flex items-center text-lg font-bold text-gray-800 gap-2 absolute top-2 right-2">
+        <Check className="text-green-600" />
+    <Badge className={`p-4 rounded-lg ${getStatusColor(tripStatus)}`}>
+     
+      {tripStatus}
+    </Badge>
+  </p>
 
         {/* Trip Info */}
         <p className="absolute left-0 bottom-1 text-lg font-semibold px-4 py-3 flex items-center gap-3">
