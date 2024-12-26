@@ -40,7 +40,7 @@ const TripDetailCard = async (
   } = params;
 
   const trip = await getTrip(id);
-  // const rev = await getReviews(id);
+  const rev = await getReviews(id);
   const reviews = [];
 
   return (
@@ -229,8 +229,13 @@ const TripDetailCard = async (
             </div>
           </div>
         </div>
-
-        <div className="bg-white shadow-md rounded-lg p-6 max-w-md mx-auto mt-8">
+{/* 
+        if(rev && rev.results){
+    return( */}
+      <>
+      {rev.results.map((result,index)=>(
+        <div key={index}>
+          <div className="bg-white shadow-md rounded-lg p-6 max-w-md mx-auto mt-8">
       <h2 className="text-2xl font-semibold text-gray-800 mb-4">Review</h2>
       
       {/* Rating */}
@@ -239,15 +244,20 @@ const TripDetailCard = async (
         {/* {renderStars(rating)} */}
       </div>
 
-      {/* Title */}
       <div className="mb-4">
         <h3 className="text-lg font-medium text-gray-900">Title</h3>
-        {/* <span>{review.title}</span> */}
+        <span>{result.title}</span>
       </div>
 
-      {/* Comment */}
-      <p className="text-gray-600">Comment</p>
+      <p className="text-gray-600">Comment: {result.Comment}</p>
+
+      <p>Rating: {result.rating}</p>
     </div>
+        </div>
+      ))}
+      </>
+    {/* // ) */}
+  {/* // } */}
 
         <RatingComponent />
 

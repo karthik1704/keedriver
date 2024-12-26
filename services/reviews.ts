@@ -11,7 +11,7 @@ export async function getReviews(id: string){
         return null;
     }
 
-    const res = await fetch(`${API_URL}/review/customer/trips/${id}`,{
+    const res = await fetch(`${API_URL}/review/customer/${id}`,{
         method: 'GET',
         headers:{
             'content-Type':'application/json',
