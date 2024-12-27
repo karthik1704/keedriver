@@ -9,9 +9,9 @@ const schema = z.object({
     rating:z.string().min(1,"Rating is required"),
     title:z.string().min(1, "Title is required"),
     comment:z.string().min(1,"comment is required"),
-})
+});
 
-export async function customerReview(formData:any){
+export const createReview =  async (formData:any) =>{
 
     const cookiesStore = await cookies();
     const access = cookiesStore.get("access");
