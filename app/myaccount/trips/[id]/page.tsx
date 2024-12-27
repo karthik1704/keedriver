@@ -44,7 +44,7 @@ const TripDetailCard = async (
   const reviews = [];
 
   return (
-    <>
+    <div className="flex flex-row">
       <div className="w-full flex flex-col items-center rounded-lg bg-rose-700 p-4 relative">
         <div className="text-white text-lg flex items-center gap-2 absolute top-3 right-3">
           <span className="inline-block">Status :</span>
@@ -229,35 +229,6 @@ const TripDetailCard = async (
             </div>
           </div>
         </div>
-{/* 
-        if(rev && rev.results){
-    return( */}
-      <>
-      {rev.results.map((result,index)=>(
-        <div key={index}>
-          <div className="bg-white shadow-md rounded-lg p-6 max-w-md mx-auto mt-8">
-      <h2 className="text-2xl font-semibold text-gray-800 mb-4">Review</h2>
-      
-      {/* Rating */}
-      <div className="mb-2">
-        <span className="text-yellow-500 font-bold">Rating</span>
-        {/* {renderStars(rating)} */}
-      </div>
-
-      <div className="mb-4">
-        <h3 className="text-lg font-medium text-gray-900">Title</h3>
-        <span>{result.title}</span>
-      </div>
-
-      <p className="text-gray-600">Comment: {result.Comment}</p>
-
-      <p>Rating: {result.rating}</p>
-    </div>
-        </div>
-      ))}
-      </>
-    {/* // ) */}
-  {/* // } */}
 
         <RatingComponent />
 
@@ -291,8 +262,32 @@ const TripDetailCard = async (
         )}
       </div>
 
+      <>
+      {rev.results.map((result,index)=>(
+        <div key={index}>
+          <div className="bg-blue-500 shadow-md rounded-lg p-6 max-w-md mx-auto mt-8">
+      <h2 className="text-2xl font-semibold text-gray-800 mb-4">Review</h2>
       
-    </>
+      {/* Rating */}
+      <div className="mb-2">
+        <span className="text-yellow-500 font-bold">Rating</span>
+        {/* {renderStars(rating)} */}
+      </div>
+
+      <div className="mb-4">
+        <h3 className="text-lg font-medium text-gray-900">Title</h3>
+        <span>{result.title}</span>
+      </div>
+
+      <p className="text-gray-600">Comment: {result.Comment}</p>
+
+      <p>Rating: {result.rating}</p>
+    </div>
+        </div>
+      ))}
+      </>
+      
+    </div>
   );
 };
 
