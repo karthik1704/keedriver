@@ -21,6 +21,7 @@ import {
 import RatingComponent from "./RatingComponent";
 import { getTrip } from "@/services/trips";
 import { getReviews } from "@/services/reviews";
+import { format } from "date-fns";
 
 interface Review {
   rating: number;
@@ -34,7 +35,6 @@ const TripDetailCard = async (
   }
 ) => {
   const params = await props.params;
-
   const {
     id
   } = params;
@@ -43,8 +43,13 @@ const TripDetailCard = async (
   const rev = await getReviews(id);
   const reviews = [];
 
+  const pickupTime = format(trip.pickup_time, 'hh:mm a');
+  // const pickupTime = format(new Date(trip.pickup_time), 'MMMM dd, yyyy');
+
+
+
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-col w-full">
       <div className="w-full flex flex-col items-center rounded-lg bg-rose-700 p-4 relative">
         <div className="text-white text-lg flex items-center gap-2 absolute top-3 right-3">
           <span className="inline-block">Status :</span>
@@ -98,7 +103,7 @@ const TripDetailCard = async (
                 <span className="text-white">Trip Time</span>
                 <p className="bg-white p-2 text-md text-gray-700 rounded-lg mt-2">
                   <Clock className="inline-block mr-2 text-red-600" />
-                  {trip.pickup_time}
+                  {pickupTime}
                 </p>
               </div>
               <div>
@@ -262,30 +267,34 @@ const TripDetailCard = async (
         )}
       </div>
 
-      <>
-      {rev.results.map((result,index)=>(
-        <div key={index}>
-          <div className="bg-blue-500 shadow-md rounded-lg p-6 max-w-md mx-auto mt-8">
-      <h2 className="text-2xl font-semibold text-gray-800 mb-4">Review</h2>
-      
-      {/* Rating */}
-      <div className="mb-2">
-        <span className="text-yellow-500 font-bold">Rating</span>
-        {/* {renderStars(rating)} */}
-      </div>
+      <div className="flex flex-col gap-4">
+  {rev.results.map((result, index) => (
+    <div key={index} className="w-1/2">
+      <div className="shadow-md rounded-lg p-6 max-w-md mx-auto mt-8">
+        <h2 className="bg-rose-700 w-full text-center text-2xl font-bold text-white mb-4">Review</h2>
 
-      <div className="mb-4">
-        <h3 className="text-lg font-medium text-gray-900">Title</h3>
-        <span>{result.title}</span>
-      </div>
+        <h2>{result.created_at}</h2>
 
-      <p className="text-gray-600">Comment: {result.Comment}</p>
-
-      <p>Rating: {result.rating}</p>
-    </div>
+        <div className="mb-4 text-black flex items-center">
+          <h3 className="text-lg font-medium">Title : </h3>
+          <span className="ml-3">{result.comment}</span>
         </div>
-      ))}
-      </>
+
+        <div className="mb-4 text-black flex items-center">
+        <h3 className="text-lg font-medium">Comment : </h3>
+        <span className="ml-3">{result.title}</span>
+        </div>
+
+        <div className="mb-4 text-black flex items-center">
+        <h3 className="text-lg font-medium">Rating : </h3>
+        <span className="ml-3">{result.rating}</span>
+        </div>
+
+      </div>
+    </div>
+  ))}
+</div>
+
       
     </div>
   );
