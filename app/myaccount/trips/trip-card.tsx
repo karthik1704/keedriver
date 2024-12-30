@@ -25,7 +25,20 @@ const TripCard = ({data}:{data: any}) => {
       case 'DRIVER_ASSIGNED':
         return 'bg-yellow-500 text-white'; 
       default:
-        return 'bg-red-500 text-black'; 
+        return 'bg-red-500 text-white'; 
+    }
+  };
+
+  const getStatusText = (status) => {
+    switch (status) {
+      case 'COMPLETED':
+        return 'Completed'; 
+      case 'BOOKED':
+        return 'Booked';
+      case 'DRIVER_ASSIGNED':
+        return 'Driver Assigned'; 
+      default:
+        return 'Cancelled'; 
     }
   };
 
@@ -42,7 +55,7 @@ const formattedPickupTime = format(pickupDate, 'hh:mm a');
         <Check className="text-green-600" />
     <Badge className={`p-4 rounded-lg ${getStatusColor(tripStatus)}`}>
      
-      {tripStatus}
+    {getStatusText(tripStatus)}
     </Badge>
   </p>
 

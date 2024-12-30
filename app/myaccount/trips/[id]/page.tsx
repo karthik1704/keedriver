@@ -273,7 +273,7 @@ const TripDetailCard = async (
       <div className="shadow-md rounded-lg p-6 max-w-md mx-auto mt-8">
         <h2 className="bg-rose-700 w-full text-center text-2xl font-bold text-white mb-4">Review</h2>
 
-        <h2>{result.created_at}</h2>
+        {/* <h2>{result.created_at}</h2> */}
 
         <div className="mb-4 text-black flex items-center">
           <h3 className="text-lg font-medium">Title : </h3>
