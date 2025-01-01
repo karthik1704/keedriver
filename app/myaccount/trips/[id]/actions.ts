@@ -20,7 +20,7 @@ if(!access){
     redirect('/login');
 }
 
-const validatedFields = schema.safeParse(data);
+const validatedFields = schema.safeParse(formData);
 
 if(!validatedFields.success){
     return{

@@ -13,6 +13,7 @@ const RatingComponent = () => {
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
   const [review, setReview] = useState("");
+  const [title, setTitle] = useState("");
 
   const handleRatingClick = (rate: number) => {
     setRating(rate);
@@ -22,7 +23,13 @@ const RatingComponent = () => {
     setReview(e.target.value);
   };
 
-  const handleSubmit = () => {
+  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(e.target.value);
+  };
+
+  const handleSubmit = async () => {
+    const formData = { rating, title, comment: review };
+
     const date = new Date().toLocaleString(); // Get current date and time
     handleReviewSubmit(rating, review, date); // Pass data to TripDetailCard
     setShowRating(false);
@@ -60,6 +67,14 @@ const RatingComponent = () => {
               ))}
             </div>
 
+            <input
+              type="text"
+              className="w-full p-2 sm:p-3 border rounded-lg mb-4 text-sm sm:text-base"
+              placeholder="Review title"
+              value={title}
+              onChange={handleTitleChange}
+            />
+
             <textarea
               className="w-full p-2 sm:p-3 border rounded-lg mb-4 text-sm sm:text-base"
               rows={4}
@@ -85,6 +100,25 @@ const RatingComponent = () => {
           </div>
         </div>
       )}
+
+      {/* Display submitted reviews */}
+      <div className="mt-8">
+        <h3 className="text-lg font-semibold">Reviews:</h3>
+        <ul>
+          {reviews.map((review, index) => (
+            <li key={index} className="mb-4">
+              <h4 className="font-bold">{review.title}</h4>
+              <p>{review.comment}</p>
+              <div>
+                {Array.from({ length: review.rating }).map((_, idx) => (
+                  <Star key={idx} className="w-4 h-4 text-yellow-500 inline" />
+                ))}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
     </div>
   );
 };
