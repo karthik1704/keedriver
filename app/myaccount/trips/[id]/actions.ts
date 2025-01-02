@@ -11,7 +11,7 @@ const schema = z.object({
     comment:z.string().min(1,"comment is required"),
 });
 
-export const createReview =  async (prevState:any, formData:any) =>{
+export const createReview =  async (formData:any) =>{
     // const data = Object.fromEntries(formData)
 
 const access = (await cookies()).get('access');
@@ -29,7 +29,7 @@ if(!validatedFields.success){
     };
 }
 
-    const res = await fetch(`${API_URL}/review/customer/create`,{
+    const res = await fetch(`${API_URL}/review/customer/create/`,{
         method: 'POST',
         headers:{
             "content-Type": "application/json",
