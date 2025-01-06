@@ -1,6 +1,7 @@
 "use server";
 
 import { API_URL } from "@/constants";
+import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import {z} from "zod";
@@ -43,16 +44,29 @@ console.log('new')
     }
 
     if (res.status ===422){
-        console.log(res)               
+        console.log(res)
+        return{
+            status: "error",
+            message: "Failed to create review.",
+        }               
     }
 
 
 
     if(res.status !==201){
+        console.log(res);
         const response = await res.json(); 
         console.log("API Response:", response); 
-        return { status: "success", message: response.message || "Review created successfully." };
+        return { status: "error", message: response.message || "Failed to create review." };
     }
+
+    revalidatePath(`/myaccount/trips/${formData.trip}`);
+
+    const response = await res.json(); 
+
+
+    return { status: "success", message: response.message || "Review created successfully." };
+
 
     // redirect(`/myaccount/trips/${formData.trip}`);
 

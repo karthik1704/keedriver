@@ -16,7 +16,7 @@ import {
   MoonStar,
   IndianRupee,
   Star,
-} from "lucide-react";
+ } from "lucide-react";
 
 import RatingComponent from "./RatingComponent";
 import { getTrip } from "@/services/trips";
@@ -253,7 +253,22 @@ const TripDetailCard = async (
 
         <div className="mb-4 ">
         <h3 className="text-base text-stone-700 font-semibold">Rating </h3>
-        <span className="text-stone-800 font-semibold">{result.rating}</span>
+        <div className="flex items-center">
+          {Array.from({length:5},(_,i)=>{
+            return(
+<span key={i}>
+                  <Star
+                    className={`${
+                      i < result.rating
+                        ? 'text-yellow-500' // Filled star color
+                        : 'text-gray-300' // Empty star color
+                    }`}
+                  />
+                </span>
+            )
+          })}
+        </div>
+        {/* <span className="text-stone-800 font-semibold">{result.rating}</span> */}
         </div>
 
         <div className="mb-4">
