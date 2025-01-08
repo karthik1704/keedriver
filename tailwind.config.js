@@ -23,6 +23,7 @@ export const theme = {
 
     colors: {
       border: "hsl(var(--border))",
+      turquoise: '#40E0D0',
       input: "hsl(var(--input))",
       ring: "hsl(var(--ring))",
       background: "hsl(var(--background))",

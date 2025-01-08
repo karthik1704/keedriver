@@ -34,7 +34,7 @@ const RatingComponent = () => {
     setShowRating(false);
     reset();
 
-    console.log(rating,data.title,data.review)
+    console.log(data.rating,data.title,data.review)
   };
 
   return (
