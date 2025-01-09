@@ -239,13 +239,23 @@ const TripDetailCard = async (
       </div>
 
       <div className="flex flex-col gap-4">
+      <h2 className="bg-rose-700 w-9/12 mx-auto text-center rounded-t-lg p-3 text-2xl font-bold text-white my-4">Review</h2>
+
   {rev.results.map((result, index) => (
-    <div key={index} className="w-1/2">
-      <div className="shadow-md rounded-lg max-w-md mx-auto mt-8">
-        <h2 className="bg-rose-700 w-full text-center rounded-t-lg p-3 text-2xl font-bold text-white mb-4">Review</h2>
+    <div key={index} className="w-full">
+      <div className="shadow-md bg-white transition-shadow hover:shadow-md duration-300 ease-in-out rounded-lg w-9/12 mx-auto mt-8">
 
         <div className="p-6">
-        {/* <h2 className="text-rose-700">{result.created_at}</h2> */}
+        <h2 className="text-stone-700 text-right">
+        {new Date(result.created_at).toLocaleString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  })}
+        </h2>
         <div className="mb-4">
           <h3 className="text-base text-stone-700 font-semibold">Title </h3>
           <p className="text-stone-800 font-semibold">{result.title}</p>
@@ -260,15 +270,15 @@ const TripDetailCard = async (
                   <Star
                     className={`${
                       i < result.rating
-                        ? 'text-yellow-500' // Filled star color
-                        : 'text-gray-300' // Empty star color
+                        ? 'text-yellow-500' 
+                        : 'text-gray-300' 
                     }`}
+                    fill={i + 1 <= result.rating ? "yellow" : "none"}
                   />
                 </span>
             )
           })}
         </div>
-        {/* <span className="text-stone-800 font-semibold">{result.rating}</span> */}
         </div>
 
         <div className="mb-4">
