@@ -16,7 +16,7 @@ import {
   MoonStar,
   IndianRupee,
   Star,
-} from "lucide-react";
+ } from "lucide-react";
 
 import RatingComponent from "./RatingComponent";
 import { getTrip } from "@/services/trips";
@@ -41,7 +41,6 @@ const TripDetailCard = async (
 
   const trip = await getTrip(id);
   const rev = await getReviews(id);
-  const reviews = [];
 
   const pickupTime = format(trip.pickup_time, 'hh:mm a');
   // const pickupTime = format(new Date(trip.pickup_time), 'MMMM dd, yyyy');
@@ -237,57 +236,46 @@ const TripDetailCard = async (
 
         <RatingComponent />
 
-        {/* /* Display the reviews if available */}
-        {reviews.length > 0 && (
-          <div className="w-full mt-6 p-4 bg-white rounded-lg">
-            <h3 className="text-lg font-semibold text-gray-800">Reviews</h3>
-            <ul>
-              {reviews.map((rev, index) => (
-                <li key={index} className="mt-4 border-t border-gray-200 pt-4">
-                  <div className="flex items-center">
-                    {/* Star Images */}
-                    <div className="flex">
-                      {[...Array(rev.rating)].map((_, starIndex) => (
-                        <Star
-                          key={starIndex}
-                          className="w-5 h-5 text-yellow-500"
-                          fill="yellow"
-                        />
-                      ))}
-                    </div>
-                    <span className="ml-auto text-gray-500 text-sm">
-                      {rev.date}
-                    </span>
-                  </div>
-                  <p className="text-gray-700 mt-2">{rev.review}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
       </div>
 
       <div className="flex flex-col gap-4">
   {rev.results.map((result, index) => (
     <div key={index} className="w-1/2">
-      <div className="shadow-md rounded-lg p-6 max-w-md mx-auto mt-8">
-        <h2 className="bg-rose-700 w-full text-center text-2xl font-bold text-white mb-4">Review</h2>
+      <div className="shadow-md rounded-lg max-w-md mx-auto mt-8">
+        <h2 className="bg-rose-700 w-full text-center rounded-t-lg p-3 text-2xl font-bold text-white mb-4">Review</h2>
 
-        {/* <h2>{result.created_at}</h2> */}
-
-        <div className="mb-4 text-black flex items-center">
-          <h3 className="text-lg font-medium">Title : </h3>
-          <span className="ml-3">{result.comment}</span>
+        <div className="p-6">
+        {/* <h2 className="text-rose-700">{result.created_at}</h2> */}
+        <div className="mb-4">
+          <h3 className="text-base text-stone-700 font-semibold">Title </h3>
+          <p className="text-stone-800 font-semibold">{result.title}</p>
         </div>
 
-        <div className="mb-4 text-black flex items-center">
-        <h3 className="text-lg font-medium">Comment : </h3>
-        <span className="ml-3">{result.title}</span>
+        <div className="mb-4 ">
+        <h3 className="text-base text-stone-700 font-semibold">Rating </h3>
+        <div className="flex items-center">
+          {Array.from({length:5},(_,i)=>{
+            return(
+<span key={i}>
+                  <Star
+                    className={`${
+                      i < result.rating
+                        ? 'text-yellow-500' // Filled star color
+                        : 'text-gray-300' // Empty star color
+                    }`}
+                  />
+                </span>
+            )
+          })}
+        </div>
+        {/* <span className="text-stone-800 font-semibold">{result.rating}</span> */}
         </div>
 
-        <div className="mb-4 text-black flex items-center">
-        <h3 className="text-lg font-medium">Rating : </h3>
-        <span className="ml-3">{result.rating}</span>
+        <div className="mb-4">
+        <h3 className="text-base text-stone-700 font-semibold">Comment </h3>
+        <span className="text-stone-800 font-semibold">{result.comment}</span>
+        </div>
+
         </div>
 
       </div>

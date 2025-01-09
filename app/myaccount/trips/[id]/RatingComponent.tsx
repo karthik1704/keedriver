@@ -5,9 +5,10 @@ import { Star } from "lucide-react";
 import { createReview } from "./actions";
 import { useParams } from "next/navigation";
 import { useForm, Controller } from "react-hook-form";
+import { toast } from "sonner";
 
 const RatingComponent = () => {
-  const { control, handleSubmit, setValue, watch, reset } = useForm({
+  const { control, handleSubmit, setValue, watch, reset, formState:{errors} } = useForm({
     defaultValues: {
       rating: 0,
       title: "",
@@ -24,18 +25,33 @@ const RatingComponent = () => {
   };
 
   const onSubmit = async (data) => {
+    if(!data.rating || !data.title || !data.review){
+      toast.error('Please fill in all fields')
+      return;
+    }
     const date = new Date().toLocaleString();
-    await createReview({
+
+    try{
+    const response = await createReview({
       rating: data.rating,
       title: data.title,
       comment: data.review,
       trip: id,
     });
+
+    if(response?.message){
+      toast.success(response.message);
+    }else{
+      toast.error("An error occurred while submitting your review.");
+    }
     setShowRating(false);
     reset();
 
-    console.log(data.rating,data.title,data.review)
-  };
+    console.log(rating,data.title,data.review)
+  }catch(error){
+    toast.error('Something went wrong. please try again later')
+  }
+};
 
   return (
     <div>
@@ -79,6 +95,9 @@ const RatingComponent = () => {
                   />
                 )}
               />
+              {errors.title && (
+                <span className="text-red-500 text-sm">This Field is Reqiured</span>
+              )}
 
               <Controller
                 name="review"
@@ -92,6 +111,9 @@ const RatingComponent = () => {
                   />
                 )}
               />
+              {errors.review && (
+                <span className="text-red-500 text-sm">This Field is Reqiured</span>
+              )}
 
               <div className="flex justify-end">
                 <button
