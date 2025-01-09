@@ -17,10 +17,10 @@ const Home = () => {
             <h1 className="mt-12 text-black font-semibold text-2xl text-center lg:text-left">
               Join KeeDriver Today!
             </h1>
-            <h1 className="mt-8 text-rose-600 font-bold text-4xl md:text-6xl lg:text-7xl text-center lg:text-left">
+            <h1 className="mt-8 text-turquoise font-bold text-4xl md:text-6xl lg:text-7xl text-center lg:text-left">
               We Drive You Thrive
             </h1>
-            <h2 className="text-xl md:text-2xl lg:text-3xl text-rose-700 mb-9 font-medium my-5 text-center lg:text-left">
+            <h2 className="text-xl md:text-2xl lg:text-3xl text-turquoise mb-9 font-medium my-5 text-center lg:text-left">
               We provide a safe journey, anytime, anywhere, with our 24/7
               service.
             </h2>
@@ -36,7 +36,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="bg-rose-700 text-white p-10 border-white">
+        <div className="bg-turquoise text-white p-10 border-white">
           <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between text-center md:text-left">
             <div className="flex-1 p-3 md:p-5">
               <h1 className="text-2xl md:text-4xl font-bold mb-2 md:mb-4">
@@ -109,13 +109,13 @@ const Home = () => {
           </div>
         </div>
 
-        <h1 className="text-center text-4xl my-2 text-rose-600 font-bold">
+        <h1 className="text-center text-4xl my-2 text-turquoise font-bold">
           OUR TARIFF
         </h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-center mx-2 md:mx-4 mb-10">
           <div className=" m-5">
-            <h1 className="p-2 text-rose-600 text-xl font-semibold">
+            <h1 className="p-2 text-turquoise text-xl font-semibold">
               Normal Tariff
             </h1>
             <p>
@@ -135,7 +135,7 @@ const Home = () => {
             </p>
           </div>
           <div className="m-5">
-            <h1 className="p-2 text-rose-600 text-xl font-semibold">
+            <h1 className="p-2 text-turquoise text-xl font-semibold">
               Normal Tariff
               <br />
               (Hi-Luxury cars)
@@ -156,7 +156,7 @@ const Home = () => {
             </p>
           </div>
           <div className="m-5">
-            <h1 className="p-2 text-rose-600 text-xl font-semibold">
+            <h1 className="p-2 text-turquoise text-xl font-semibold">
               Outstation Tariff
             </h1>
             <p>
@@ -175,7 +175,7 @@ const Home = () => {
             </p>
           </div>
           <div className=" m-5">
-            <h1 className="p-2 text-rose-600 text-xl font-semibold">
+            <h1 className="p-2 text-turquoise text-xl font-semibold">
               Outstation Drop Only (Calculated Per KM)
             </h1>
             <p>
@@ -196,7 +196,7 @@ const Home = () => {
           </div>
         </div>
 
-        <h1 className="text-center py-2 text-rose-600 text-3xl md:text-4xl font-bold">
+        <h1 className="text-center py-2 text-turquoise text-3xl md:text-4xl font-bold">
           Why Choose KeeDriver
         </h1>
 
@@ -211,7 +211,7 @@ const Home = () => {
                 className="rounded-full"
               />
             </div>
-            <h3 className="font-semibold text-center mb-5 text-rose-500 text-2xl">
+            <h3 className="font-semibold text-center mb-5 text-turquoise text-2xl">
               Convenient Booking Process
             </h3>
             <p className="text-white text-center lg:text-justify text-lg">
@@ -230,7 +230,7 @@ const Home = () => {
                 className="rounded-full"
               />
             </div>
-            <h3 className="font-semibold text-center mb-5 text-rose-500 text-2xl">
+            <h3 className="font-semibold text-center mb-5 text-turquoise text-2xl">
               Experienced and Trusted Drivers
             </h3>
             <p className="text-white text-center lg:text-justify text-lg">
@@ -249,7 +249,7 @@ const Home = () => {
                 className="rounded-full"
               />
             </div>
-            <h3 className="font-semibold text-center mb-5 text-rose-500 text-2xl">
+            <h3 className="font-semibold text-center mb-5 text-turquoise text-2xl">
               Thousands of Happy Customers
             </h3>
             <p className="text-white text-center lg:text-justify text-lg">
@@ -261,7 +261,7 @@ const Home = () => {
         </div>
 
         <div className="flex flex-col items-center justify-center text-center pt-20">
-          <div className="font-bold text-4xl text-rose-600">Testimonial</div>
+          <div className="font-bold text-4xl text-turquoise">Testimonial</div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-center mx-5 md:mx-11 my-8 mb-24">
             <div className="w-full border shadow-md shadow-stone-400 bg-white rounded-lg">
               <div className="pt-10 md:pt-24 mx-8 font-medium">
