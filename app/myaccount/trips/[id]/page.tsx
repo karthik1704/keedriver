@@ -256,13 +256,10 @@ const TripDetailCard = async (
     second: "2-digit",
   })}
         </h2>
-        <div className="mb-4">
-          <h3 className="text-base text-stone-700 font-semibold">Title </h3>
-          <p className="text-stone-800 font-semibold">{result.title}</p>
-        </div>
+        
 
         <div className="mb-4 ">
-        <h3 className="text-base text-stone-700 font-semibold">Rating </h3>
+        {/* <h3 className="text-base text-stone-700 font-semibold">Rating </h3> */}
         <div className="flex items-center">
           {Array.from({length:5},(_,i)=>{
             return(
@@ -282,7 +279,12 @@ const TripDetailCard = async (
         </div>
 
         <div className="mb-4">
-        <h3 className="text-base text-stone-700 font-semibold">Comment </h3>
+          {/* <h3 className="text-base text-stone-700 font-semibold">Title </h3> */}
+          <p className="text-stone-800 font-semibold">{result.title}</p>
+        </div>
+
+        <div className="mb-4">
+        {/* <h3 className="text-base text-stone-700 font-semibold">Comment </h3> */}
         <span className="text-stone-800 font-semibold">{result.comment}</span>
         </div>
 
