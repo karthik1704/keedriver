@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="flex  justify-between flex-col-reverse flex-wrap md:flex-row md:justify-around ">
         <div className="flex justify-center">
           <Link href="/">
-            <Image src="/images/logo.png" alt="logo" width={200} height={200} />
+            <Image src="/images/new-logo.png" alt="logo" width={100} height={70} />
           </Link>{" "}
         </div>
         <div className="flex justify-between items-center flex-warp flex-col md:flex-row md:justify-around md:items-start gap-8 md:gap-24">

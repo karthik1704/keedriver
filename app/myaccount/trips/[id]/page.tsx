@@ -280,12 +280,12 @@ const TripDetailCard = async (
 
         <div className="mb-4">
           {/* <h3 className="text-base text-stone-700 font-semibold">Title </h3> */}
-          <p className="text-stone-800 font-semibold">{result.title}</p>
+          <p className="text-stone-800 font-bold">{result.title}</p>
         </div>
 
         <div className="mb-4">
         {/* <h3 className="text-base text-stone-700 font-semibold">Comment </h3> */}
-        <span className="text-stone-800 font-semibold">{result.comment}</span>
+        <span className="text-stone-800 font-medium">{result.comment}</span>
         </div>
 
         </div>

@@ -11,10 +11,10 @@ import img6 from "@/app/services/image/happy_customer.jpeg";
 const Home = () => {
   return (
     <>
-      <div className="bg-stone-100">
+      <div className="bg-hmbg">
         <div className="grid gap-10 lg:grid-cols-2 md:space-x-7 my-10 md:my-5 mx-5 md:mx-36">
           <div className="flex flex-col justify-center">
-            <h1 className="mt-12 text-black font-semibold text-2xl text-center lg:text-left">
+            <h1 className="mt-12 text-white font-semibold text-2xl text-center lg:text-left">
               Join KeeDriver Today!
             </h1>
             <h1 className="mt-8 text-turquoise font-bold text-4xl md:text-6xl lg:text-7xl text-center lg:text-left">
@@ -36,7 +36,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="bg-turquoise text-white p-10 border-white">
+        <div className="bg-turquoise text-black p-10 border-white">
           <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between text-center md:text-left">
             <div className="flex-1 p-3 md:p-5">
               <h1 className="text-2xl md:text-4xl font-bold mb-2 md:mb-4">
@@ -118,7 +118,7 @@ const Home = () => {
             <h1 className="p-2 text-turquoise text-xl font-semibold">
               Normal Tariff
             </h1>
-            <p>
+            <p className="text-justify text-white">
               Here’s an improved version with added detail: Our standard tariff
               is tailored to meet the everyday transportation needs of both
               individuals and families. Whether you’re commuting to work,
@@ -128,7 +128,7 @@ const Home = () => {
               you can count on us for a smooth, safe, and hassle-free journey
               every time.
             </p>
-            <p className="italic font-bold">
+            <p className="italic font-bold text-justify text-white">
               {" "}
               24/7 availability, Background-verified drivers, Affordable city
               rates, Real-time tracking, Easy booking process.
@@ -140,7 +140,7 @@ const Home = () => {
               <br />
               (Hi-Luxury cars)
             </h1>
-            <p>
+            <p className="text-justify text-white">
               For those who prefer to travel in style, our luxury car service is
               the perfect choice. This premium offering allows you to ride in
               high-end vehicles such as BMWs, Audis, and Mercedes-Benz,
@@ -148,7 +148,7 @@ const Home = () => {
               and privacy. Ideal for business trips, special occasions, or when
               you simply want to enjoy a luxurious experience on the road.
             </p>
-            <p className="italic font-bold">
+            <p className="italic font-bold text-justify text-white">
               {" "}
               Premium luxury vehicles, Professional chauffeur service, Enhanced
               comfort and privacy, Ideal for business or special events,
@@ -159,7 +159,7 @@ const Home = () => {
             <h1 className="p-2 text-turquoise text-xl font-semibold">
               Outstation Tariff
             </h1>
-            <p>
+            <p className="text-justify text-white">
               Heading out of town? Our outstation service is designed to make
               long-distance travel stress-free. Whether you're going for a
               family vacation, a business trip, or a weekend getaway, we offer
@@ -167,7 +167,7 @@ const Home = () => {
               outstation journeys. Enjoy the freedom to travel without worrying
               about fuel, tolls, or navigation—we take care of everything.
             </p>
-            <p className="italic font-bold">
+            <p className="italic font-bold text-justify text-white">
               {" "}
               Transparent pricing for long trips, Experienced drivers for
               outstation travel, One-way or round-trip options, Safe,
@@ -178,7 +178,7 @@ const Home = () => {
             <h1 className="p-2 text-turquoise text-xl font-semibold">
               Outstation Drop Only (Calculated Per KM)
             </h1>
-            <p>
+            <p className="text-justify text-white">
               This service is perfect for those who need a one-way drop to a
               destination outside the city. Whether you're visiting relatives,
               traveling for work, or need a transfer to another city, you only
@@ -187,7 +187,7 @@ const Home = () => {
               timely, and safe journey, while our professional drivers handle
               the road.
             </p>
-            <p className="italic font-bold">
+            <p className="italic font-bold text-justify text-white">
               {" "}
               Pay-per-kilometer pricing, Ideal for one-way outstation trips,
               Reliable and timely service, Vehicle options for comfort, Easy,

@@ -23,8 +23,13 @@ export const theme = {
 
     colors: {
       border: "hsl(var(--border))",
-      // turquoise: '#40E0D0',
       turquoise: '#57e2c3',
+      hmbg_Hover: '#1a4f5f',
+      hmbg:'#00303f',
+// #1a1a1a (Very Dark Gray)
+// #000000 (Black)
+// #2c3e50 (Dark Blue-Gray)
+// #00303f (Dark Cyan)
       input: "hsl(var(--input))",
       ring: "hsl(var(--ring))",
       background: "hsl(var(--background))",
