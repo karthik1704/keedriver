@@ -86,7 +86,7 @@ export default async function MyAccountLayout({
               <MyAccountNavBar />
             </div>
 
-            <div className="flex md:mx-10 w-full sm:w-full md:w-1/2 lg:w-11/12 xl:w-full">
+            <div className="flex md:mx-10 w-full sm:w-full md:w-full lg:w-11/12 xl:w-full">
               {children}
             </div>
           </div>

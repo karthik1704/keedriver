@@ -16,10 +16,12 @@ import {
   MoonStar,
   IndianRupee,
   Star,
-} from "lucide-react";
+ } from "lucide-react";
 
 import RatingComponent from "./RatingComponent";
 import { getTrip } from "@/services/trips";
+import { getReviews } from "@/services/reviews";
+import { format } from "date-fns";
 
 interface Review {
   rating: number;
@@ -33,20 +35,24 @@ const TripDetailCard = async (
   }
 ) => {
   const params = await props.params;
-
   const {
     id
   } = params;
 
   const trip = await getTrip(id);
-  const reviews = [];
+  const rev = await getReviews(id);
+
+  const pickupTime = format(trip.pickup_time, 'hh:mm a');
+  // const pickupTime = format(new Date(trip.pickup_time), 'MMMM dd, yyyy');
+
+
 
   return (
-    <>
+    <div className="flex flex-col w-full">
       <div className="w-full flex flex-col items-center rounded-lg bg-rose-700 p-4 relative">
         <div className="text-white text-lg flex items-center gap-2 absolute top-3 right-3">
           <span className="inline-block">Status :</span>
-          <span className="inline-block">Pending</span>
+          <span className="inline-block">{trip.trip_status}</span>
         </div>
 
         <div className="w-11/12 flex flex-col justify-center gap-3 mt-5">
@@ -76,7 +82,7 @@ const TripDetailCard = async (
             <span className="text-white">Land Mark</span>
             <p className="bg-white p-2 text-md text-gray-700 rounded-lg mt-2 flex items-center">
               <Landmark className="inline-block mr-2 text-red-600" />
-              address
+              {trip.landmark}
             </p>
           </div>
 
@@ -96,7 +102,7 @@ const TripDetailCard = async (
                 <span className="text-white">Trip Time</span>
                 <p className="bg-white p-2 text-md text-gray-700 rounded-lg mt-2">
                   <Clock className="inline-block mr-2 text-red-600" />
-                  10:30 am
+                  {pickupTime}
                 </p>
               </div>
               <div>
@@ -110,7 +116,7 @@ const TripDetailCard = async (
                 <span className="text-white">Phone Number</span>
                 <p className="bg-white p-2 text-md text-gray-700 rounded-lg mt-2">
                   <Phone className="inline-block mr-2 text-red-600" />
-                  9003209825
+                  {trip.alternate_phone_number}
                 </p>
               </div>
             </div>
@@ -125,14 +131,14 @@ const TripDetailCard = async (
                 <span className="text-white">Name</span>
                 <p className="bg-white p-2 text-md text-gray-700 rounded-lg mt-2">
                   <User className="inline-block mr-2 text-red-600" />
-                  Ajin Kumar
+                 {trip.driver_name}
                 </p>
               </div>
               <div>
                 <span className="text-white">Phone Number</span>
                 <p className="bg-white p-2 text-md text-gray-700 rounded-lg mt-2">
                   <Phone className="inline-block mr-2 text-red-600" />
-                  9001234221
+                  {trip.phone}
                 </p>
               </div>
             </div>
@@ -167,7 +173,7 @@ const TripDetailCard = async (
                 </span>
                 <div className="flex gap-3 text-gray-700 rounded-lg">
                   <RectangleEllipsis className="text-rose-700" />
-                  <span className="font-semibold">TN 85 Q 0931</span>
+                  <span className="font-semibold">{trip.registration_number}</span>
                 </div>
               </li>
               <li className="w-full">
@@ -221,7 +227,7 @@ const TripDetailCard = async (
                 <span className="text-white">Total</span>
                 <p className="bg-white p-2 text-md text-gray-700 rounded-lg mt-2 flex items-center gap-2">
                   <IndianRupee className="inline-block mr-2 text-red-600" />
-                  <span>800</span>
+                  <span>{trip.amount}</span>
                 </p>
               </div>
             </div>
@@ -230,36 +236,67 @@ const TripDetailCard = async (
 
         <RatingComponent />
 
-        {/* /* Display the reviews if available */}
-        {reviews.length > 0 && (
-          <div className="w-full mt-6 p-4 bg-white rounded-lg">
-            <h3 className="text-lg font-semibold text-gray-800">Reviews</h3>
-            <ul>
-              {reviews.map((rev, index) => (
-                <li key={index} className="mt-4 border-t border-gray-200 pt-4">
-                  <div className="flex items-center">
-                    {/* Star Images */}
-                    <div className="flex">
-                      {[...Array(rev.rating)].map((_, starIndex) => (
-                        <Star
-                          key={starIndex}
-                          className="w-5 h-5 text-yellow-500"
-                          fill="yellow"
-                        />
-                      ))}
-                    </div>
-                    <span className="ml-auto text-gray-500 text-sm">
-                      {rev.date}
-                    </span>
-                  </div>
-                  <p className="text-gray-700 mt-2">{rev.review}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
       </div>
-    </>
+
+      <div className="flex flex-col gap-4">
+      <h2 className="bg-rose-700 w-9/12 mx-auto text-center rounded-t-lg p-3 text-2xl font-bold text-white my-4">Review</h2>
+
+  {rev.results.map((result, index) => (
+    <div key={index} className="w-full">
+      <div className="shadow-md bg-white transition-shadow hover:shadow-md duration-300 ease-in-out rounded-lg w-9/12 mx-auto mt-8">
+
+        <div className="p-6">
+        <h2 className="text-stone-700 text-right">
+        {new Date(result.created_at).toLocaleString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  })}
+        </h2>
+        
+
+        <div className="mb-4 ">
+        {/* <h3 className="text-base text-stone-700 font-semibold">Rating </h3> */}
+        <div className="flex items-center">
+          {Array.from({length:5},(_,i)=>{
+            return(
+<span key={i}>
+                  <Star
+                    className={`${
+                      i < result.rating
+                        ? 'text-yellow-500' 
+                        : 'text-gray-300' 
+                    }`}
+                    fill={i + 1 <= result.rating ? "yellow" : "none"}
+                  />
+                </span>
+            )
+          })}
+        </div>
+        </div>
+
+        <div className="mb-4">
+          {/* <h3 className="text-base text-stone-700 font-semibold">Title </h3> */}
+          <p className="text-stone-800 font-bold">{result.title}</p>
+        </div>
+
+        <div className="mb-4">
+        {/* <h3 className="text-base text-stone-700 font-semibold">Comment </h3> */}
+        <span className="text-stone-800 font-medium">{result.comment}</span>
+        </div>
+
+        </div>
+
+      </div>
+    </div>
+  ))}
+</div>
+
+      
+    </div>
   );
 };
 

@@ -9,17 +9,55 @@ import {
   Car,
 } from "lucide-react";
 import Link from "next/link";
+import { Badge } from "@/components/ui/badge"
+import {format} from 'date-fns';
 
 const TripCard = ({data}:{data: any}) => {
+  const pickupDate = new Date(data.pickup_time);
+  const dropDate = new Date(data.drop_time);
+
+  const getStatusColor = (status) => {
+    switch (status) {
+      case 'COMPLETED':
+        return 'bg-green-900 text-white'; 
+      case 'BOOKED':
+        return 'bg-blue-500 text-white'; 
+      case 'DRIVER_ASSIGNED':
+        return 'bg-yellow-500 text-white'; 
+      default:
+        return 'bg-red-500 text-white'; 
+    }
+  };
+
+  const getStatusText = (status) => {
+    switch (status) {
+      case 'COMPLETED':
+        return 'Completed'; 
+      case 'BOOKED':
+        return 'Booked';
+      case 'DRIVER_ASSIGNED':
+        return 'Driver Assigned'; 
+      default:
+        return 'Cancelled'; 
+    }
+  };
+
+  const tripStatus = data.trip_status;
+
+const formattedPickupTime = format(pickupDate, 'hh:mm a');
+  const formattedDropTime = format(dropDate, 'hh:mm a');
 
   return (
     <section className=" w-full flex flex-col items-end justify-end gap-4 relative lg:pl-10">
-      <div className="w-full lg:w-full h-auto rounded-lg flex flex-col lg:flex-row items-end justify-end gap-4 bg-white shadow-lg border-t-4 border-stone-100 shadow-stone-400 hover:shadow-stone-500 p-6 relative">
-        {/* Status */}
+      <div className="w-full lg:w-full h-auto rounded-lg flex flex-col lg:flex-row items-end justify-end gap-4 bg-white shadow-lg border-t-4 border-stone-100 shadow-stone-400 p-12 relative">
+        {/* Status 9994033584 */}
         <p className="flex items-center text-lg font-bold text-gray-800 gap-2 absolute top-2 right-2">
-          <Check className="text-green-600" />
-          Done
-        </p>
+        <Check className="text-green-600" />
+    <Badge className={`p-4 rounded-lg ${getStatusColor(tripStatus)}`}>
+     
+    {getStatusText(tripStatus)}
+    </Badge>
+  </p>
 
         {/* Trip Info */}
         <p className="absolute left-0 bottom-1 text-lg font-semibold px-4 py-3 flex items-center gap-3">
@@ -41,7 +79,7 @@ const TripCard = ({data}:{data: any}) => {
                 </li>
                 <li className="flex items-center justify-start gap-1 font-medium">
                   <MapPin className="h-5 w-5 text-green-600" />
-                  Pallavaram
+                  {data.pickup_location}
                 </li>
                 <li className="flex items-center justify-start gap-1 font-medium">
                   <Calendar className="h-5 w-5 text-green-600" />
@@ -49,7 +87,7 @@ const TripCard = ({data}:{data: any}) => {
                 </li>
                 <li className="flex items-center justify-start gap-1 font-medium">
                   <Timer className="h-5 w-5 text-green-600" />
-                  10.20am
+                  {formattedPickupTime}
                 </li>
               </ul>
             </div>
@@ -71,7 +109,7 @@ const TripCard = ({data}:{data: any}) => {
                 </li>
                 <li className="flex items-center justify-start gap-1 font-medium">
                   <Timer className="h-5 w-5 text-rose-700" />
-                  10.20am
+                  {formattedDropTime}
                 </li>
               </ul>
             </div>
@@ -87,7 +125,7 @@ const TripCard = ({data}:{data: any}) => {
                 Name: {data.driver_name || 'unknown'}
               </li>
               <li className="flex items-center justify-start gap-1 font-medium">
-                Phone Number: 95454257879
+                Phone Number: {data.alternate_phone_number}
               </li>
             </ul>
           </div>

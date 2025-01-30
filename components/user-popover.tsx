@@ -27,14 +27,14 @@ const UserPopover = ({ user }) => {
             href="/myaccount"
             className="w-full flex items-center gap-3 hover:bg-gray-100 p-2 "
           >
-            <CircleUserRound className=" text-rose-700" />
+            <CircleUserRound className=" text-turquoise" />
             <span className="inline-block">Profile</span>
           </Link>
           <Link
             href="/setting"
             className="w-full flex items-center gap-3 hover:bg-gray-100 p-2"
           >
-            <Settings className="text-rose-700" />
+            <Settings className="text-turquoise" />
             <span className="inline-block">Settings</span>
           </Link>
           <LogoutButton />
